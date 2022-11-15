@@ -57,7 +57,7 @@ export class StuContentListPage implements OnInit {
         this.libros = res;
         console.log(this.libros);
       }, err => {
-        console.log('Error get publicaciones internars');
+        console.log('Error get publicaciones internas');
       }
     );
   }
@@ -67,7 +67,7 @@ export class StuContentListPage implements OnInit {
         this.libros = res;
         console.log(this.libros);
       }, err => {
-        console.log('Error get publicaciones internars y grado');
+        console.log('Error get publicaciones internas y grado');
       }
     );
   }

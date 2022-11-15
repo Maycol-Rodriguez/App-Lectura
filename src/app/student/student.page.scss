@@ -1,0 +1,103 @@
+ion-menu::part(backdrop) {
+  // primera opcion
+  // background-color: #f953c6;
+  // segunda opcion
+  background-color: #09c6f9;
+  // tercera opcion
+  // background-color: #764ba2;
+  // cuarta opcion
+  // background-color: #517fa4;
+  // quinta opcion
+  // background-color: #eea849;
+  // sexta opcion
+  // background-color: #41295a;
+}
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  box-shadow: 4px 0px 16px rgba(33, 2, 33, 0.18);
+}
+.fondosidebar, .fondocontenido {
+  // primera opcion
+  // --background: linear-gradient(to right, #b91d73, #f953c6);
+  // segunda opcion
+  --background: linear-gradient(to right, #045de9, #09c6f9);
+  // tercera opcion
+  // --background: linear-gradient(to right, #667eea, #764ba2);
+  // cuarta opcion
+  // --background: linear-gradient(to right, #243949, #517fa4);
+  // quinta opcion
+  // --background: linear-gradient(to right, #f46b45, #eea849);
+  // sexta opcion
+  // --background: linear-gradient(to right, #2f0743, #41295a);
+}
+.user_main_div {
+  padding-top: 50px;
+  .user_div {
+    height:110px;
+    width: 100px;
+    border-radius: 5px;
+    border: 3px solid white;
+    display: block;
+    margin: auto;
+    background-position: top;
+  }
+  .username {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+  }
+  .bg_image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .image_male {
+    background: url(../../assets/iconos/studentboy.png) content-box no-repeat;
+    background-size: cover;
+    // background: url(../../assets/iconos/male.png) content-box no-repeat;
+  }
+  .image_female {
+    background: url(../../assets/iconos/student.png) content-box no-repeat;
+    background-size: cover;
+    // background: url(../../assets/iconos/female.png) content-box no-repeat;
+  }
+}
+
+#inbox-list {
+  background: transparent;
+  ion-item {
+    --background: transparent;
+    ion-icon, ion-label {
+      color: white;
+    }
+  }
+}
+
+.ion-page-global {
+  // primera opcion
+  // --background: linear-gradient(to right, #b91d73, #f953c6);
+  // segunda opcion
+  --background: linear-gradient(to right, #045de9, #09c6f9);
+  // tercera opcion
+  // --background: linear-gradient(to right, #667eea, #764ba2);
+  // cuarta opcion
+  // --background: linear-gradient(to right, #243949, #517fa4);
+  // quinta opcion
+  // --background: linear-gradient(to right, #f46b45, #eea849);
+  // sexta opcion
+  // --background: linear-gradient(to right, #2f0743, #41295a);
+  .main_content_div {
+    width: 100%;
+    .menu_btn {
+      position: relative;
+      top: 40px;
+      left: 10px;
+    }
+  }
+  .main_content_div_child {
+    width: 100%;
+  }
+}

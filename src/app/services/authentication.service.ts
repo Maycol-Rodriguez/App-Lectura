@@ -30,7 +30,7 @@ export class AuthenticationService {
   isLoggedIn(): boolean {
     if (localStorage.getItem('usuario')) {
       console.log('hay usuario');
-      const clitipe = JSON.parse(localStorage.getItem('usuario'));
+      const clitipe = JSON.parse(localStorage.getItem('tipoclient'));
       if (clitipe === 'estudiante') {
         console.log('el usuario es estudiante');
       } else if (clitipe === 'profesor') {
