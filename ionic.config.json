@@ -1,0 +1,7 @@
+{
+  "name": "applectura-ionic6-angular14",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
