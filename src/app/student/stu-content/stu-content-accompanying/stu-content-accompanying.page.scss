@@ -1,0 +1,161 @@
+.main_content_div {
+  background: white;
+  width: 100%;
+  border-top-right-radius: 75px;
+  margin-top: 20px;
+  padding-top: 30px;
+  .hello_lbl {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+    // primera opcion
+    // color: #b91d73;
+    // segunda opcion
+    color: #045de9;
+    // tercera opcion
+    // color: #667eea;
+    // cuarta opcion
+    // color: #243949;
+    // quinta opcion
+    // color: #f46b45;
+    // sexta opcion
+    // color: #2f0743;
+  }
+  .col_div_accompanying {
+    // primera opcion
+    // --background: linear-gradient(to right, #b91d73, #f953c6);
+    // segunda opcion
+    background: linear-gradient(to right, #045de9, #09c6f9);
+    // tercera opcion
+    // --background: linear-gradient(to right, #667eea, #764ba2);
+    // cuarta opcion
+    // --background: linear-gradient(to right, #243949, #517fa4);
+    // quinta opcion
+    // --background: linear-gradient(to right, #f46b45, #eea849);
+    // sexta opcion
+    // --background: linear-gradient(to right, #2f0743, #41295a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    // border-radius: 5px;
+    border-top-left-radius: 75px;
+    border-bottom-right-radius: 75px;
+    ion-label {
+      // primera opcion
+      // color: #b91d73;
+      // segunda opcion
+      // color: #045de9;
+      // tercera opcion
+      // color: #667eea;
+      // cuarta opcion
+      // color: #243949;
+      // quinta opcion
+      // color: #f46b45;
+      // sexta opcion
+      color: white;
+      margin-top: 5px;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+  .col_div {
+    // primera opcion
+    // --background: linear-gradient(to right, #b91d73, #f953c6);
+    // segunda opcion
+    background: linear-gradient(to right, #045de9, #09c6f9);
+    // tercera opcion
+    // --background: linear-gradient(to right, #667eea, #764ba2);
+    // cuarta opcion
+    // --background: linear-gradient(to right, #243949, #517fa4);
+    // quinta opcion
+    // --background: linear-gradient(to right, #f46b45, #eea849);
+    // sexta opcion
+    // --background: linear-gradient(to right, #2f0743, #41295a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 500px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    // border-radius: 5px;
+    border-top-left-radius: 75px;
+    border-bottom-right-radius: 75px;
+    img {
+      width: 100px;
+    }
+    ion-label {
+      // primera opcion
+      // color: #b91d73;
+      // segunda opcion
+      // color: #045de9;
+      // tercera opcion
+      // color: #667eea;
+      // cuarta opcion
+      // color: #243949;
+      // quinta opcion
+      // color: #f46b45;
+      // sexta opcion
+      color: white;
+      margin-top: 5px;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+
+.animated {
+  --webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  --webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+@-webkit-keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2000px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(-30);
+  }
+  80% {
+    -webkit-transform: translateY(10);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+.bounceInUp {
+  --webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+}
+
+@keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2000px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(-30px);
+  }
+  80% {
+    -webkit-transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}

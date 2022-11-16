@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stu-content-audio.page.scss'],
 })
 export class StuContentAudioPage implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

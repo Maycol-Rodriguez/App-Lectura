@@ -80,6 +80,7 @@ export class StuContentListPage implements OnInit {
     this.router.navigate(
       [
         'student',
+        'stu-content',
         'stu-content-accompanying'
       ]
     );

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StuContentSelectPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  porlectura() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-reading'
+      ]
+    );
+  }
+  porvideo() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-video'
+      ]
+    );
+  }
+  poraudio() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-audio'
+      ]
+    );
   }
 
 }
