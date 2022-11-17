@@ -8,7 +8,7 @@
   // primera opcion
   // --background: linear-gradient(to right, #b91d73, #f953c6);
   // segunda opcion
-  --background: linear-gradient(to right, #045de9, #09c6f9);
+  --background: linear-gradient(to right, #08A6AC, #36BDBC);
   // tercera opcion
   // --background: linear-gradient(to right, #667eea, #764ba2);
   // cuarta opcion
@@ -32,12 +32,12 @@
   }
   .second_div {
     height: 100px;
-    width: 80px;
+    width: 100px;
     border: 3px solid white;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 7px;
+    border-radius: 50%;
   }
   .image_male {
     background: url(../../../assets/iconos/studentboy.png) content-box no-repeat;
@@ -54,19 +54,19 @@
 
   background: white;
   width: 100%;
-  border-top-right-radius: 75px;
+  border-top-right-radius: 15px;
   margin-top: -90px;
   padding-top: 30px;
   .hello_lbl {
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 30px;
     margin-top: 10px;
     // primera opcion
     // color: #b91d73;
     // segunda opcion
-    color: #045de9;
+    color: #08A6AC;
     // tercera opcion
     // color: #667eea;
     // cuarta opcion
@@ -80,7 +80,7 @@
     // primera opcion
     // --background: linear-gradient(to right, #b91d73, #f953c6);
     // segunda opcion
-    background: linear-gradient(to right, #045de9, #09c6f9);
+    background: linear-gradient(to right, #08A6AC, #36BDBC);
     // tercera opcion
     // --background: linear-gradient(to right, #667eea, #764ba2);
     // cuarta opcion
@@ -97,8 +97,8 @@
     height: 200px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     // border-radius: 5px;
-    border-top-left-radius: 75px;
-    border-bottom-right-radius: 75px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     img {
       width: 100px;
     }
@@ -106,7 +106,7 @@
       // primera opcion
       // color: #b91d73;
       // segunda opcion
-      // color: #045de9;
+      // color: #08A6AC;
       // tercera opcion
       // color: #667eea;
       // cuarta opcion

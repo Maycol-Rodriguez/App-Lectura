@@ -2,7 +2,7 @@ ion-menu::part(backdrop) {
   // primera opcion
   // background-color: #f953c6;
   // segunda opcion
-  background-color: #09c6f9;
+  background-color: #36BDBC;
   // tercera opcion
   // background-color: #764ba2;
   // cuarta opcion
@@ -20,7 +20,7 @@ ion-menu::part(container) {
   // primera opcion
   // --background: linear-gradient(to right, #b91d73, #f953c6);
   // segunda opcion
-  --background: linear-gradient(to right, #045de9, #09c6f9);
+  --background: linear-gradient(to right, #08A6AC, #36BDBC);
   // tercera opcion
   // --background: linear-gradient(to right, #667eea, #764ba2);
   // cuarta opcion
@@ -33,9 +33,9 @@ ion-menu::part(container) {
 .user_main_div {
   padding-top: 50px;
   .user_div {
-    height:110px;
+    height:100px;
     width: 100px;
-    border-radius: 5px;
+    border-radius: 50%;
     border: 3px solid white;
     display: block;
     margin: auto;
@@ -80,7 +80,7 @@ ion-menu::part(container) {
   // primera opcion
   // --background: linear-gradient(to right, #b91d73, #f953c6);
   // segunda opcion
-  --background: linear-gradient(to right, #045de9, #09c6f9);
+  --background: linear-gradient(to right, #08A6AC, #36BDBC);
   // tercera opcion
   // --background: linear-gradient(to right, #667eea, #764ba2);
   // cuarta opcion
