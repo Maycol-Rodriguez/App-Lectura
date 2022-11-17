@@ -1,9 +1,122 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>stu-content-accompanying</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<div class="main_content_div_child">
+  <div class="main_content_div animated bounceInUp">
+    <ion-label class="hello_lbl">
+      Como Realizara su Lectura
+    </ion-label>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <div class="col_div_accompanying">
+            <ion-label>
+              Solitari@
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="col_div_accompanying">
+            <ion-label>
+              Acompaniad@
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="!verformulario" size="12">
+          <div class="col_div">
+            <ion-list>
+              <ion-item>
+                <ion-label slot="start">
+                  Documento:
+                </ion-label>
+                <ion-input
+                  type="text"
+                  name="dni"
+                  required
+                  auto-focus
+                  tabindex="1"
+                  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                  [(ngModel)]="dato"></ion-input>
+                <ion-button
+                  slot="end"
+                  color="primary">
+                  <ion-icon
+                    name="arrow-redo-outline"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-label slot="start">
+                  Nombre:
+                </ion-label>
+                <ion-input
+                  type="text"
+                  name="Nombre"
+                  required
+                  auto-focus
+                  tabindex="1"
+                  [(ngModel)]="responsable.Nombre">
+                </ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-label slot="start">
+                  Apellido:
+                </ion-label>
+                <ion-input
+                  type="text"
+                  name="Apellido"
+                  required
+                  tabindex="2"
+                  [(ngModel)]="responsable.Apellido">
+                </ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-label slot="start">
+                  Documento:
+                </ion-label>
+                <ion-input
+                  type="text"
+                  name="Documento"
+                  required
+                  tabindex="3"
+                  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                  [(ngModel)]="responsable.Documento">
+                </ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-label slot="start">
+                  Genero:
+                </ion-label>
+                <ion-select slot="end"
+                  interface="popover"
+                  required
+                  [(ngModel)]="responsable.Genero"
+                  placeholder="Genero?"
+                  (ionChange)="handleChange($event)"
+                  tabindex="4">
+                  <ion-select-option
+                    *ngFor="let item of genero"
+                    [value]="item.name">
+                    {{ item.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-button
+                  color="primary"
+                  expand="block"
+                  shape="round"
+                  size="large"
+                  (click)="siguiente()"
+                  [disabled]="(responsable.Nombre === '' || responsable.Apellido === '' || responsable.Genero === '' || responsable.Documento === '')? true:false">
+                  Siguiente
+                </ion-button>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
