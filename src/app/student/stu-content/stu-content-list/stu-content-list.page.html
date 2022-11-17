@@ -1,66 +1,70 @@
 <div class="main_content_div_child">
   <div class="main_content_div_grados">
     <ion-grid fixed>
-      <ion-row class="ion-justify-content-around">
+      <ion-row class="ion-justify-content-between">
         <ion-col size="1">
-          <ion-button color="primary">
+          <ion-button color="light">
             <ion-icon name="library-outline"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col size="1">
-          <ion-button color="primary">
-            1º
+          <ion-button color="light">
+            1°
+          </ion-button>
+          <!-- <ion-button color="primary">
+            1°
+          </ion-button> -->
+        </ion-col>
+        <ion-col size="1">
+          <ion-button color="light">
+            2°
           </ion-button>
         </ion-col>
         <ion-col size="1">
-          <ion-button color="primary">
-            2º
+          <ion-button color="light">
+            3°
           </ion-button>
         </ion-col>
         <ion-col size="1">
-          <ion-button color="primary">
-            3º
+          <ion-button color="light">
+            4°
           </ion-button>
         </ion-col>
         <ion-col size="1">
-          <ion-button color="primary">
-            4º
+          <ion-button color="light">
+            5°
           </ion-button>
         </ion-col>
         <ion-col size="1">
-          <ion-button color="primary">
-            5º
+          <ion-button color="light">
+            6°
           </ion-button>
         </ion-col>
-        <ion-col size="1">
-          <ion-button color="primary">
-            6º
-          </ion-button>
-        </ion-col>
-        <!-- <ion-col size="1" *ngFor="let item of grados">
-          <ion-label>
-            Leer libro
-          </ion-label>
-        </ion-col> -->
       </ion-row>
     </ion-grid>
   </div>
-
   <div class="main_content_div animated bounceInUp">
-    <!-- parte de los grados -->
     <ion-label class="hello_lbl">
       Libros Disponibles
     </ion-label>
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="6" *ngFor="let item of libros">
+        <ion-col size="12">
+          <div class="col_div">
+            <img src="../../../../assets/iconos/book.png" alt="libro">
+            <ion-label>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quam omnis expedita voluptate vero recusandae necessitatibus error repudiandae eius deserunt aut, nihil sit rem sint ab qui. Repellat, pariatur repellendus.
+            </ion-label>
+          </div>
+        </ion-col>
+        <!-- <ion-col size="6" *ngFor="let item of libros">
           <div class="col_div">
             <img src="../../../../assets/iconos/book.png" alt="libro">
             <ion-label>
               Leer libro
             </ion-label>
           </div>
-        </ion-col>
+        </ion-col> -->
         <ion-col size="6">
           <div class="col_div">
             <img src="../../../../assets/iconos/book.png" alt="libro">

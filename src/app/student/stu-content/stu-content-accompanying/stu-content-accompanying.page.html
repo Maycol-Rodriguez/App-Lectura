@@ -15,7 +15,7 @@
         <ion-col size="6">
           <div class="col_div_accompanying">
             <ion-label>
-              Acompaniad@
+              Acompañad@
             </ion-label>
           </div>
         </ion-col>
@@ -104,6 +104,15 @@
               <br>
               <ion-item>
                 <ion-button
+                color="light"
+                expand="block"
+                  shape="round"
+                  size="large"
+                  (click)="siguiente()"
+                  [disabled]="(responsable.Nombre === '' || responsable.Apellido === '' || responsable.Genero === '' || responsable.Documento === '')? true:false">
+                  Siguiente
+                </ion-button>
+                <!-- <ion-button
                   color="primary"
                   expand="block"
                   shape="round"
@@ -111,7 +120,7 @@
                   (click)="siguiente()"
                   [disabled]="(responsable.Nombre === '' || responsable.Apellido === '' || responsable.Genero === '' || responsable.Documento === '')? true:false">
                   Siguiente
-                </ion-button>
+                </ion-button> -->
               </ion-item>
             </ion-list>
           </div>
