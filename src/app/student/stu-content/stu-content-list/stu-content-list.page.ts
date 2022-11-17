@@ -17,7 +17,7 @@ export class StuContentListPage implements OnInit {
     private router: Router,
     private datoService: DataService,
     private gradoService: GradoService,
-    private toastcontroller: ToastController,
+    private toast: ToastController,
     private cuentoService: PublicacionService
   ) { }
   home() {
@@ -29,7 +29,7 @@ export class StuContentListPage implements OnInit {
     );
   }
   async toasteleccion() {
-    const toast = await this.toastcontroller.create(
+    const toast = await this.toast.create(
       {
         message: 'Cuento o libro seleccionado',
         duration: 1000,

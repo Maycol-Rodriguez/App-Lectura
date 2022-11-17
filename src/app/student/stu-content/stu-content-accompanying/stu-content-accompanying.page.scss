@@ -65,6 +65,7 @@
       text-align: center;
     }
   }
+
   .col_div {
     // primera opcion
     // --background: linear-gradient(to right, #b91d73, #f953c6);
@@ -88,6 +89,35 @@
     // border-radius: 5px;
     border-top-left-radius: 75px;
     border-bottom-right-radius: 75px;
+    ion-list {
+      background: transparent;
+      ion-item {
+        --background: transparent;
+        --border-color: 2px solid white;
+        ion-label {
+          text-align: start;
+        }
+        ion-input {
+          font-size: 20px;
+          font-weight: 400;
+        }
+        ion-icon {
+
+        }
+        ion-select {
+          width: 100%;
+          max-width: 100%;
+          color: white;
+          ion-select-option {
+            width: 100%;
+            color: white;
+          }
+        }
+        ion-button {
+
+        }
+      }
+    }
     img {
       width: 100px;
     }

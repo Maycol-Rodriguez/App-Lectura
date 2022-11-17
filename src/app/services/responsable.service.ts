@@ -21,7 +21,7 @@ export class ResponsableService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  getsearchEstudiantebydoc(documento: string) {
+  getsearchResponsablebydoc(documento: string) {
     return this.http.get(`${this.apiUrl}/searchdoc/${documento}`);
   }
 

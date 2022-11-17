@@ -26,9 +26,19 @@
                 <ion-label slot="start">
                   Documento:
                 </ion-label>
-                <ion-input type="text" name="dni" required auto-focus [(ngModel)]="dato"></ion-input>
-                <ion-button slot="end" color="primary">
-                  <ion-icon name="arrow-redo-outline"></ion-icon>
+                <ion-input
+                  type="text"
+                  name="dni"
+                  required
+                  auto-focus
+                  tabindex="1"
+                  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                  [(ngModel)]="dato"></ion-input>
+                <ion-button
+                  slot="end"
+                  color="primary">
+                  <ion-icon
+                    name="arrow-redo-outline"></ion-icon>
                 </ion-button>
               </ion-item>
               <br>
@@ -36,37 +46,74 @@
                 <ion-label slot="start">
                   Nombre:
                 </ion-label>
-                <ion-input type="text" name="Nombre" required auto-focus [(ngModel)]="responsable.Nombre"></ion-input>
+                <ion-input
+                  type="text"
+                  name="Nombre"
+                  required
+                  auto-focus
+                  tabindex="1"
+                  [(ngModel)]="responsable.Nombre">
+                </ion-input>
               </ion-item>
+              <br>
               <ion-item>
                 <ion-label slot="start">
                   Apellido:
                 </ion-label>
-                <ion-input type="text" name="Apellido" required [(ngModel)]="responsable.Apellido"></ion-input>
+                <ion-input
+                  type="text"
+                  name="Apellido"
+                  required
+                  tabindex="2"
+                  [(ngModel)]="responsable.Apellido">
+                </ion-input>
               </ion-item>
+              <br>
               <ion-item>
                 <ion-label slot="start">
                   Documento:
                 </ion-label>
-                <ion-input type="text" name="Documento" required [(ngModel)]="responsable.Documento"></ion-input>
+                <ion-input
+                  type="text"
+                  name="Documento"
+                  required
+                  tabindex="3"
+                  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                  [(ngModel)]="responsable.Documento">
+                </ion-input>
               </ion-item>
+              <br>
               <ion-item>
                 <ion-label slot="start">
                   Genero:
                 </ion-label>
-                <ion-input type="text" name="Genero" required [(ngModel)]="responsable.Genero"></ion-input>
+                <ion-select slot="end"
+                  interface="popover"
+                  required
+                  [(ngModel)]="responsable.Genero"
+                  placeholder="Genero?"
+                  (ionChange)="handleChange($event)"
+                  tabindex="4">
+                  <ion-select-option
+                    *ngFor="let item of genero"
+                    [value]="item.name">
+                    {{ item.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-button
+                  color="primary"
+                  expand="block"
+                  shape="round"
+                  size="large"
+                  (click)="siguiente()"
+                  [disabled]="(responsable.Nombre === '' || responsable.Apellido === '' || responsable.Genero === '' || responsable.Documento === '')? true:false">
+                  Siguiente
+                </ion-button>
               </ion-item>
             </ion-list>
-            <!-- <ion-row>
-              <ion-col size="5">
-                <img src="../../../../assets/iconos/book.png" alt="libro">
-              </ion-col>
-              <ion-col size="7">
-                <ion-label>
-                  Lectura Textual
-                </ion-label>
-              </ion-col>
-            </ion-row> -->
           </div>
         </ion-col>
       </ion-row>
