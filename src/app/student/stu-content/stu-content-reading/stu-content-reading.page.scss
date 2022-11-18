@@ -14,7 +14,7 @@
   width: 100%;
   height: auto;
   min-height: 600px;
-  max-height: 1200px;
+  max-height: 2000px;
   border-top-right-radius: 75px;
   margin-top: 10px;
   padding-top: 10px;
@@ -33,6 +33,14 @@
     height: auto;
     color: #36BDBC;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    ion-slides {
+      height: 100%;
+      ion-slide {
+        h1 {
+          color: #36BD;
+        }
+      }
+    }
   }
   .col_div_video {
     height: 250px;
@@ -54,6 +62,58 @@
     height: 50px;
     background: linear-gradient(to right, #08A6AC, #36BDBC);
   }
+  .col_div_formulario {
+    min-height: 400px;
+    max-height: 900px;
+    height: auto;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    ion-list {
+      width: 100%;
+      background: transparent;
+      ion-item-group {
+        width: 100%;
+        background: transparent;
+        ion-item-divider {
+          width: 100%;
+          background: transparent;
+          ion-label {
+            width: 100%;
+            text-align: start;
+            color: #08A6AC;
+            font-weight: bold;
+            font-size: 24px;
+          }
+        }
+        ion-item {
+          --background: transparent;
+          --border-color: 2px solid black;
+          ion-label {
+            text-align: start;
+            color: #08A6AC;
+            font-weight: bold;
+            font-size: 24px;
+          }
+          ion-textarea {
+            padding: 5px;
+            font-size: 20px;
+            font-weight: 400;
+            color: #08A6AC;
+            border-radius: 15px;
+            width: 100%;
+            height: 125px;
+            border: 2px solid #08A6AC;
+          }
+          ion-icon {
+            color: #000;
+          }
+          ion-button {
+
+          }
+        }
+      }
+    }
+  }
+
   .col_div_comentario {
     height: 150px;
     background: linear-gradient(to right, #08A6AC, #36BDBC);
