@@ -21,6 +21,10 @@ export class ProgresoService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
+  getProgresoidividual(libro: string | number, estudiante: string | number) {
+    return this.http.get(`${this.apiUrl}/filter/progresoidividual/${libro}/${estudiante}`);
+  }
+
   deleteProgreso(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
