@@ -61,7 +61,7 @@
               <ion-row>
                 <ion-col size="2">
                   <div class="elegible">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'like'"
+                    <img *ngIf="progreso.Reaccion !== 'like'"
                     src="../../../../assets/reacciones/like.png"
                     alt="me gusta" srcset="" (click)="elegir('like')">
                   </div>
@@ -73,7 +73,7 @@
                 </ion-col>
                 <ion-col size="2">
                   <div class="elegible" (click)="elegir('smile')">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'smile'"
+                    <img *ngIf="progreso.Reaccion !== 'smile'"
                     src="../../../../assets/reacciones/smile.png"
                     alt="me alegra" srcset="">
                   </div>
@@ -85,7 +85,7 @@
                 </ion-col>
                 <ion-col size="2">
                   <div class="elegible" (click)="elegir('sad')">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'sad'"
+                    <img *ngIf="progreso.Reaccion !== 'sad'"
                     src="../../../../assets/reacciones/sad.png"
                     alt="me entristece" srcset="">
                   </div>
@@ -97,7 +97,7 @@
                 </ion-col>
                 <ion-col size="2">
                   <div class="elegible" (click)="elegir('angry')">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'angry'"
+                    <img *ngIf="progreso.Reaccion !== 'angry'"
                     src="../../../../assets/reacciones/angry.png"
                     alt="me enoja" srcset="">
                   </div>
@@ -109,7 +109,7 @@
                 </ion-col>
                 <ion-col size="2">
                   <div class="elegible" (click)="elegir('confused')">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'confused'"
+                    <img *ngIf="progreso.Reaccion !== 'confused'"
                     src="../../../../assets/reacciones/confused.png"
                     alt="me confunde" srcset="">
                   </div>
@@ -121,7 +121,7 @@
                 </ion-col>
                 <ion-col size="2">
                   <div class="elegible" (click)="elegir('amazed')">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'amazed'"
+                    <img *ngIf="progreso.Reaccion !== 'amazed'"
                     src="../../../../assets/reacciones/amazed.png"
                     alt="me asombra" srcset="">
                   </div>

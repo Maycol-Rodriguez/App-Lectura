@@ -32,12 +32,10 @@
     width: 100%;
     text-align: center;
     min-height: 150px;
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    // border-top-left-radius: 75px;
-    // border-bottom-right-radius: 75px;
     img {
       width: 100px;
     }
@@ -49,7 +47,6 @@
     }
   }
 }
-
 
 .animated {
   --webkit-animation-duration: 5s;
