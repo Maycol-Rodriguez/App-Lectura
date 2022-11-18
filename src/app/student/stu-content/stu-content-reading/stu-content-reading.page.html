@@ -7,27 +7,45 @@
       <ion-row>
         <ion-col size="12">
           <div class="col_div col_div_titulo">
-            <h2>
+            <h1>
               {{libro.Titulo || 'La liebre y la tortuga'}}
-            </h2>
+            </h1>
           </div>
         </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_lectura">
             <ion-slides pager="true" [options]="slideOpts">
               <ion-slide>
-                <h1>Slide 1</h1>
+                <img src="https://static.guiainfantil.com/pictures/articulos/1407-fabulas-para-ninos-la-liebre-y-la-tortuga.jpg" alt="" srcset="">
               </ion-slide>
               <ion-slide>
-                <h1>Slide 2</h1>
+                <h2>
+                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
+                  animales del bosque. Un día, se encontró con una tortuga que caminaba
+                  muy despacio. La liebre se burló de su lentitud.
+                </h2>
               </ion-slide>
               <ion-slide>
-                <h1>Slide 3</h1>
+                <h2>
+                  —Hagamos una carrera y veamos quién gana —propuso la tortuga.
+                  Al empezar la carrera, la liebre salió disparada, mientras que
+                  la tortuga avanzó lentamente. Al ver que sacaba una gran ventaja
+                  a la tortuga, la liebre se paró en un árbol a descansar.
+                  La tortuga siguió avanzando, poco a poco y sin detenerse.
+                </h2>
+              </ion-slide>
+              <ion-slide>
+                <h2>
+                  Cuando la liebre despertó,
+                  vio angustiada que la tortuga estaba a punto de llegar a
+                  la meta. La liebre corrió y corrió, pero fue demasiado tarde.
+                  La tortuga cruzó la meta, agotada pero feliz.
+                </h2>
               </ion-slide>
             </ion-slides>
           </div>
         </ion-col>
-        <ion-col size="12">
+        <!-- <ion-col size="12">
           <div class="col_div col_div_video">
             <iframe [src]="elurl" frameborder="0" allowfullscreen></iframe>
           </div>
@@ -36,12 +54,85 @@
           <div class="col_div col_div_audio">
             <audio controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
           </div>
-        </ion-col>
+        </ion-col> -->
         <ion-col size="12">
           <div class="col_div col_div_reaccion">
-            <h2>
-              Reaccion
-            </h2>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="2">
+                  <div class="elegible">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'like'"
+                    src="../../../../assets/reacciones/like.png"
+                    alt="me gusta" srcset="" (click)="elegir('like')">
+                  </div>
+                  <div class="elegido">
+                    <img *ngIf="progreso.Reaccion === 'like'"
+                    src="../../../../assets/reacciones/like-active.png"
+                    alt="me gusta activado" srcset="" (click)="deselegir()">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('smile')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'smile'"
+                    src="../../../../assets/reacciones/smile.png"
+                    alt="me alegra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'smile'"
+                    src="../../../../assets/reacciones/smile-active.png"
+                    alt="me alegra activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('sad')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'sad'"
+                    src="../../../../assets/reacciones/sad.png"
+                    alt="me entristece" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'sad'"
+                    src="../../../../assets/reacciones/sad-active.png"
+                    alt="me entristece activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('angry')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'angry'"
+                    src="../../../../assets/reacciones/angry.png"
+                    alt="me enoja" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'angry'"
+                    src="../../../../assets/reacciones/angry-active.png"
+                    alt="me enoja activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('confused')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'confused'"
+                    src="../../../../assets/reacciones/confused.png"
+                    alt="me confunde" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'confused'"
+                    src="../../../../assets/reacciones/confused-active.png"
+                    alt="me confunde activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('amazed')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'amazed'"
+                    src="../../../../assets/reacciones/amazed.png"
+                    alt="me asombra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'amazed'"
+                    src="../../../../assets/reacciones/amazed-active.png"
+                    alt="me asombra activado" srcset="">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </div>
         </ion-col>
         <ion-col size="12">
@@ -85,9 +176,16 @@
           </div>
         </ion-col>
         <ion-col size="12">
-          <div class="col_div col_div_final_siguiente">
+          <div class="col_div col_div_final_cuestionario">
             <h2>
-              Siguiente
+              Cuestionario
+            </h2>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <div class="col_div col_div_final_finalizar">
+            <h2>
+              Finalizar
             </h2>
           </div>
         </ion-col>

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { Progreso } from 'src/app/models/progreso';
+import { EstudianteDetail } from 'src/app/models/estudiante';
 
 @Component({
   selector: 'app-stu-content-reading',
@@ -47,12 +48,32 @@ export class StuContentReadingPage implements OnInit {
     LibroId: 0,
     EstudianteId: 0
   };
+  estudiante: EstudianteDetail = {
+    id: 0,
+    Nombre: '',
+    Apellido: '',
+    Genero: '',
+    Documento: '',
+    GradoId: 0,
+    grado: {
+      id: 0,
+      Nombre: '',
+    },
+  };
   parrafos: any = [];
   elurl;
   slideOpts = {
+    slidesPerView: 1,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    grabCursor: true,
     initialSlide: 1,
     speed: 400
   };
+  existencia = 'no existe';
+  // en progreso
+  // finalizado
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
@@ -64,12 +85,12 @@ export class StuContentReadingPage implements OnInit {
 
   ngOnInit() {
     const parametro = JSON.parse(localStorage.getItem('ellibro'));
+    const parestudiante = JSON.parse(localStorage.getItem('usuario'));
     console.log(parametro);
     this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         this.libro = reslibro;
-
-
+        // sacar el progreso mediante libro y estudiante
         this.parrafoService.getsearchParrafobylibro(parametro).subscribe(
           resparrafos => {
             this.parrafos = resparrafos;
@@ -83,5 +104,38 @@ export class StuContentReadingPage implements OnInit {
     );
     this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/uNjrPgnI9rI');
   }
+  elegir(dato) {
+    this.progreso.Reaccion = dato;
+  }
+  deselegir() {
+    this.progreso.Reaccion = '';
+  }
+  validarprogreso(dato) {
+    // progreso completado
+    // progreso existente
+    // no existe progreso => crear
+  }
+  actualizar(dato) {
+    this.validarprogreso(dato);
+    // se valida primero
+    // se actualiza el progreso existente
+    // se actualiza en completado solo el comentario y el final alternativo
+  }
+  iracuestionario(dato) {
+    this.actualizar(dato);
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-evaluation'
+      ]
+    );
+    // actualizamos el progreso
+    // lo mandamos al cuestionario
+  }
 
+  terminar(dato) {
+    // actualizamos el progreso
+    // lo mandamos al home
+  }
 }
