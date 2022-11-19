@@ -1,9 +1,63 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="fondocontenido">
+  <div class= "login-section ion-padding">
+    <div class="heading ion-padding">
+      <h1>Registro de estudiante</h1>
+    </div>
 
-<ion-content>
+
+      <div class="login-form ion-padding">
+        <div class="form-input">
+        <ion-item>
+          <ion-label color="dark" position="floating">Ingrese su nombre</ion-label>
+          <ion-input type="text" ></ion-input>
+        </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label color="dark" position="floating">Ingrese sus apellidos </ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="form-input">
+          <ion-item>
+            <ion-label color="dark" position="floating">Ingrese su DNI</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-list class="selected" >
+          <ion-item>
+            <ion-select interface="popover" placeholder="Seleccione su genero">
+              <ion-select-option value="femenino">Femenino</ion-select-option>
+              <ion-select-option value="masculino">Masculino</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <br>
+        <br>
+
+
+        <ion-list class="grades" >
+          <ion-item>
+            <ion-select color="dark" position="floating" interface="popover" placeholder="Seleccione su grado">
+              <ion-select-option class="list" value="1">1°</ion-select-option>
+              <ion-select-option class="list" value="2">2°</ion-select-option>
+              <ion-select-option class="list" value="3">3°</ion-select-option>
+              <ion-select-option class="list" value="4">4°</ion-select-option>
+              <ion-select-option class="list" value="5">5°</ion-select-option>
+              <ion-select-option class="list" value="6">6°</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <br>
+
+        <div class="action-buttons ion-padding">
+          <ion-button size="large" color="dark" class="login-button">Registrar</ion-button>
+        </div>
+
+        </div>
+
+      </div>
 
 </ion-content>
