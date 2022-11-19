@@ -1,0 +1,42 @@
+.title {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #FFFFFF;
+}
+
+.ion-main{
+  margin: 0 10px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.card {
+  padding: 10px;
+  background-color: #8179dd;
+  color: #FFFFFF;
+}
+
+.button-io {
+  border-radius: 8px;
+  background-color: #594fc7;
+  height: 50px;
+  margin: 30px 10px 0 10px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.card-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container{
+  margin-bottom: 25px;
+}
