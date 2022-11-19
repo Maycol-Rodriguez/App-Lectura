@@ -49,59 +49,22 @@
         <ion-col size="12">
           <div class="col_div">
             <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
+            <ion-label (click)="seleccion(1)">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quam omnis expedita voluptate vero recusandae necessitatibus error repudiandae eius deserunt aut, nihil sit rem sint ab qui. Repellat, pariatur repellendus.
             </ion-label>
           </div>
         </ion-col>
-        <!-- <ion-col size="10" *ngFor="let item of libros">
+        <!-- <ion-col size="12" *ngFor="let item of libros">
           <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
+            <img [src]="item.libro.Imagen" alt="libro">
+            <ion-label (click)="seleccion(item.LibroId)">
+              {{item.libro.Titulo}}
             </ion-label>
+            <p>
+              {{item.libro.Autor}}
+            </p>
           </div>
         </ion-col> -->
-        <ion-col size="6">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
-            </ion-label>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
-            </ion-label>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
-            </ion-label>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
-            </ion-label>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label>
-              Leer libro
-            </ion-label>
-          </div>
-        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
