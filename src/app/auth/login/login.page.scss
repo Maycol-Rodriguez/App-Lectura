@@ -1,0 +1,71 @@
+.button-io {
+  margin: 50px 20px;
+  background-color: #c74f4f;
+}
+
+.imagen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login-section {
+  height:100vh;
+  background: linear-gradient(to right, #08A6AC, #36BDBC);
+    width: 100%;
+    right:0;
+    left:0;
+    bottom:0;
+    position:fixed;
+    border-radius: 25px;
+    border: 3px solid white;
+    display: block;
+    margin: auto;
+    background-position: top;
+
+    ion-item {
+      --background: transparent; }
+  }
+
+  .heading {
+    margin-left: 1px;
+    margin-top: 20px;
+    h1{
+      font-size:2.5rem;
+      font-weight: bolder;
+    }}
+
+  .welcome {
+      margin-left: 80px;
+      margin-top: 0.5px;
+      h1{
+        font-size:2rem;
+        font-weight: bold;
+      }
+    }
+    .login-form{
+      .form-input{
+        position: relative;
+        margin-bottom: 20px;
+        border-bottom: 1px solid white;
+        }
+
+    }
+    .action-buttons{
+      margin-top: 20px;
+      text-align:center;
+      .login-button{
+        margin-bottom: 30px;
+        width: 100%;
+        font-weight: bold;
+      }
+      .signup-button{
+        font-weight:bolder;
+        width: 100%;
+      }
+    }
+
+
+
+
