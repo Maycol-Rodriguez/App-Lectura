@@ -1,13 +1,13 @@
-import { DomSanitizer } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
-import { Libro } from 'src/app/models/libro';
-import { ParrafoService } from 'src/app/services/parrafo.service';
-import { LibroService } from 'src/app/services/libro.service';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { ProgresoService } from 'src/app/services/progreso.service';
+import { Libro } from 'src/app/models/libro';
+import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DataService } from 'src/app/services/data.service';
 import { EstudianteDetail } from 'src/app/models/estudiante';
+import { LibroService } from 'src/app/services/libro.service';
+import { ParrafoService } from 'src/app/services/parrafo.service';
+import { ProgresoService } from 'src/app/services/progreso.service';
 
 @Component({
   selector: 'app-stu-content-reading',
@@ -153,9 +153,8 @@ export class StuContentReadingPage implements OnInit {
         this.progreso.Progreso = '40';
       }
     }
-    // progreso completado
-    // progreso existente
-    // no existe progreso => crear
+    console.log(this.progreso);
+    console.log(this.estado);
   }
   actualizar(dato) {
     this.validarprogreso();
