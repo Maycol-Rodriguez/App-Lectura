@@ -23,14 +23,17 @@
         <div class="form-input">
           <ion-item>
             <ion-label color="dark" position="floating">Ingrese su DNI</ion-label>
-            <ion-input type="text"></ion-input>
+
+            <ion-input name="parametro" [(ngModel)]="parametro"  required autofocus tabindex="1" type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></ion-input>
 
           </ion-item>
         </div>
 
         </div>
         <div class="action-buttons ion-padding">
-          <ion-button size="large" color="dark" class="login-button">Ingresar</ion-button>
+          <ion-button
+          click="loginestudiante()"
+           size="large" color="dark" class="login-button">Ingresar</ion-button>
           <ion-button class="signup button"  color="dark"  size="large" >Registrarse</ion-button>
 
         </div>
