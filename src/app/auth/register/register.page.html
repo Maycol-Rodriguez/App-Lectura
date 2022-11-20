@@ -41,7 +41,7 @@
           </ion-item>
         </ion-list>
         <br>
-        <br>
+        
 
 
         <ion-list class="grades" >
@@ -69,9 +69,16 @@
             color="dark"
             class="login-button"
             [disabled]="(
-            estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0
-          )? true:false">Registrar</ion-button>
+              estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0
+              )? true:false">Registrar</ion-button>
+              <ion-button
+                (click)="logearse()"
+                size="large"
+                color="dark"
+                class="login-button"
+                >Atras</ion-button>
         </div>
+
 
         </div>
 

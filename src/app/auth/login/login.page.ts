@@ -33,7 +33,15 @@ export class LoginPage implements OnInit {
     private profesorService: ProfesorService,
     responsableService: ResponsableService,
   ) { }
-
+    registrarse()
+    {
+      this.router.navigate(
+        [
+          'auth',
+          'register'
+        ]
+      );
+    }
   loginestudiante(){
     this.estudianteService.getsearchEstudiantebydoc(this.parametro).subscribe(
       reslogin => {

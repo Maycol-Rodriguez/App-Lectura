@@ -32,9 +32,10 @@
         </div>
         <div class="action-buttons ion-padding">
           <ion-button
-          click="loginestudiante()"
+          (click)="loginestudiante()"
            size="large" color="dark" class="login-button">Ingresar</ion-button>
-          <ion-button class="signup button"  color="dark"  size="large" >Registrarse</ion-button>
+          <ion-button (click)="registrarse()"
+          class="signup button"  color="dark"  size="large" >Registrarse</ion-button>
 
         </div>
 

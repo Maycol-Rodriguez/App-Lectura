@@ -47,6 +47,17 @@ export class RegisterPage implements OnInit {
     private router: Router,
     private gradoService: GradoService,
     private estudianteService: EstudianteService) { }
+
+   logearse()
+    {
+      this.router.navigate(
+        [
+          'auth',
+          'login'
+        ]
+      );
+    }
+
     saveEstudiante(){
       delete this.estudiante.id;
       this.estudianteService.saveEstudiante(this.estudiante).subscribe(
