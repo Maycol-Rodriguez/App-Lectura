@@ -15,7 +15,7 @@ const routes: Routes = [
       {
         path: 'stu-content-select',
         loadChildren: () => import('./stu-content-select/stu-content-select.module').then( m => m.StuContentSelectPageModule)
-      }, 
+      },
       {
         path: 'stu-content-reading',
         loadChildren: () => import('./stu-content-reading/stu-content-reading.module').then( m => m.StuContentReadingPageModule)
