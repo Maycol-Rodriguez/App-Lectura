@@ -20,7 +20,7 @@ export class StuContentReadingPage implements OnInit {
     id: 0,
     Titulo: '',
     Audio: '',
-    Video: '',
+    Video: 'https://www.youtube.com/embed/uNjrPgnI9rI',
     Imagen: '',
     Autor: ''
   };
@@ -36,8 +36,7 @@ export class StuContentReadingPage implements OnInit {
     LibroId: 0,
     EstudianteId: 0
   };
-  progreso1: Progreso = {
-    id: 0,
+  progresocreate: Progreso = {
     Progreso: '',
     Reaccion: '',
     Comentario: '',
@@ -72,6 +71,10 @@ export class StuContentReadingPage implements OnInit {
     speed: 400
   };
   existencia = 'no existe';
+  mensaje;
+  estado = '';
+  haycuestionario = true;
+  resolviocuestionario = false;
   // en progreso
   // finalizado
   constructor(
@@ -90,6 +93,26 @@ export class StuContentReadingPage implements OnInit {
     this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         this.libro = reslibro;
+        this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+          resprogreso => {
+            if (resprogreso !== null) {
+              this.progreso = resprogreso;
+            } else {
+              this.progresocreate.LibroId = parametro;
+              this.progresocreate.EstudianteId = parestudiante;
+              // this.progresoService.saveProgreso(this.progresocreate).subscribe(
+              //   resnewprogreso => {
+              //     this.progreso = resnewprogreso;
+              //     this.estado = 'iniciado';
+              //   }, err => {
+              //     console.log('Error create progreso');
+              //   }
+              // );
+            }
+          }, err => {
+            console.log('Error get proceso by libro y alumno');
+          }
+        );
         // sacar el progreso mediante libro y estudiante
         this.parrafoService.getsearchParrafobylibro(parametro).subscribe(
           resparrafos => {
@@ -102,7 +125,7 @@ export class StuContentReadingPage implements OnInit {
         console.log('Error get libro by id');
       }
     );
-    this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/uNjrPgnI9rI');
+    this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
@@ -110,13 +133,39 @@ export class StuContentReadingPage implements OnInit {
   deselegir() {
     this.progreso.Reaccion = '';
   }
-  validarprogreso(dato) {
+  validarprogreso() {
+    const parametro = +this.progreso.Progreso;
+    if (parametro === 100) {
+      this.estado = 'terminado';
+    } else {
+      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
+        if (this.haycuestionario === true) {
+          this.estado = 'terminado';
+        } else {
+          this.estado = 'en progreso';
+        }
+        this.progreso.Progreso = '90';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
+        this.progreso.Progreso = '80';
+      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '60';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '40';
+      }
+    }
     // progreso completado
     // progreso existente
     // no existe progreso => crear
   }
   actualizar(dato) {
-    this.validarprogreso(dato);
+    this.validarprogreso();
+    this.progresoService.updateProgreso(dato, this.progreso).subscribe(
+      resupdate => {
+        this.mensaje = resupdate;
+      }, err => {
+        console.log('Error Update Progreso');
+      }
+    );
     // se valida primero
     // se actualiza el progreso existente
     // se actualiza en completado solo el comentario y el final alternativo

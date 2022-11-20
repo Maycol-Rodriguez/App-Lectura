@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./stu-book/stu-book.module').then( m => m.StuBookPageModule)
       },
       {
+        path: 'stu-detail',
+        loadChildren: () => import('./stu-detail/stu-detail.module').then( m => m.StuDetailPageModule)
+      },
+      {
         path: '',
         redirectTo: 'stu-home',
         pathMatch: 'prefix'

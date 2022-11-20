@@ -76,12 +76,12 @@ export class StuContentListPage implements OnInit {
     this.getlibros();
   }
   seleccion(dato: any) {
-    this.datoService.rentedbook(dato);
+    // this.datoService.rentedbook(dato);
     this.router.navigate(
       [
         'student',
         'stu-content',
-        'stu-content-accompanying'
+        'stu-content-select'
       ]
     );
   }
