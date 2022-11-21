@@ -21,7 +21,7 @@ export class CuestionarioService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  getsearchCuestionariobylibro(libro: string) {
+  getsearchCuestionariobylibro(libro: string | number) {
     return this.http.get(`${this.apiUrl}/pregunta/${libro}`);
   }
 

@@ -1,87 +1,64 @@
-<ion-content class="fondocontenido">
-  <div class= "login-section ion-padding">
-    <div class="heading ion-padding">
-      <h1>Registro de estudiante</h1>
+<ion-content [fullscreen]="true" class="register-section ion-padding">
+  <div class="heading ion-padding">
+    <h1>Registro de estudiante</h1>
+  </div>
+  <div class="register-form ion-padding">
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese su nombre
+        </ion-label>
+        <ion-input [(ngModel)]="estudiante.Nombre" name="Nombre" type="text" required autofocus tabindex="1">
+        </ion-input>
+      </ion-item>
     </div>
-
-
-      <div class="login-form ion-padding">
-        <div class="form-input">
-        <ion-item>
-          <ion-label color="dark" position="floating">Ingrese su nombre</ion-label>
-          <ion-input [(ngModel)]="estudiante.Nombre" name="Nombre" type="text" required autofocus tabindex="1"></ion-input>
-        </ion-item>
-        </div>
-        <div class="form-input">
-          <ion-item>
-            <ion-label color="dark" position="floating">Ingrese sus apellidos </ion-label>
-            <ion-input name="Apellido"  [(ngModel)]="estudiante.Apellido" type="text" required tabindex="2"></ion-input>
-          </ion-item>
-        </div>
-
-        <div class="form-input">
-          <ion-item>
-            <ion-label color="dark" position="floating">Ingrese su DNI</ion-label>
-            <ion-input name="Documento" [(ngModel)]="estudiante.Documento"type="text" required  tabindex="3" ></ion-input>
-          </ion-item>
-        </div>
-
-        <ion-list class="selected" >
-          <ion-item>
-            <ion-select
-            (change)="onOptionsSelectGenero($event)"
-            [(ngModel)]="estudiante.Genero" name="Genero"
-            required
-            tabindex="4"
-            interface="popover" placeholder="Seleccione su genero">
-            <ion-select-option class="list" [value]="item.name" *ngFor="let item of generos">
-              {{item.name}}
-            </ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-        <br>
-        
-
-
-        <ion-list class="grades" >
-          <ion-item>
-            <ion-select (change)="onOptionsSelectGrado($event)"
-            [(ngModel)]="estudiante.GradoId" name="GradoId"
-            required
-            tabindex="5"
-            color="dark" position="floating"
-             interface="popover" placeholder="Seleccione su grado">
-              <ion-select-option class="list" [value]="item.id" *ngFor="let item of grados">
-                {{item.Nombre}}
-
-              </ion-select-option>
-
-            </ion-select>
-          </ion-item>
-        </ion-list>
-        <br>
-
-        <div class="action-buttons ion-padding">
-          <ion-button
-            (click)="saveEstudiante()"
-            size="large"
-            color="dark"
-            class="login-button"
-            [disabled]="(
-              estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0
-              )? true:false">Registrar</ion-button>
-              <ion-button
-                (click)="logearse()"
-                size="large"
-                color="dark"
-                class="login-button"
-                >Atras</ion-button>
-        </div>
-
-
-        </div>
-
-      </div>
-
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese sus apellidos
+        </ion-label>
+        <ion-input name="Apellido" [(ngModel)]="estudiante.Apellido" type="text" required tabindex="2"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese su DNI
+        </ion-label>
+        <ion-input name="Documento" [(ngModel)]="estudiante.Documento" type="text" required tabindex="3"></ion-input>
+      </ion-item>
+    </div>
+    <ion-list class="selected">
+      <ion-item>
+        <ion-select (change)="onOptionsSelectGenero($event)" [(ngModel)]="estudiante.Genero" name="Genero" required
+          tabindex="4" interface="popover" placeholder="Seleccione su genero">
+          <ion-select-option class="list" [value]="item.name" *ngFor="let item of generos">
+            {{item.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-list class="grades">
+      <ion-item>
+        <ion-select (change)="onOptionsSelectGrado($event)" [(ngModel)]="estudiante.GradoId" name="GradoId" required
+          tabindex="5" color="dark" position="floating" interface="popover" placeholder="Seleccione su grado">
+          <ion-select-option class="list" [value]="item.id" *ngFor="let item of grados">
+            {{item.Nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
+    <div class="action-buttons ion-padding">
+      <ion-button (click)="saveEstudiante()" size="large" color="dark" class="the-button"
+      [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
+        Registrar
+      </ion-button>
+      <ion-button (click)="logearse()" size="large" color="dark" class="the-button"
+      [disabled]="(estudiante.Nombre !== '' || estudiante.Apellido !== '' || estudiante.Documento !== '' || estudiante.Genero !== '' || estudiante.GradoId !== 0)? true:false">
+        Atras
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

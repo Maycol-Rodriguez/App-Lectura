@@ -14,7 +14,7 @@ export class StudentPage implements OnInit {
     { title: 'Inicio', url: '/student/stu-home', icon: 'home' },
     { title: 'Lectura de libros', url: '/student/stu-content', icon: 'library' },
     { title: 'Agregar Libro o Cuento', url: '/student/stu-book', icon: 'library' },
-    { title: 'Perfil', url: '/student/stu-profile', icon: 'person' }
+    { title: 'Perfil', url: '/student/stu-detail', icon: 'person' }
   ];
   constructor(
     private router: Router

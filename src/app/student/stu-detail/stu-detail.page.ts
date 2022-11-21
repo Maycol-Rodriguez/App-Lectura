@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stu-detail',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StuDetailPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+  goToHome() {
+    // this.router.navigate(
+    //   [
+    //     'student',
+    //     'stu-home'
+    //   ]
+    // );
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-list'
+      ]
+    );
   }
 
 }

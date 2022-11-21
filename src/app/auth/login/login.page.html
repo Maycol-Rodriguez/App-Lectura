@@ -1,47 +1,60 @@
-<ion-content class="fondocontenido">
-  <div class= "login-section ion-padding">
-    <div class="heading ion-padding">
-      <h1>NOMBRE DE LA APLICACION</h1>
+<ion-content
+[fullscreen]="true"
+class="login-section ion-padding">
+  <div class="heading ion-padding">
+    <h1>
+      ¡Bienvenido!
+    </h1>
+  </div>
+  <div class="imagen">
+    <img
+    width="100%"
+    height="200"
+    src="../../../assets/images/1.png" />
+  </div>
+  <div class="login-form ion-padding">
+    <div class="form-input">
+      <ion-item>
+        <ion-label
+          color="dark"
+          position="floating">
+          Ingrese su nombre
+      </ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
     </div>
-
-    <div class="welcome ion-padding">
-      <h1>¡Bienvenido!</h1>
+    <div class="form-input">
+      <ion-item>
+        <ion-label
+          color="dark"
+          position="floating">
+          Ingrese su DNI
+      </ion-label>
+        <ion-input
+          name="parametro"
+          [(ngModel)]="parametro"
+          required autofocus
+          tabindex="1" type="text"
+          minlength="8"
+          maxlength="11"
+          onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></ion-input>
+      </ion-item>
     </div>
-    <div class="imagen">
-
-      <img width="2000" height="200" src="../../../assets/images/1.png"/>
+    <div class="action-buttons ion-padding">
+      <ion-button
+        (click)="loginestudiante()"
+        size="large" color="dark"
+        class="login-button"
+        [disabled]="(parametro === undefined)? true:false">
+        Ingresar
+      </ion-button>
+      <ion-button
+        (click)="registrarse()"
+        color="dark" size="large"
+        class="signup-button"
+        [disabled]="(parametro !== undefined)? true:false">
+        Registrarse
+      </ion-button>
     </div>
-
-
-      <div class="login-form ion-padding">
-        <div class="form-input">
-        <ion-item>
-          <ion-label color="dark" position="floating">Ingrese su nombre</ion-label>
-          <ion-input type="text" ></ion-input>
-        </ion-item>
-        </div>
-        <div class="form-input">
-          <ion-item>
-            <ion-label color="dark" position="floating">Ingrese su DNI</ion-label>
-
-            <ion-input name="parametro" [(ngModel)]="parametro"  required autofocus tabindex="1" type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></ion-input>
-
-          </ion-item>
-        </div>
-
-        </div>
-        <div class="action-buttons ion-padding">
-          <ion-button
-          (click)="loginestudiante()"
-           size="large" color="dark" class="login-button">Ingresar</ion-button>
-          <ion-button (click)="registrarse()"
-          class="signup button"  color="dark"  size="large" >Registrarse</ion-button>
-
-        </div>
-
-      </div>
-
-
-
-
+  </div>
 </ion-content>

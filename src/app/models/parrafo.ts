@@ -2,6 +2,7 @@
 export interface Parrafo {
   id?: number;
   Parrafo?: string;
+  Imagen?: string;
   Tipoid?: number;
   LibroId?: number;
 }
@@ -9,6 +10,7 @@ export interface Parrafo {
 export interface ParrafoDetail {
   id?: number;
   Parrafo?: string;
+  Imagen?: string;
   Tipoid?: number;
   LibroId?: number;
   tipo?: {

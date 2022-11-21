@@ -1,9 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>stu-book-create</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="login-section ion-padding">
+  <div class="heading ion-padding">
+    <h1>
+      Registrar Libro
+    </h1>
+  </div>
+  <div class="login-form ion-padding">
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese Titulo
+        </ion-label>
+        <ion-input type="text" name="Titulo" [(ngModel)]="libro.Titulo" required autofocus tabindex="1"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese link del Audio
+        </ion-label>
+        <ion-input type="text" name="Audio" [(ngModel)]="libro.Audio" tabindex="2"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese link embed del video de yotube
+        </ion-label>
+        <ion-input type="text" name="Video" [(ngModel)]="libro.Video" tabindex="3"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese Imagen
+        </ion-label>
+        <ion-input type="text" name="Imagen" [(ngModel)]="libro.Imagen" required tabindex="4"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-input">
+      <ion-item>
+        <ion-label color="dark" position="floating">
+          Ingrese Autor
+        </ion-label>
+        <ion-input type="text" name="Autor" [(ngModel)]="libro.Autor" required tabindex="5"></ion-input>
+      </ion-item>
+    </div>
+    <div class="action-buttons ion-padding">
+      <ion-button (click)="saveLibro()" size="large" color="dark" class="login-button" [disabled]="(
+                libro.Titulo === '' || libro.Imagen === '' || libro.Autor === ''
+              )? true:false">
+        Registrar
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
