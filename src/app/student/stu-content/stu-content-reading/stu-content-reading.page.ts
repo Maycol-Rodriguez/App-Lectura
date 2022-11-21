@@ -183,7 +183,25 @@ export class StuContentReadingPage implements OnInit {
   }
 
   terminar(dato) {
+    this.actualizar(dato);
     // actualizamos el progreso
     // lo mandamos al home
+  }
+  pruebacuestionario() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content',
+        'stu-content-evaluation'
+      ]
+    );
+  }
+  pruebafinalizar() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content'
+      ]
+    );
   }
 }

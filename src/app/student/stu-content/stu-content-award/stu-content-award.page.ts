@@ -10,6 +10,7 @@ export class StuContentAwardPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
