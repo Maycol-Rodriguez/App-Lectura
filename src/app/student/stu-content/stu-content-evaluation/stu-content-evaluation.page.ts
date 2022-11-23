@@ -78,7 +78,7 @@ export class StuContentEvaluationPage implements OnInit {
               this.formatopregunta.id = item.id;
               this.formatopregunta.Pregunta = item.Pregunta;
               this.preguntas.push(this.formatopregunta);
-              // desordenamos las preguntas
+              // desordenamos las respuestas
               const cajasimple = [];
               const arrayrespuestas = [];
               arrayrespuestas.push(item.RespuestaCorrecta);

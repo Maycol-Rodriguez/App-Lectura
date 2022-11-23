@@ -51,9 +51,17 @@
     </ion-list>
     <br>
     <div class="action-buttons ion-padding">
-      <ion-button (click)="saveEstudiante()" size="large" color="dark" class="the-button"
+      <!-- <ion-button (click)="saveEstudiante()" size="large" color="dark" class="the-button"
       [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
         Registrar
+      </ion-button> -->
+      <ion-button size="large" color="dark" class="the-button"
+      [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
+        Registrar
+      </ion-button>
+      <ion-button size="large" color="dark" class="the-button"
+      [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
+        Agregar Responsable
       </ion-button>
       <ion-button (click)="logearse()" size="large" color="dark" class="the-button"
       [disabled]="(estudiante.Nombre !== '' || estudiante.Apellido !== '' || estudiante.Documento !== '' || estudiante.Genero !== '' || estudiante.GradoId !== 0)? true:false">
@@ -61,4 +69,6 @@
       </ion-button>
     </div>
   </div>
+  <!-- zono del modal -->
+
 </ion-content>
