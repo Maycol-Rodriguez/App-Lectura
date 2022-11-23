@@ -8,6 +8,7 @@ import { EstudianteDetail } from 'src/app/models/estudiante';
 import { LibroService } from 'src/app/services/libro.service';
 import { ParrafoService } from 'src/app/services/parrafo.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
+import { CuestionarioService } from 'src/app/services/cuestionario.service';
 
 @Component({
   selector: 'app-stu-content-reading',
@@ -75,6 +76,7 @@ export class StuContentReadingPage implements OnInit {
   estado = '';
   haycuestionario = true;
   resolviocuestionario = false;
+  cuestionarios: any = [];
   // en progreso
   // finalizado
   constructor(
@@ -84,6 +86,7 @@ export class StuContentReadingPage implements OnInit {
     private libroService: LibroService,
     private parrafoService: ParrafoService,
     private progresoService: ProgresoService,
+    private cuestionarioService: CuestionarioService,
   ) { }
 
   ngOnInit() {
@@ -93,6 +96,18 @@ export class StuContentReadingPage implements OnInit {
     this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         this.libro = reslibro;
+        this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
+          rescuestionarios => {
+            if (Object.entries(rescuestionarios).length > 0) {
+              this.cuestionarios = rescuestionarios;
+              this.haycuestionario = true;
+            } else {
+              console.log('No hay Cuestionarios');
+            }
+          }, err => {
+            console.log('Error get cuestionarios by libro');
+          }
+        );
         this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
           resprogreso => {
             if (resprogreso !== null) {
@@ -100,6 +115,7 @@ export class StuContentReadingPage implements OnInit {
             } else {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante;
+              this.progresocreate.Progreso = '10';
               // this.progresoService.saveProgreso(this.progresocreate).subscribe(
               //   resnewprogreso => {
               //     this.progreso = resnewprogreso;
@@ -138,19 +154,28 @@ export class StuContentReadingPage implements OnInit {
     if (parametro === 100) {
       this.estado = 'terminado';
     } else {
-      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-        if (this.haycuestionario === true) {
-          this.estado = 'terminado';
-        } else {
-          this.estado = 'en progreso';
+      if (this.haycuestionario === true) {
+        this.estado = 'en progreso';
+        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = '90';
+        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = '80';
+        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = '60';
+        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = '40';
         }
-        this.progreso.Progreso = '90';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-        this.progreso.Progreso = '80';
-      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-        this.progreso.Progreso = '60';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
-        this.progreso.Progreso = '40';
+      } else {
+        this.estado = 'en progreso';
+        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = '100';
+        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = '90';
+        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = '70';
+        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = '50';
+        }
       }
     }
     console.log(this.progreso);
@@ -165,9 +190,6 @@ export class StuContentReadingPage implements OnInit {
         console.log('Error Update Progreso');
       }
     );
-    // se valida primero
-    // se actualiza el progreso existente
-    // se actualiza en completado solo el comentario y el final alternativo
   }
   iracuestionario(dato) {
     this.actualizar(dato);
@@ -184,8 +206,12 @@ export class StuContentReadingPage implements OnInit {
 
   terminar(dato) {
     this.actualizar(dato);
-    // actualizamos el progreso
-    // lo mandamos al home
+    this.router.navigate(
+      [
+        'student',
+        'stu-home'
+      ]
+    );
   }
   pruebacuestionario() {
     this.router.navigate(
