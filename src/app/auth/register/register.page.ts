@@ -135,6 +135,10 @@ export class RegisterPage implements OnInit {
       const value = event.target.value;
       this.estudiante.Genero = value;
     }
+    onOptionsSelectGeneroResponsable(event: any){
+      const value = event.target.value;
+      this.responsable.Genero = value;
+    }
     onOptionsSelectGrado(event: any){
       const value = event.target.value;
       this.estudiante.GradoId = value;

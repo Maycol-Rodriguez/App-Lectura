@@ -169,6 +169,7 @@ export class StuContentReadingPage implements OnInit {
         this.estado = 'en progreso';
         if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
           this.progreso.Progreso = '100';
+          this.estado = 'terminado';
         } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
           this.progreso.Progreso = '90';
         } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
