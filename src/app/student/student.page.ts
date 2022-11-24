@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-student',
@@ -17,7 +18,8 @@ export class StudentPage implements OnInit {
     { title: 'Perfil', url: '/student/stu-detail', icon: 'person' }
   ];
   constructor(
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
@@ -28,22 +30,21 @@ export class StudentPage implements OnInit {
     } else if (this.clientetipo === 'profesor') {
       this.router.navigate(
         [
-          'teacher',
-          'tea-home'
+          'teacher'
         ]
       );
       console.log('el usuario es profesor');
-    } else if (this.clientetipo === 'resposable') {
-      console.log('el usuario es resposable');
+    } else if (this.clientetipo === 'responsable') {
+      console.log('el usuario es responsable');
       this.router.navigate(
         [
           'family',
-          'fam-home'
         ]
       );
     }
   }
   logout() {
+    this.authenticationService.loggout();
     this.router.navigate(
       [
         'auth',

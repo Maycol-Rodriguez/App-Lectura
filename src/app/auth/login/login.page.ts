@@ -8,6 +8,7 @@ import { EstudianteDetail } from 'src/app/models/estudiante';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { ResponsableService } from 'src/app/services/responsable.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -47,14 +48,30 @@ export class LoginPage implements OnInit {
       Nombre: ''
     }
   };
-  eleccion;
+  tipos = [
+    {
+      name: 'Estudiante'
+    },
+    {
+      name: 'Profesor'
+    },
+    {
+      name: 'Responsable'
+    }
+  ];
+  eleccion = 'Estudiante';
   constructor(
     private router: Router,
     private toast: ToastController,
     private profesorService: ProfesorService,
     private estudianteService: EstudianteService,
     private responsableService: ResponsableService,
+    private authenticationService: AuthenticationService,
   ) { }
+  onOptionsSelectTipo(event: any){
+    const value = event.target.value;
+    this.eleccion = value;
+  }
   async toastloginsucceed() {
     const toast = await this.toast.create(
       {
@@ -88,11 +105,21 @@ export class LoginPage implements OnInit {
       ]
     );
   }
+  login() {
+    if (this.eleccion === 'Estudiante') {
+      this.loginestudiante();
+    } else if (this.eleccion === 'Profesor') {
+      this.loginprofesor();
+    } else if (this.eleccion === 'Responsable') {
+      this.loginresponsable();
+    }
+  }
   loginestudiante() {
     this.estudianteService.getsearchEstudiantebydoc(this.parametro).subscribe(
       reslogin => {
         if(reslogin !== null ){
           this.estudiante = reslogin;
+          this.authenticationService.loggin(this.estudiante, this.eleccion.toLowerCase());
           this.toastloginsucceed();
           this.router.navigate(
             [
@@ -113,6 +140,7 @@ export class LoginPage implements OnInit {
       reslogin => {
         if(reslogin !== null ){
           this.responsable = reslogin;
+          this.authenticationService.loggin(this.responsable, this.eleccion.toLowerCase());
           this.toastloginsucceed();
           this.router.navigate(
             [
@@ -133,6 +161,7 @@ export class LoginPage implements OnInit {
       reslogin => {
         if(reslogin !== null ){
           this.profesor = reslogin;
+          this.authenticationService.loggin(this.profesor, this.eleccion.toLowerCase());
           this.toastloginsucceed();
           this.router.navigate(
             [

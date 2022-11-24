@@ -15,12 +15,12 @@ class="login-section ion-padding">
   <div class="login-form ion-padding">
     <div class="form-input">
       <ion-item>
-        <ion-label
-          color="dark"
-          position="floating">
-          Ingrese su nombre
-      </ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-select (change)="onOptionsSelectTipo($event)" [(ngModel)]="eleccion" name="eleccion" required
+          tabindex="4" interface="popover" placeholder="Seleccione su genero">
+          <ion-select-option class="list" [value]="item.name" *ngFor="let item of tipos">
+            {{item.name}}
+          </ion-select-option>
+        </ion-select>
       </ion-item>
     </div>
     <div class="form-input">
@@ -42,7 +42,7 @@ class="login-section ion-padding">
     </div>
     <div class="action-buttons ion-padding">
       <ion-button
-        (click)="loginestudiante()"
+        (click)="login()"
         size="large" color="dark"
         class="login-button"
         [disabled]="(parametro === undefined)? true:false">
