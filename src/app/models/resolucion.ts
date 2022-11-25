@@ -4,5 +4,6 @@ export interface Resolucion {
   Pregunta?: string;
   RespuestaEscogida?: string;
   NumeroIntento?: string;
+  Correcto?: string;
   ProgresoId?: number;
 }

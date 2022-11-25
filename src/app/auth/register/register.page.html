@@ -59,16 +59,21 @@
       [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
         Registrar
       </ion-button>
-      <ion-button size="large" color="dark" class="the-button"
-      [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
+      <ion-button  id="open-modal" expand="block" size="large" color="dark" class="the-button"
+      [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' )? true:false">
         Agregar Responsable
       </ion-button>
+      <p>{{ message }}</p>
       <ion-button (click)="logearse()" size="large" color="dark" class="the-button"
       [disabled]="(estudiante.Nombre !== '' || estudiante.Apellido !== '' || estudiante.Documento !== '' || estudiante.Genero !== '' || estudiante.GradoId !== 0)? true:false">
-        Ingresar
+       Regresar
       </ion-button>
     </div>
   </div>
+
   <!-- zono del modal -->
 
+
+
 </ion-content>
+
