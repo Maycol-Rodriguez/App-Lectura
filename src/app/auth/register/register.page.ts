@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
+import { IonModal } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
 import { Relacion } from 'src/app/models/relacion';
 import { Estudiante } from 'src/app/models/estudiante';
 import { Responsable } from 'src/app/models/responsable';
+import { OverlayEventDetail } from '@ionic/core/components';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GradoService } from 'src/app/services/grado.service';
 import { RelacionService } from 'src/app/services/relacion.service';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { ResponsableService } from 'src/app/services/responsable.service';
-
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ import { ResponsableService } from 'src/app/services/responsable.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
   grados: any =[];
   relaciones: any =[];
   generos= [
@@ -78,6 +80,21 @@ export class RegisterPage implements OnInit {
     private estudianteService: EstudianteService,
     private responsableService: ResponsableService,
     ) { }
+    cancel() {
+      this.modal.dismiss(null, 'cancel');
+    }
+
+    confirm() {
+      this.modal.dismiss(null, 'confirm');
+    }
+    onWillDismiss(event: Event) {
+      const ev = event as CustomEvent<OverlayEventDetail<string>>;
+      if (ev.detail.role === 'confirm') {
+        console.log('Hola');
+
+        // this.message = `Hello, ${ev.detail.data}!`;
+      }
+    }
 
    logearse()
     {
@@ -138,6 +155,10 @@ export class RegisterPage implements OnInit {
     onOptionsSelectGeneroResponsable(event: any){
       const value = event.target.value;
       this.responsable.Genero = value;
+    }
+    onOptionsSelectParentesco(event: any){
+      const value = event.target.value;
+      this.relacion.Parentesco = value;
     }
     onOptionsSelectGrado(event: any){
       const value = event.target.value;
