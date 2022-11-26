@@ -1,1 +1,49 @@
-<router-outlet></router-outlet>
+<ion-menu type="overlay" contentId="main-content">
+  <ion-content class="fondosidebar ion-padding">
+    <div *ngIf="!genero" class="user_main_div">
+      <div class="user_div bg_image image_male">
+      </div>
+      <div class="username">
+        Daigo
+      </div>
+    </div>
+    <div *ngIf="genero" class="user_main_div">
+      <div class="user_div bg_image image_female">
+      </div>
+      <div class="username">
+        Flor, Beatriz
+      </div>
+    </div>
+    <ion-list id="inbox-list">
+      <ion-menu-toggle auto-hide="false" *ngFor="let item of studentPages; let i = index">
+        <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false" routerLinkActive="selected">
+          <ion-icon slot="start" [ios]="item.icon + '-outline'" [md]="item.icon + '-sharp'"></ion-icon>
+          <ion-label>
+            {{item.title}}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <br>
+      <br>
+      <ion-item routerDirection="root" lines="none" detail="false">
+        <ion-icon slot="start" [ios]="'log-out' + '-outline'" [md]="'log-out' + '-sharp'"></ion-icon>
+        <ion-label>
+          Salir
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-content class="fondocontenido" id="main-content">
+  <div class="ion-page-global">
+    <div class="main_content_div">
+      <ion-buttons slot="start">
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
+    </div>
+    <div class="main_content_div_child">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ion-content>
+

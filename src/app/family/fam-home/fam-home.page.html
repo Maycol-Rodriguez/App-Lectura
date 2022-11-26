@@ -1,9 +1,52 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fam-home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<div class="main_content_div_child">
+  <div class="main_user_div">
+    <div class="first_div">
+      <ion-label class="welcome">
+        Bienvenido
+      </ion-label>
+      <br>
+      <ion-label class="username">
+        Daigo
+      </ion-label>
+    </div>
+    <div *ngIf="!genero" class="second_div image_male">
+    </div>
+    <div *ngIf="genero" class="second_div image_female">
+    </div>
+  </div>
+  <div class="main_content_div animated bounceInUp">
+    <ion-label class="hello_lbl">
+      Hola
+    </ion-label>
+    <ion-grid fixed>
+      <ion-row>
+        <!-- <ion-col size="6" (click)="readbook()">
+          <div class="col_div">
+            <img *ngIf="genero" src="../../../assets/iconos/readgirl.png" alt="girl read">
+            <img *ngIf="!genero" src="../../../assets/iconos/readboy.png" alt="boy read">
+            <ion-label>
+              Leer libro
+            </ion-label>
+          </div>
+        </ion-col> -->
+        <ion-col size="6" (click)="addbook()">
+          <div class="col_div">
+            <img src="../../../assets/iconos/book.png" alt="nuevo libro">
+            <ion-label>
+              Agregar Libro
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="6" (click)="viewstatics()">
+          <div class="col_div">
+            <img *ngIf="genero" src="../../../assets/iconos/student.png" alt="girl">
+            <img *ngIf="!genero" src="../../../assets/iconos/studentboy.png" alt="boy">
+            <ion-label>
+              Estadisticas de mis hijos
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

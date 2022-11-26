@@ -1,0 +1,68 @@
+ion-menu::part(backdrop) {
+  background-color: #36BDBC;
+}
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  box-shadow: 4px 0px 16px rgba(33, 2, 33, 0.18);
+}
+.fondosidebar, .fondocontenido {
+  --background: linear-gradient(to right, #08A6AC, #36BDBC);
+}
+.user_main_div {
+  padding-top: 50px;
+  .user_div {
+    height:100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: block;
+    margin: auto;
+    background-position: top;
+  }
+  .username {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+  }
+  .bg_image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .image_male {
+    background: url(../../assets/iconos/studentboy.png) content-box no-repeat;
+    background-size: cover;
+  }
+  .image_female {
+    background: url(../../assets/iconos/student.png) content-box no-repeat;
+    background-size: cover;
+  }
+}
+
+#inbox-list {
+  background: transparent;
+  ion-item {
+    --background: transparent;
+    ion-icon, ion-label {
+      color: white;
+    }
+  }
+}
+
+.ion-page-global {
+  --background: linear-gradient(to right, #08A6AC, #36BDBC);
+  .main_content_div {
+    width: 100%;
+    .menu_btn {
+      position: relative;
+      top: 40px;
+      left: 10px;
+    }
+  }
+  .main_content_div_child {
+    width: 100%;
+  }
+}

@@ -13,9 +13,8 @@ export class TeacherPage implements OnInit {
   cliente;
   public studentPages = [
     { title: 'Inicio', url: '/teacher/tea-home', icon: 'home' },
-    { title: 'Lectura de libros', url: '/teacher/tea-content', icon: 'library' },
     { title: 'Agregar Libro o Cuento', url: '/teacher/tea-book', icon: 'library' },
-    { title: 'Perfil', url: '/teacher/tea-detail', icon: 'person' }
+    { title: 'Estadisticas', url: '/teacher/tea-statistics', icon: 'person' }
   ];
   constructor(
     private router: Router,
