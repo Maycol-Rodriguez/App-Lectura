@@ -1,56 +1,132 @@
-<ion-content class="login-section ion-padding">
-  <div class="heading ion-padding">
-    <h1>
-      Registrar Libro
-    </h1>
+<div class="main_content_div_child">
+  <div class="main_content_div animated bounceInUp">
+    <div class="book-section ion-padding">
+      <div class="heading ion-padding">
+        <h1>
+          Registrar Libro
+        </h1>
+      </div>
+      <div *ngIf="!creado" class="book-form ion-padding">
+        <div class="form-input">
+          <ion-item>
+            <ion-label position="floating">
+              Ingrese Titulo
+            </ion-label>
+            <ion-input type="text" name="Titulo" [(ngModel)]="libro.Titulo" required autofocus tabindex="1"></ion-input>
+          </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Ingrese link del Audio
+            </ion-label>
+            <ion-input type="text" name="Audio" [(ngModel)]="libro.Audio" tabindex="2"></ion-input>
+          </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Ingrese link embed del video de yotube
+            </ion-label>
+            <ion-input type="text" name="Video" [(ngModel)]="libro.Video" tabindex="3"></ion-input>
+          </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Ingrese Link de la Imagen
+            </ion-label>
+            <ion-input type="text" name="Imagen" [(ngModel)]="libro.Imagen" required tabindex="4"></ion-input>
+          </ion-item>
+        </div>
+        <!-- <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Ingrese Autor
+            </ion-label>
+            <ion-input type="text" name="Autor" [(ngModel)]="libro.Autor" required tabindex="5"></ion-input>
+          </ion-item>
+        </div> -->
+        <div class="action-buttons ion-padding">
+          <ion-button (click)="saveLibro()" size="large" class="book-button"
+          [disabled]="(libro.Titulo === '' || libro.Imagen === '')? true:false">
+            Registrar
+          </ion-button>
+        </div>
+      </div>
+      <div *ngIf="!creado" class="heading ion-padding">
+        <h1>
+          Agregar Parrafos del Libro
+        </h1>
+      </div>
+      <div *ngIf="!creado" class="parrafo-form ion-padding">
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Parrafo
+            </ion-label>
+            <ion-textarea [autoGrow]="true" type="text" name="Parrafo" [(ngModel)]="parrafo.Parrafo" required autofocus tabindex="5"></ion-textarea>
+          </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              Imagen
+            </ion-label>
+            <ion-input type="text" name="Imagen" [(ngModel)]="parrafo.Imagen" tabindex="6"></ion-input>
+          </ion-item>
+        </div>
+        <div class="form-input">
+          <ion-item>
+            <ion-label  position="floating">
+              inicio, Desarrollo o Final
+            </ion-label>
+            <ion-list class="lostitos">
+              <ion-item>
+                <ion-select (change)="onOptionsSelectTipo($event)" [(ngModel)]="parrafo.Tipoid" name="Tipoid" required
+                  tabindex="7"  position="floating" interface="popover" placeholder="Seleccione la etapa del Libro o Cuento">
+                  <ion-select-option class="list" [value]="item.id" *ngFor="let item of tipos">
+                    {{item.Nombre}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-item>
+        </div>
+        <div class="action-buttons ion-padding">
+          <ion-button (click)="saveParrafo()" size="large" class="parrafo-button"
+          [disabled]="(parrafo.Parrafo === '' && parrafo.Imagen === '' || parrafo.Tipoid === 0)? true:false">
+            Agregar
+          </ion-button>
+        </div>
+      </div>
+      <div *ngIf="!creado && !mostrarparrafos" class="heading ion-padding">
+        <h1>
+          Vista Previa del Texto
+        </h1>
+      </div>
+      <div *ngIf="!creado" class="parrafo-vizualizacion ion-padding">
+        <h2>
+          {{libro1.Titulo}}
+        </h2>
+        <h4>
+          Autor:
+            <br>
+          {{libro1.Autor}}
+        </h4>
+        <div class="losparrafoscreados" *ngFor="let obj of parrafos">
+          <p *ngIf="obj.Imagen === ''">
+            {{obj.Parrafo}}
+          </p>
+          <img *ngIf="obj.Parrafo === ''" [src]="obj.Imagen" alt="">
+        </div>
+        <div *ngIf="porfinalizar" class="action-buttons ion-padding">
+          <ion-button (click)="savepublicacion()" size="large" class="parrafo-button"
+          [disabled]="(parrafo.Parrafo === '' && parrafo.Imagen === '' || parrafo.Tipoid === 0)? true:false">
+            Finalizar
+          </ion-button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="login-form ion-padding">
-    <div class="form-input">
-      <ion-item>
-        <ion-label color="dark" position="floating">
-          Ingrese Titulo
-        </ion-label>
-        <ion-input type="text" name="Titulo" [(ngModel)]="libro.Titulo" required autofocus tabindex="1"></ion-input>
-      </ion-item>
-    </div>
-    <div class="form-input">
-      <ion-item>
-        <ion-label color="dark" position="floating">
-          Ingrese link del Audio
-        </ion-label>
-        <ion-input type="text" name="Audio" [(ngModel)]="libro.Audio" tabindex="2"></ion-input>
-      </ion-item>
-    </div>
-    <div class="form-input">
-      <ion-item>
-        <ion-label color="dark" position="floating">
-          Ingrese link embed del video de yotube
-        </ion-label>
-        <ion-input type="text" name="Video" [(ngModel)]="libro.Video" tabindex="3"></ion-input>
-      </ion-item>
-    </div>
-    <div class="form-input">
-      <ion-item>
-        <ion-label color="dark" position="floating">
-          Ingrese Imagen
-        </ion-label>
-        <ion-input type="text" name="Imagen" [(ngModel)]="libro.Imagen" required tabindex="4"></ion-input>
-      </ion-item>
-    </div>
-    <div class="form-input">
-      <ion-item>
-        <ion-label color="dark" position="floating">
-          Ingrese Autor
-        </ion-label>
-        <ion-input type="text" name="Autor" [(ngModel)]="libro.Autor" required tabindex="5"></ion-input>
-      </ion-item>
-    </div>
-    <div class="action-buttons ion-padding">
-      <ion-button (click)="saveLibro()" size="large" color="dark" class="login-button" [disabled]="(
-                libro.Titulo === '' || libro.Imagen === '' || libro.Autor === ''
-              )? true:false">
-        Registrar
-      </ion-button>
-    </div>
-  </div>
-</ion-content>
+</div>

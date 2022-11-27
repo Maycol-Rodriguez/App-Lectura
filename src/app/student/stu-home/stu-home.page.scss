@@ -5,18 +5,7 @@
   display: flex;
   padding-top: 40px;
   justify-content: space-between;
-  // primera opcion
-  // --background: linear-gradient(to right, #b91d73, #f953c6);
-  // segunda opcion
   --background: linear-gradient(to right, #08A6AC, #36BDBC);
-  // tercera opcion
-  // --background: linear-gradient(to right, #667eea, #764ba2);
-  // cuarta opcion
-  // --background: linear-gradient(to right, #243949, #517fa4);
-  // quinta opcion
-  // --background: linear-gradient(to right, #f46b45, #eea849);
-  // sexta opcion
-  // --background: linear-gradient(to right, #2f0743, #41295a);
   .first_div {
     padding-top: 35px;
     .welcome {
@@ -42,16 +31,13 @@
   .image_male {
     background: url(../../../assets/iconos/studentboy.png) content-box no-repeat;
     background-size: cover;
-    // background: url(../../assets/iconos/male.png) content-box no-repeat;
   }
   .image_female {
     background: url(../../../assets/iconos/student.png) content-box no-repeat;
     background-size: cover;
-    // background: url(../../assets/iconos/female.png) content-box no-repeat;
   }
 }
 .main_content_div {
-
   background: white;
   width: 100%;
   border-top-right-radius: 15px;
@@ -63,32 +49,10 @@
     margin-bottom: 10px;
     margin-left: 30px;
     margin-top: 10px;
-    // primera opcion
-    // color: #b91d73;
-    // segunda opcion
     color: #08A6AC;
-    // tercera opcion
-    // color: #667eea;
-    // cuarta opcion
-    // color: #243949;
-    // quinta opcion
-    // color: #f46b45;
-    // sexta opcion
-    // color: #2f0743;
   }
   .col_div {
-    // primera opcion
-    // --background: linear-gradient(to right, #b91d73, #f953c6);
-    // segunda opcion
     background: linear-gradient(to right, #08A6AC, #36BDBC);
-    // tercera opcion
-    // --background: linear-gradient(to right, #667eea, #764ba2);
-    // cuarta opcion
-    // --background: linear-gradient(to right, #243949, #517fa4);
-    // quinta opcion
-    // --background: linear-gradient(to right, #f46b45, #eea849);
-    // sexta opcion
-    // --background: linear-gradient(to right, #2f0743, #41295a);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,24 +60,12 @@
     text-align: center;
     height: 200px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-    // border-radius: 5px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     img {
       width: 100px;
     }
     ion-label {
-      // primera opcion
-      // color: #b91d73;
-      // segunda opcion
-      // color: #08A6AC;
-      // tercera opcion
-      // color: #667eea;
-      // cuarta opcion
-      // color: #243949;
-      // quinta opcion
-      // color: #f46b45;
-      // sexta opcion
       color: white;
       margin-top: 5px;
       font-size: 18px;
@@ -122,14 +74,12 @@
   }
 }
 
-
 .animated {
   --webkit-animation-duration: 5s;
   animation-duration: 5s;
   --webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
 
 @-webkit-keyframes bounceInUp {
   0% {
