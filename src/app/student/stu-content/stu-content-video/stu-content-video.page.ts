@@ -8,6 +8,8 @@ import { DataService } from 'src/app/services/data.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { Progreso } from 'src/app/models/progreso';
 import { EstudianteDetail } from 'src/app/models/estudiante';
+import { CuestionarioService } from 'src/app/services/cuestionario.service';
+
 @Component({
   selector: 'app-stu-content-video',
   templateUrl: './stu-content-video.page.html',
@@ -17,7 +19,14 @@ export class StuContentVideoPage implements OnInit {
 
 
 /* eslint-disable @typescript-eslint/naming-convention */
-
+libro: Libro = {
+  id: 0,
+  Titulo: '',
+  Audio: '',
+  Video: 'https://www.youtube.com/embed/LzMKOMwakVA?enablejsapi=1',
+  Imagen: '',
+  Autor: ''
+};
 progreso: Progreso = {
   id: 0,
   Progreso: '',
@@ -30,7 +39,7 @@ progreso: Progreso = {
   LibroId: 0,
   EstudianteId: 0
 };
-progreso1: Progreso = {
+progresocreate: Progreso = {
   id: 0,
   Progreso: '',
   Reaccion: '',
@@ -54,9 +63,13 @@ estudiante: EstudianteDetail = {
     Nombre: '',
   },
 };
-parrafos: any = [];
 elurl;
 existencia = 'no existe';
+mensaje;
+estado = '';
+haycuestionario = true;
+resolviocuestionario = false;
+cuestionarios: any = [];
 // en progreso
 // finalizado
 constructor(
@@ -66,6 +79,7 @@ constructor(
   private libroService: LibroService,
   private parrafoService: ParrafoService,
   private progresoService: ProgresoService,
+  private cuestionarioService: CuestionarioService,
 ) { }
 
 ngOnInit() {
@@ -74,20 +88,47 @@ ngOnInit() {
   console.log(parametro);
   this.libroService.getLibro(parametro).subscribe(
     reslibro => {
-      //this.libro = reslibro;
-      // sacar el progreso mediante libro y estudiante
-      this.parrafoService.getsearchParrafobylibro(parametro).subscribe(
-        resparrafos => {
-          this.parrafos = resparrafos;
+      this.libro = reslibro;
+      this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
+        rescuestionarios => {
+          if (Object.entries(rescuestionarios).length > 0) {
+            this.cuestionarios = rescuestionarios;
+            this.haycuestionario = true;
+          } else {
+            console.log('No hay Cuestionarios');
+          }
         }, err => {
-          console.log('Error get parrafos by libro id');
+          console.log('Error get cuestionarios by libro');
         }
       );
+      this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+        resprogreso => {
+          if (resprogreso !== null) {
+            this.progreso = resprogreso;
+          } else {
+            this.progresocreate.LibroId = parametro;
+            this.progresocreate.EstudianteId = parestudiante;
+            this.progresocreate.Progreso = '10';
+            // this.progresoService.saveProgreso(this.progresocreate).subscribe(
+            //   resnewprogreso => {
+            //     this.progreso = resnewprogreso;
+            //     this.estado = 'iniciado';
+            //   }, err => {
+            //     console.log('Error create progreso');
+            //   }
+            // );
+          }
+        }, err => {
+          console.log('Error get proceso by libro y alumno');
+        }
+      );
+      // sacar el progreso mediante libro y estudiante
+      
     }, err => {
       console.log('Error get libro by id');
     }
   );
-  this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/LzMKOMwakVA');
+  this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
 }
 elegir(dato) {
   this.progreso.Reaccion = dato;
@@ -95,16 +136,48 @@ elegir(dato) {
 deselegir() {
   this.progreso.Reaccion = '';
 }
-validarprogreso(dato) {
-  // progreso completado
-  // progreso existente
-  // no existe progreso => crear
+validarprogreso() {
+  const parametro = +this.progreso.Progreso;
+  if (parametro === 100) {
+    this.estado = 'terminado';
+  } else {
+    if (this.haycuestionario === true) {
+      this.estado = 'en progreso';
+      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
+        this.progreso.Progreso = '90';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
+        this.progreso.Progreso = '80';
+      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '60';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '40';
+      }
+    } else {
+      this.estado = 'en progreso';
+      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
+        this.progreso.Progreso = '100';
+        this.estado = 'terminado';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
+        this.progreso.Progreso = '90';
+      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '70';
+      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+        this.progreso.Progreso = '50';
+      }
+    }
+  }
+  console.log(this.progreso);
+  console.log(this.estado);
 }
 actualizar(dato) {
-  this.validarprogreso(dato);
-  // se valida primero
-  // se actualiza el progreso existente
-  // se actualiza en completado solo el comentario y el final alternativo
+  this.validarprogreso();
+  this.progresoService.updateProgreso(dato, this.progreso).subscribe(
+    resupdate => {
+      this.mensaje = resupdate;
+    }, err => {
+      console.log('Error Update Progreso');
+    }
+  );
 }
 iracuestionario(dato) {
   this.actualizar(dato);
@@ -120,7 +193,29 @@ iracuestionario(dato) {
 }
 
 terminar(dato) {
-  // actualizamos el progreso
-  // lo mandamos al home
+  this.actualizar(dato);
+  this.router.navigate(
+    [
+      'student',
+      'stu-home'
+    ]
+  );
+}
+pruebacuestionario() {
+  this.router.navigate(
+    [
+      'student',
+      'stu-content',
+      'stu-content-evaluation'
+    ]
+  );
+}
+pruebafinalizar() {
+  this.router.navigate(
+    [
+      'student',
+      'stu-content'
+    ]
+  );
 }
 }

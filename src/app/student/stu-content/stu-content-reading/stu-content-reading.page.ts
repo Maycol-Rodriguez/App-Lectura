@@ -77,6 +77,7 @@ export class StuContentReadingPage implements OnInit {
   haycuestionario = true;
   resolviocuestionario = false;
   cuestionarios: any = [];
+  videofin=false;
   // en progreso
   // finalizado
   constructor(
@@ -231,4 +232,5 @@ export class StuContentReadingPage implements OnInit {
       ]
     );
   }
+  
 }
