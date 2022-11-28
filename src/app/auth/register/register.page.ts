@@ -90,9 +90,7 @@ export class RegisterPage implements OnInit {
     onWillDismiss(event: Event) {
       const ev = event as CustomEvent<OverlayEventDetail<string>>;
       if (ev.detail.role === 'confirm') {
-        console.log('Hola');
-
-        // this.message = `Hello, ${ev.detail.data}!`;
+        console.log('Holaaaa');
       }
     }
 
