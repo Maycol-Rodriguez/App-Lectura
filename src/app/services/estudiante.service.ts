@@ -21,7 +21,7 @@ export class EstudianteService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  getsearchEstudiantebydoc(documento: string) {
+  getsearchEstudiantebydoc(documento: string | number) {
     return this.http.get(`${this.apiUrl}/searchdoc/${documento}`);
   }
 

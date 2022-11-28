@@ -23,19 +23,23 @@ export class StudentPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem('usuario'));
+    console.log(JSON.parse(localStorage.getItem('usuario')));
     this.cliente = JSON.parse(localStorage.getItem('usuario'));
     this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
+    console.log(this.cliente);
+    console.log(this.clientetipo);
     if (this.clientetipo === 'estudiante') {
       console.log('el usuario es estudiante');
     } else if (this.clientetipo === 'profesor') {
+      console.log('el usuario no es estudiante, es profesor; redirigiendolo');
       this.router.navigate(
         [
           'teacher'
         ]
       );
-      console.log('el usuario es profesor');
     } else if (this.clientetipo === 'responsable') {
-      console.log('el usuario es responsable');
+      console.log('el usuario no es estudiante, es responsable; redirigiendolo');
       this.router.navigate(
         [
           'family',

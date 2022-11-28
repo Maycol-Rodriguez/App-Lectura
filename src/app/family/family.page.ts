@@ -26,14 +26,14 @@ export class FamilyPage implements OnInit {
     this.cliente = JSON.parse(localStorage.getItem('usuario'));
     this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
     if (this.clientetipo === 'estudiante') {
-      console.log('el usuario es estudiante');
+      console.log('el usuario no es responsable, es estudiante; redirigiendolo');
       this.router.navigate(
         [
           'student'
         ]
       );
     } else if (this.clientetipo === 'profesor') {
-      console.log('el usuario es profesor');
+      console.log('el usuario no es responsable, es profesor; redirigiendolo');
       this.router.navigate(
         [
           'teacher'

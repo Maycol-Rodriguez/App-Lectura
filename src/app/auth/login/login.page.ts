@@ -23,11 +23,7 @@ export class LoginPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
-    GradoId: 0,
-    grado:{
-      id:0,
-      Nombre: ''
-    }
+    GradoId: 0
   };
   responsable: Responsable = {
     id: 0,
@@ -42,24 +38,20 @@ export class LoginPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
-    GradoId: 0,
-    grado:{
-      id:0,
-      Nombre: ''
-    }
+    GradoId: 0
   };
   tipos = [
     {
-      name: 'Estudiante'
+      name: 'estudiante'
     },
     {
-      name: 'Profesor'
+      name: 'profesor'
     },
     {
-      name: 'Responsable'
+      name: 'responsable'
     }
   ];
-  eleccion = 'Estudiante';
+  eleccion = 'estudiante';
   constructor(
     private router: Router,
     private toast: ToastController,
@@ -106,26 +98,30 @@ export class LoginPage implements OnInit {
     );
   }
   login() {
-    if (this.eleccion === 'Estudiante') {
+    console.log(this.parametro);
+    // this.authenticationService.loggout();
+    if (this.eleccion === 'estudiante') {
       this.loginestudiante();
-    } else if (this.eleccion === 'Profesor') {
+    } else if (this.eleccion === 'profesor') {
       this.loginprofesor();
-    } else if (this.eleccion === 'Responsable') {
+    } else if (this.eleccion === 'responsable') {
       this.loginresponsable();
     }
   }
   loginestudiante() {
     this.estudianteService.getsearchEstudiantebydoc(this.parametro).subscribe(
       reslogin => {
-        if(reslogin !== null ){
+        if(reslogin !== null){
           this.estudiante = reslogin;
-          this.authenticationService.loggin(this.estudiante, this.eleccion.toLowerCase());
+          console.log(this.estudiante);
+          console.log(this.eleccion);
+          this.authenticationService.loggin(this.estudiante, this.eleccion);
           this.toastloginsucceed();
-          this.router.navigate(
-            [
-              'student'
-            ]
-          );
+          // this.router.navigate(
+          //   [
+          //     'student'
+          //   ]
+          // );
         }else {
           this.toastloginerror();
           console.log('Documento no encontrado, Por favor registrece como estudiante');

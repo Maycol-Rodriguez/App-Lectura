@@ -74,7 +74,7 @@ export class StuContentReadingPage implements OnInit {
   existencia = 'no existe';
   mensaje;
   estado = '';
-  haycuestionario = true;
+  haycuestionario = false;
   resolviocuestionario = false;
   cuestionarios: any = [];
   // en progreso

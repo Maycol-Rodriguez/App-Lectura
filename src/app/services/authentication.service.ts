@@ -6,24 +6,25 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  client = new BehaviorSubject<any>(null);
-  tipoclient = new BehaviorSubject<string>(null);
+  client = new BehaviorSubject<any>([]);
+  tipoclient = new BehaviorSubject<string>('');
   client$ = this.client.asObservable();
   tipoclient$ = this.tipoclient.asObservable();
   constructor(
     private http: HttpClient
   ) { }
   loggin(client, tipo) {
+    console.log(client, tipo);
     const cli = JSON.stringify(client);
-    const typecli = tipo;
+    const typecli = JSON.stringify(tipo);
     this.client.next(client);
     this.tipoclient.next(typecli);
     localStorage.setItem('usuario', cli);
     localStorage.setItem('tipoclient', typecli);
   }
   loggout() {
-    this.client.next(null);
-    this.tipoclient.next(null);
+    this.client.next([]);
+    this.tipoclient.next('');
     localStorage.removeItem('usuario');
     localStorage.removeItem('tipoclient');
   }
