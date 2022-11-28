@@ -5,6 +5,8 @@ import { Progreso } from 'src/app/models/progreso';
 import { DataService } from 'src/app/services/data.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
+import { ResolucionService } from 'src/app/services/resolucion.service';
+import { Resolucion } from 'src/app/models/resolucion';
 
 @Component({
   selector: 'app-stu-content-evaluation',
@@ -26,6 +28,21 @@ export class StuContentEvaluationPage implements OnInit {
     LibroId: 0,
     EstudianteId: 0
   };
+  resolucion: Resolucion = {
+    Pregunta: '',
+    RespuestaEscogida: '',
+    NumeroIntento: '',
+    Correcto: '',
+    ProgresoId: 0
+  };
+  resolucion1: Resolucion = {
+    id: 0,
+    Pregunta: '',
+    RespuestaEscogida: '',
+    NumeroIntento: '',
+    Correcto: '',
+    ProgresoId: 0
+  };
   formatoconglomerado = {
     id: 0,
     Pregunta: '',
@@ -43,6 +60,7 @@ export class StuContentEvaluationPage implements OnInit {
     id: 0,
     respuesta: ''
   };
+  resoluciones: any = [];
   preguntas: any = [];
   lasrespuesas: any = [];
   respuestasdesordenadas: any = [];
@@ -57,6 +75,7 @@ export class StuContentEvaluationPage implements OnInit {
     private router: Router,
     private datoService: DataService,
     private progresoService: ProgresoService,
+    private resolucionService: ResolucionService,
     private cuestionarioService: CuestionarioService,
   ) { }
 
@@ -140,10 +159,23 @@ export class StuContentEvaluationPage implements OnInit {
   comprobarrespuesta() {
     for (const item of this.cuestionarios) {
       const respuestacorrecta = item.RespuestaCorrecta;
+      const idcuestionario = item.id;
       for (const obj of this.respuestas) {
+        const idrespuestas = obj.id;
         const respuestaelegida = obj.respuesta;
-        if (respuestacorrecta === respuestaelegida) {
-          this.numeroaciertos++;
+        if (idcuestionario === idrespuestas) {
+          this.resolucion.Pregunta = item.Pregunta;
+          this.resolucion.ProgresoId = this.codigoprogreso;
+          this.resolucion.Correcto = 'incorrecto';
+          this.resolucion.NumeroIntento = (+this.progreso.NumeroIntento + 1).toString();
+          this.resolucion.RespuestaEscogida = respuestaelegida;
+          if (respuestacorrecta === respuestaelegida) {
+            this.numeroaciertos++;
+            this.resolucion.Correcto = 'correcto';
+            this.resoluciones.push(this.resolucion);
+          } else {
+            this.resoluciones.push(this.resolucion);
+          }
         }
       }
     }
@@ -154,10 +186,29 @@ export class StuContentEvaluationPage implements OnInit {
     this.progresoService.updateProgreso(this.codigoprogreso, this.progreso).subscribe(
       resupdate => {
         this.mensaje = resupdate;
+        this.saveresoluciones();
+        this.router.navigate(
+          [
+            'student',
+            'stu-content'
+          ]
+        );
       }, err => {
         console.log('Error update cuestionario');
       }
     );
+  }
+  saveresoluciones() {
+    for (const resp of this.resoluciones) {
+      this.resolucionService.saveResolucion(resp).subscribe(
+        ressaveresolucion => {
+          this.resolucion1 = ressaveresolucion;
+          console.log(this.resolucion1);
+        }, err => {
+          console.log('Error saving resolucion');
+        }
+      );
+    }
   }
 
 }

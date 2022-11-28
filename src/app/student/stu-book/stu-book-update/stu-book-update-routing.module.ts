@@ -5,7 +5,7 @@ import { StuBookUpdatePage } from './stu-book-update.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '/:idlibro',
     component: StuBookUpdatePage
   }
 ];

@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 import { GradoService } from 'src/app/services/grado.service';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 
@@ -15,9 +14,8 @@ export class StuContentListPage implements OnInit {
   grados: any = [];
   constructor(
     private router: Router,
-    private datoService: DataService,
-    private gradoService: GradoService,
     private toast: ToastController,
+    private gradoService: GradoService,
     private cuentoService: PublicacionService
   ) { }
   home() {

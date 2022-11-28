@@ -21,6 +21,20 @@ export class ReporteService {
     return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
   }
 
+  // estadisticas generales por grado de los estudiantes
+  getstatisticsindividual(libro: string | number, reaccion: string | number) {
+    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
+  }
+  // estadisticas de los estudiante de manera individual
+  getstatisticsindividualdetail(libro: string | number, reaccion: string | number) {
+    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
+  }
+
+  // estadisticas de los estudiante de manera individual y detallada
+  getstatisticsbygrade(libro: string | number, reaccion: string | number) {
+    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
+  }
+
    // esto es para los reportes
   getcliente(fecha1: string, fecha2: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/live/${fecha1}/${fecha2}`);
