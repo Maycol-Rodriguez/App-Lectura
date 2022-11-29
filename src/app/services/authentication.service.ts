@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  client = new BehaviorSubject<any>([]);
-  tipoclient = new BehaviorSubject<string>('');
+  client = new BehaviorSubject<any>(null);
+  tipoclient = new BehaviorSubject<string>(null);
   client$ = this.client.asObservable();
   tipoclient$ = this.tipoclient.asObservable();
   constructor(
@@ -23,8 +23,8 @@ export class AuthenticationService {
     localStorage.setItem('tipoclient', typecli);
   }
   loggout() {
-    this.client.next([]);
-    this.tipoclient.next('');
+    this.client.next(null);
+    this.tipoclient.next(null);
     localStorage.removeItem('usuario');
     localStorage.removeItem('tipoclient');
   }
@@ -38,6 +38,8 @@ export class AuthenticationService {
         console.log('el usuario es profesor');
       } else if (clitipe === 'resposable') {
         console.log('el usuario es resposable');
+      } else {
+
       }
       return true;
     } else {

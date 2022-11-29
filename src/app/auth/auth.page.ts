@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,11 +12,13 @@ export class AuthPage implements OnInit {
   clientetipo;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
-    this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
+    if (this.authenticationService.isLoggedIn()) {
+      this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
     if (this.clientetipo === 'estudiante') {
       console.log('el usuario es estudiante, mandandolo al panel estudiante');
       this.router.navigate(
@@ -38,6 +41,8 @@ export class AuthPage implements OnInit {
         ]
       );
     }
+    } else {
+      console.log('No hay nadie logueado');
+    }
   }
-
 }
