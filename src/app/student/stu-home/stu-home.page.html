@@ -6,12 +6,12 @@
       </ion-label>
       <br>
       <ion-label class="username">
-        Daigo
+        {{estudiante.Nombre + ' ' + estudiante.Apellido}}
       </ion-label>
     </div>
-    <div *ngIf="!genero" class="second_div image_male">
+    <div slot="end" *ngIf="!genero" class="second_div image_male">
     </div>
-    <div *ngIf="genero" class="second_div image_female">
+    <div slot="end" *ngIf="genero" class="second_div image_female">
     </div>
   </div>
   <div class="main_content_div animated bounceInUp">

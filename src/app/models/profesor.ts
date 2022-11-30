@@ -8,7 +8,7 @@ export interface Profesor {
   GradoId?: number;
 }
 
-export interface ProfesorDetalle {
+export interface ProfesorDetail {
   id?: number;
   Nombre?: string;
   Apellido?: string;

@@ -20,24 +20,57 @@
   padding-top: 10px;
   .col_div_titulo {
     height: auto;
-    h2 {
+    h1 {
       font-weight: bold;
-      font-size: 24;
+      font-size: 30px;
       color: #36BDBC;
       font-style: italic;
     }
   }
   .col_div_lectura {
-    min-height: 350px;
-    max-height: 450px;
+    min-height: 300px;
+    max-height: 500px;
     height: auto;
     color: #36BDBC;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     ion-slides {
       height: 100%;
+      width: 100%;
+      --bullet-background: #ededeb;
+      --bullet-background-active: #36BDBC;
       ion-slide {
+        color: #000;
         h1 {
-          color: #36BD;
+          font-weight: bold;
+          font-size: 24px;
+        }
+        h2 {
+          font-weight: bold;
+          font-size: 22px;
+        }
+        h3 {
+          font-weight: bold;
+          font-size: 20px;
+        }
+        h4 {
+          font-weight: bold;
+          font-size: 18px;
+        }
+        h5 {
+          font-weight: bold;
+          font-size: 16px;
+        }
+        h6 {
+          font-weight: bold;
+          font-size: 14px;
+        }
+        p {
+          font-weight: bold;
+          font-size: 12px;
+        }
+        img {
+          width: 100%;
+          height: 100%;
         }
       }
     }
@@ -59,8 +92,34 @@
     }
   }
   .col_div_reaccion {
-    height: 50px;
-    background: linear-gradient(to right, #08A6AC, #36BDBC);
+    height: 80px;
+    ion-grid {
+      ion-row {
+        ion-col {
+          padding: 5px;
+          .elegible {
+            width: 100%;
+            height: 100%;
+            img {
+              width: 60px;
+              height: 60px;
+              margin: auto;
+            }
+          }
+          .elegido {
+            z-index: 1;
+            margin-top: -35px;
+            width: 100%;
+            height: 100%;
+            img {
+              width: 60px;
+              height: 60px;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
   }
   .col_div_formulario {
     min-height: 400px;
@@ -76,6 +135,7 @@
         ion-item-divider {
           width: 100%;
           background: transparent;
+          border-bottom: none;
           ion-label {
             width: 100%;
             text-align: start;
@@ -106,25 +166,33 @@
           ion-icon {
             color: #000;
           }
-          ion-button {
-
-          }
         }
       }
     }
   }
-
-  .col_div_comentario {
-    height: 150px;
-    background: linear-gradient(to right, #08A6AC, #36BDBC);
-  }
-  .col_div_final_alternativo {
-    height: 200px;
-    background: linear-gradient(to right, #08A6AC, #36BDBC);
-  }
-  .col_div_final_siguiente {
+  .col_div_final_cuestionario {
     height: 50px;
-    background: linear-gradient(to right, #08A6AC, #36BDBC);
+    border-radius: 50px;
+    ion-button {
+      --background: linear-gradient(to right, #08A6AC, #36BDBC);
+      width: 100%;
+      height: 100%;
+    }
+    ion-button:hover {
+      --background: linear-gradient(to right, #36BDBC, #08A6AC);
+    }
+  }
+  .col_div_final_finalizar {
+    height: 50px;
+    border-radius: 50px;
+    ion-button {
+      --background: linear-gradient(to right, #08A6AC, #36BDBC);
+      width: 100%;
+      height: 100%;
+    }
+    ion-button:hover {
+      --background: linear-gradient(to right, #36BDBC, #08A6AC);
+    }
   }
   .col_div {
     width: 100%;

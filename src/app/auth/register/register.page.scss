@@ -1,0 +1,96 @@
+
+ion-content {
+  min-height: 700px;
+  max-height: 1920px;
+  height: auto;
+  --background: transparent;
+}
+.register-section {
+  height: 100vh;
+  background: linear-gradient(to right, #08A6AC, #36BDBC);
+  width: 100%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  border-radius: 25px;
+  border: 3px solid white;
+  display: block;
+  margin: auto;
+  background-position: top;
+  .heading {
+    margin-left: 1px;
+    margin-top: 20px;
+    h1 {
+      font-size: 3rem;
+      font-weight: bolder;
+      text-align: center;
+    }
+  }
+
+  .register-form {
+    .form-input {
+      position: relative;
+      margin-bottom: 40px;
+      border-bottom: 1px solid white;
+      color: white;
+      margin-left: 15;
+      font-size: 4rem;
+    }
+  }
+
+  .action-buttons {
+    margin-top: 20px;
+    text-align: center;
+
+    .the-button {
+      font-size: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+      font-weight: bold;
+    }
+  }
+  .list {
+    font-size: 40px;
+    width: 100px;
+    background-color: transparent;
+  }
+
+  .selected {
+    color: white;
+    font-size: 4rem;
+    opacity: 1;
+    width: 100%;
+    padding: 5px 2px;
+    border: none;
+    background-color: transparent;
+  }
+
+  .grades {
+    color: white;
+    font-size: 4rem;
+    opacity: 1;
+    width: 100%;
+    padding: 5px 2px;
+    border: none;
+    background-color: transparent;
+  }
+  ion-item {
+    --background: transparent;
+  }
+}
+
+ion-model {
+  // --backdrop-opacity	Opacity of the backdrop
+  // --background	Background of the modal content
+  // --border-color	Border color of the modal content
+  // --border-radius	Border radius of the modal content
+  // --border-style	Border style of the modal content
+  // --border-width	Border width of the modal content
+  // --height	Height of the modal
+  // --max-height	Maximum height of the modal
+  // --max-width	Maximum width of the modal
+  // --min-height	Minimum height of the modal
+  // --min-width	Minimum width of the modal
+  // --width	Width of the modal
+}

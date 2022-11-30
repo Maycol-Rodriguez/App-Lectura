@@ -14,8 +14,9 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
   loggin(client, tipo) {
+    console.log(client, tipo);
     const cli = JSON.stringify(client);
-    const typecli = tipo;
+    const typecli = JSON.stringify(tipo);
     this.client.next(client);
     this.tipoclient.next(typecli);
     localStorage.setItem('usuario', cli);
@@ -37,6 +38,8 @@ export class AuthenticationService {
         console.log('el usuario es profesor');
       } else if (clitipe === 'resposable') {
         console.log('el usuario es resposable');
+      } else {
+
       }
       return true;
     } else {

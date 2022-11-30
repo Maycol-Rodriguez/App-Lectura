@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TeaStatisticsBygradePage } from './tea-statistics-bygrade.page';
+import { TeaStatisticsForstudentDetailPage } from './tea-statistics-forstudent-detail.page';
 
-describe('TeaStatisticsBygradePage', () => {
-  let component: TeaStatisticsBygradePage;
-  let fixture: ComponentFixture<TeaStatisticsBygradePage>;
+describe('TeaStatisticsForstudentDetailPage', () => {
+  let component: TeaStatisticsForstudentDetailPage;
+  let fixture: ComponentFixture<TeaStatisticsForstudentDetailPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeaStatisticsBygradePage ],
+      declarations: [ TeaStatisticsForstudentDetailPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TeaStatisticsBygradePage);
+    fixture = TestBed.createComponent(TeaStatisticsForstudentDetailPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

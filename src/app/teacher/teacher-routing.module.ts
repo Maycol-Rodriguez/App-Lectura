@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'tea-home',
+        redirectTo: 'tea-statistics',
         pathMatch: 'prefix'
       }
     ]

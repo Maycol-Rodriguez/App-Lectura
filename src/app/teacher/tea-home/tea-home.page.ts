@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tea-home.page.scss'],
 })
 export class TeaHomePage implements OnInit {
+  genero = false;
+  constructor(
+    private router: Router,
+  ) { }
 
-  constructor() { }
-
+  viewstatics() {
+    this.router.navigate(
+      [
+        'teacher',
+        'tea-statistics'
+      ]
+    );
+  }
+  addbook() {
+    this.router.navigate(
+      [
+        'teacher',
+        'tea-book'
+      ]
+    );
+  }
   ngOnInit() {
   }
 

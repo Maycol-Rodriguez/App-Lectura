@@ -38,8 +38,8 @@ export class StuContentAccompanyingPage implements OnInit {
       name: 'Femenino'
     }
   ];
-  verformulario = false;
   botones = true;
+  verformulario = false;
   constructor(
     private router: Router,
     private toast: ToastController,

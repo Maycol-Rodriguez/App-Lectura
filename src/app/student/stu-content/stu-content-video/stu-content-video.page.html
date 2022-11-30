@@ -1,9 +1,178 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>stu-content-video</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<div class="main_content_div_child">
+  <div class="col_div_notificacion">
+    <ion-icon name="notifications-outline"></ion-icon>
+  </div>
+  <div class="main_content_div animated bounceInUp">
+    <ion-grid fixed class="grid">
+      <ion-row>
+        <ion-col size="12">
+          <div class="col_div col_div_titulo">
+            <h1>
+              {{'Los niños soñadores'}}
+            </h1>
+          </div>
+        </ion-col>
+        <ion-col size="12" >
+          <div class="col_div col_div_video">
+            <iframe [src]="elurl" frameborder="0"
+              allowfullscreen></iframe>
+          </div>
+        </ion-col>
+        <!-- <ion-col size="12">
+          <div class="col_div col_div_video">
+            
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <div class="col_div col_div_audio">
+            <audio controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
+          </div>
+        </ion-col> -->
+        <ion-col size="12">
+          <div class="col_div col_div_reaccion">
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="2">
+                  <div class="elegible">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'like'"
+                    src="../../../../assets/reacciones/like.png"
+                    alt="me gusta" srcset="" (click)="elegir('like')">
+                  </div>
+                  <div class="elegido">
+                    <img *ngIf="progreso.Reaccion === 'like'"
+                    src="../../../../assets/reacciones/like-active.png"
+                    alt="me gusta activado" srcset="" (click)="deselegir()">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('smile')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'smile'"
+                    src="../../../../assets/reacciones/smile.png"
+                    alt="me alegra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'smile'"
+                    src="../../../../assets/reacciones/smile-active.png"
+                    alt="me alegra activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('sad')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'sad'"
+                    src="../../../../assets/reacciones/sad.png"
+                    alt="me entristece" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'sad'"
+                    src="../../../../assets/reacciones/sad-active.png"
+                    alt="me entristece activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('angry')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'angry'"
+                    src="../../../../assets/reacciones/angry.png"
+                    alt="me enoja" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'angry'"
+                    src="../../../../assets/reacciones/angry-active.png"
+                    alt="me enoja activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('confused')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'confused'"
+                    src="../../../../assets/reacciones/confused.png"
+                    alt="me confunde" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'confused'"
+                    src="../../../../assets/reacciones/confused-active.png"
+                    alt="me confunde activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('amazed')">
+                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'amazed'"
+                    src="../../../../assets/reacciones/amazed.png"
+                    alt="me asombra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'amazed'"
+                    src="../../../../assets/reacciones/amazed-active.png"
+                    alt="me asombra activado" srcset="">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <div class="col_div col_div_formulario">
+            <ion-list>
+              <ion-item-group>
+                <ion-item-divider>
+                  <ion-label>
+                    Comentario:
+                  </ion-label>
+                </ion-item-divider>
+                <ion-item>
+                  <ion-textarea
+                    type="text"
+                    name="Comentario"
+                    required
+                    auto-focus
+                    tabindex="1"
+                    minlength="10"
+                    [(ngModel)]="progreso.Comentario">
+                  </ion-textarea>
+                </ion-item>
+              </ion-item-group>
+              <ion-item-group>
+                <ion-item-divider>
+                  <ion-label>
+                    Final Alternativo:
+                  </ion-label>
+                </ion-item-divider>
+                <ion-item>
+                  <ion-textarea
+                    type="text"
+                    name="FinalAlternativo"
+                    required
+                    auto-focus
+                    tabindex="1"
+                    minlength="20"
+                    [(ngModel)]="progreso.FinalAlternativo">
+                  </ion-textarea>
+                </ion-item>
+              </ion-item-group>
+            </ion-list>
+          </div>
+        </ion-col>
+        <ion-col size="12" *ngIf="haycuestionario">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="pruebacuestionario()"
+            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+                Cuestionario
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="12" *ngIf="!haycuestionario">
+          <div
+          (click)="pruebafinalizar()"
+          class="col_div col_div_final_finalizar">
+          <ion-button
+            shape="round"
+            (click)="pruebacuestionario()"
+            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+                Finalizar
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
