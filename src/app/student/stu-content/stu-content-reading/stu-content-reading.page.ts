@@ -152,14 +152,40 @@ export class StuContentReadingPage implements OnInit {
   }
   validarprogreso() {
     if (+this.progreso.Progreso < 100) {
-      if (+this.progreso.Progreso < 70) {
+      if (+this.progreso.Progreso <= 70) {
         // validar la vista del ultimo slider
-        this.progreso.Progreso = '40';
-        if (this.progreso.Comentario !== '') {
-          this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
-        }
-        if (this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+        if (+this.progreso.Progreso === 70) {
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 60) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 50) {
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+          }
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+          }
+        } else if (+this.progreso.Progreso === 40) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+          }
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 0) {
+          this.progreso.Progreso = '40';
+          // comprobar esar en el ultimo slide
+          // comprobar finalizacion del video o audio
         }
       } else {
         this.progreso.Progreso = '70';
