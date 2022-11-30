@@ -1,3 +1,4 @@
+ /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Libro } from 'src/app/models/libro';
 import { Component, OnInit } from '@angular/core';
@@ -16,12 +17,11 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
   styleUrls: ['./stu-content-reading.page.scss'],
 })
 export class StuContentReadingPage implements OnInit {
-  /* eslint-disable @typescript-eslint/naming-convention */
   libro: Libro = {
     id: 0,
     Titulo: '',
     Audio: '',
-    Video: 'https://www.youtube.com/embed/uNjrPgnI9rI',
+    Video: '',
     Imagen: '',
     Autor: ''
   };
