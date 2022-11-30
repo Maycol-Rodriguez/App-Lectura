@@ -40,7 +40,7 @@ export class StuContentListPage implements OnInit {
     );
     toast.present();
   }
-  getgrados() {
+  getgrados() { 
     this.gradoService.getGrados().subscribe(
       res => {
         this.grados = res;

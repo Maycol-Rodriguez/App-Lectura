@@ -154,6 +154,9 @@
   animation-fill-mode: both;
 }
 
+.no-border {
+  border-color: 0px solid black !important;
+}
 
 @-webkit-keyframes bounceInUp {
   0% {
