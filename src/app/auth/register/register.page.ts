@@ -38,7 +38,6 @@ export class RegisterPage implements OnInit {
     Documento: '' ,
     GradoId: 0
   };
-
   estudiante1: Estudiante = {
     id: 0,
     Nombre:'' ,

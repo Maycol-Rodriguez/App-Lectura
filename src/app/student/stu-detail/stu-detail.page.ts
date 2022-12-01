@@ -15,12 +15,6 @@ export class StuDetailPage implements OnInit {
   ngOnInit() {
   }
   goToHome() {
-    // this.router.navigate(
-    //   [
-    //     'student',
-    //     'stu-home'
-    //   ]
-    // );
     this.router.navigate(
       [
         'student',

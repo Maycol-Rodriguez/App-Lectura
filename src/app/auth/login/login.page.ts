@@ -98,8 +98,8 @@ export class LoginPage implements OnInit {
     );
   }
   login() {
+    this.authenticationService.loggout();
     console.log(this.parametro);
-    // this.authenticationService.loggout();
     if (this.eleccion === 'estudiante') {
       this.loginestudiante();
     } else if (this.eleccion === 'profesor') {
@@ -117,11 +117,11 @@ export class LoginPage implements OnInit {
           console.log(this.eleccion);
           this.authenticationService.loggin(this.estudiante, this.eleccion);
           this.toastloginsucceed();
-          // this.router.navigate(
-          //   [
-          //     'student'
-          //   ]
-          // );
+          this.router.navigate(
+            [
+              'student'
+            ]
+          );
         }else {
           this.toastloginerror();
           console.log('Documento no encontrado, Por favor registrece como estudiante');

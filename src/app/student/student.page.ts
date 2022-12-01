@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { EstudianteDetail } from '../models/estudiante';
 
 @Component({
   selector: 'app-student',
@@ -8,6 +10,18 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./student.page.scss'],
 })
 export class StudentPage implements OnInit {
+  estudiante: EstudianteDetail = {
+    id: 0,
+    Nombre:'' ,
+    Apellido: '',
+    Genero:'' ,
+    Documento: '',
+    GradoId: 0,
+    grado: {
+      id: 0,
+      Nombre: ''
+    }
+  };
   genero = false;
   clientetipo;
   cliente;
@@ -23,12 +37,14 @@ export class StudentPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem('usuario'));
-    console.log(JSON.parse(localStorage.getItem('usuario')));
     this.cliente = JSON.parse(localStorage.getItem('usuario'));
     this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
-    console.log(this.cliente);
-    console.log(this.clientetipo);
+    this.estudiante = this.cliente;
+    if (this.estudiante.Genero === 'Femenino') {
+      this.genero = true;
+    } else {
+      this.genero = false;
+    }
     if (this.clientetipo === 'estudiante') {
       console.log('el usuario es estudiante');
     } else if (this.clientetipo === 'profesor') {

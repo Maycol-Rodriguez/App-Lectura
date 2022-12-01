@@ -1,3 +1,4 @@
+ /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Libro } from 'src/app/models/libro';
 import { Component, OnInit } from '@angular/core';
@@ -16,12 +17,11 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
   styleUrls: ['./stu-content-reading.page.scss'],
 })
 export class StuContentReadingPage implements OnInit {
-  /* eslint-disable @typescript-eslint/naming-convention */
   libro: Libro = {
     id: 0,
     Titulo: '',
     Audio: '',
-    Video: 'https://www.youtube.com/embed/uNjrPgnI9rI',
+    Video: '',
     Imagen: '',
     Autor: ''
   };
@@ -151,37 +151,48 @@ export class StuContentReadingPage implements OnInit {
     this.progreso.Reaccion = '';
   }
   validarprogreso() {
-    const parametro = +this.progreso.Progreso;
-    if (parametro === 100) {
-      this.estado = 'terminado';
-    } else {
-      if (this.haycuestionario === true) {
-        this.estado = 'en progreso';
-        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '90';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '80';
-        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '60';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+    if (+this.progreso.Progreso < 100) {
+      if (+this.progreso.Progreso <= 70) {
+        // validar la vista del ultimo slider
+        if (+this.progreso.Progreso === 70) {
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 60) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 50) {
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+          }
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+          }
+        } else if (+this.progreso.Progreso === 40) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+          }
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+          }
+        } else if (+this.progreso.Progreso === 0) {
           this.progreso.Progreso = '40';
+          // comprobar esar en el ultimo slide
+          // comprobar finalizacion del video o audio
         }
       } else {
-        this.estado = 'en progreso';
-        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '100';
-          this.estado = 'terminado';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '90';
-        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '70';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '50';
-        }
+        this.progreso.Progreso = '70';
       }
+    } else {
+      this.progreso.Progreso = '100';
     }
-    console.log(this.progreso);
-    console.log(this.estado);
   }
   actualizar(dato) {
     this.validarprogreso();
@@ -232,5 +243,4 @@ export class StuContentReadingPage implements OnInit {
       ]
     );
   }
-  
 }
