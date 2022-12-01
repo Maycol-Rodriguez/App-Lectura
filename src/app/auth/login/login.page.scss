@@ -9,7 +9,7 @@ ion-content {
   --background: transparent;
 }
 .login-section {
-  background: linear-gradient(to right, #08A6AC, #36BDBC);
+  background: linear-gradient(to top, #23A0AD, #30D6CC);
     border-radius: 25px;
     height: 100vh;
     width: 100%;
@@ -27,6 +27,7 @@ ion-content {
       h1 {
         text-align: center;
         font-weight: bolder;
+        color: #ffffff;
       }
     }
     .imagen {
@@ -39,6 +40,7 @@ ion-content {
         position: relative;
         margin-bottom: 20px;
         border-bottom: 1px solid white;
+        color: white !important;
       }
     }
 
@@ -50,7 +52,7 @@ ion-content {
         font-weight: bold;
       }
       .signup-button {
-        font-weight: bolder;
+        font-weight: bold;
         width: 100%;
       }
     }
@@ -59,3 +61,6 @@ ion-content {
     }
   }
 
+.c-white {
+  color: white;
+}

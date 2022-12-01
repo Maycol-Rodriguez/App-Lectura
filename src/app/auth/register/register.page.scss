@@ -7,7 +7,7 @@ ion-content {
 }
 .register-section {
   height: 100vh;
-  background: linear-gradient(to right, #08A6AC, #36BDBC);
+  background: linear-gradient(to top, #23A0AD, #30D6CC);
   width: 100%;
   right: 0;
   left: 0;
@@ -25,6 +25,7 @@ ion-content {
       font-size: 3rem;
       font-weight: bolder;
       text-align: center;
+      color: white;
     }
   }
 
@@ -93,4 +94,8 @@ ion-model {
   // --min-height	Minimum height of the modal
   // --min-width	Minimum width of the modal
   // --width	Width of the modal
+}
+
+.c-white {
+  color: white;
 }

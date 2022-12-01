@@ -9,8 +9,9 @@
 }
 .main_content_div {
   background: white;
-  width: 100%;
-  border-top-right-radius: 75px;
+  width: 95%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   margin-top: 20px;
   padding-top: 30px;
   padding: 10px;
@@ -23,7 +24,6 @@
     color: #36BDBC;
   }
   .col_div {
-    margin: 10px;
     background: linear-gradient(to right, #08A6AC, #36BDBC);
     display: flex;
     flex-direction: column;

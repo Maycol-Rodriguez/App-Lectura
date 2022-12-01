@@ -6,7 +6,7 @@ ion-menu::part(container) {
   box-shadow: 4px 0px 16px rgba(33, 2, 33, 0.18);
 }
 .fondosidebar, .fondocontenido {
-  --background: linear-gradient(to right, #08A6AC, #36BDBC);
+  --background: linear-gradient(to top, #23A0AD, #30D6CC);
   border-radius: 25px;
 }
 .user_main_div {
@@ -54,7 +54,7 @@ ion-menu::part(container) {
 }
 
 .ion-page-global {
-  --background: linear-gradient(to right, #08A6AC, #36BDBC);
+  --background: linear-gradient(to top, #23A0AD, #30D6CC);
   border-radius: 25px;
   .main_content_div {
     width: 100%;

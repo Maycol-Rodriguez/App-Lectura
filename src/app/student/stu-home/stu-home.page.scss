@@ -5,7 +5,7 @@
   display: flex;
   padding-top: 40px;
   justify-content: space-between;
-  --background: linear-gradient(to right, #08A6AC, #36BDBC);
+  --background: linear-gradient(to bottom, #23A0AD, #30D6CC);
   .first_div {
     padding-top: 35px;
     .welcome {
@@ -52,7 +52,7 @@
     color: #08A6AC;
   }
   .col_div {
-    background: linear-gradient(to right, #08A6AC, #36BDBC);
+    background: linear-gradient(to top, #23A0AD, #30D6CC);
     display: flex;
     flex-direction: column;
     align-items: center;
