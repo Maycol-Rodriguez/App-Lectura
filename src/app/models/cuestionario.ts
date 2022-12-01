@@ -5,8 +5,6 @@ export interface Cuestionario {
   RespuestaCorrecta?: string;
   RespuestaIncorrecta1?: string;
   RespuestaIncorrecta2?: string;
-  RespuestaIncorrecta3?: string;
-  RespuestaIncorrecta4?: string;
   LibroId?: number;
 }
 
@@ -16,8 +14,6 @@ export interface CuestionarioDetalle {
   RespuestaCorrecta?: string;
   RespuestaIncorrecta1?: string;
   RespuestaIncorrecta2?: string;
-  RespuestaIncorrecta3?: string;
-  RespuestaIncorrecta4?: string;
   LibroId?: number;
   libro?: {
     id?: number;
