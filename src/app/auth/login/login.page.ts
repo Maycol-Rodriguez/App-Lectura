@@ -88,6 +88,14 @@ export class LoginPage implements OnInit {
     );
     toast.present();
   }
+  registrarsedoc() {
+    this.router.navigate(
+      [
+        'auth',
+        'register-teacher'
+      ]
+    );
+  }
   registrarse()
   {
     this.router.navigate(

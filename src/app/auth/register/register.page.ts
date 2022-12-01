@@ -29,21 +29,20 @@ export class RegisterPage implements OnInit {
       name: 'Masculino'
     },
   ];
-
   estudiante: Estudiante = {
     id: 0,
-    Nombre:'' ,
+    Nombre:'',
     Apellido: '',
-    Genero:'' ,
-    Documento: '' ,
+    Genero:'',
+    Documento: '',
     GradoId: 0
   };
   estudiante1: Estudiante = {
     id: 0,
-    Nombre:'' ,
+    Nombre:'',
     Apellido: '',
-    Genero:'' ,
-    Documento: '' ,
+    Genero:'',
+    Documento: '',
     GradoId: 0
   };
   responsable: Responsable = {
@@ -92,7 +91,6 @@ export class RegisterPage implements OnInit {
         console.log('Holaaaa');
       }
     }
-
    logearse()
     {
       this.router.navigate(
@@ -102,7 +100,6 @@ export class RegisterPage implements OnInit {
         ]
       );
     }
-
     saveEstudiante() {
       delete this.estudiante.id;
       this.estudianteService.saveEstudiante(this.estudiante).subscribe(
