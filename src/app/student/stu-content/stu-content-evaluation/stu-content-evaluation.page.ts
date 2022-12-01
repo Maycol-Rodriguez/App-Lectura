@@ -2,11 +2,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
+import { Resolucion } from 'src/app/models/resolucion';
 import { DataService } from 'src/app/services/data.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
-import { CuestionarioService } from 'src/app/services/cuestionario.service';
 import { ResolucionService } from 'src/app/services/resolucion.service';
-import { Resolucion } from 'src/app/models/resolucion';
+import { CuestionarioService } from 'src/app/services/cuestionario.service';
 
 @Component({
   selector: 'app-stu-content-evaluation',
@@ -48,9 +48,7 @@ export class StuContentEvaluationPage implements OnInit {
     Pregunta: '',
     Respuesa1: '',
     Respuesa2: '',
-    Respuesa3: '',
-    Respuesa4: '',
-    Respuesa5: ''
+    Respuesa3: ''
   };
   formatopregunta = {
     id: 0,
@@ -103,8 +101,6 @@ export class StuContentEvaluationPage implements OnInit {
               arrayrespuestas.push(item.RespuestaCorrecta);
               arrayrespuestas.push(item.RespuestaIncorrecta1);
               arrayrespuestas.push(item.RespuestaIncorrecta2);
-              arrayrespuestas.push(item.RespuestaIncorrecta3);
-              arrayrespuestas.push(item.RespuestaIncorrecta4);
               arrayrespuestas.sort();
               cajasimple.push(arrayrespuestas);
               this.respuestasdesordenadas = cajasimple;
@@ -120,8 +116,6 @@ export class StuContentEvaluationPage implements OnInit {
               this.formatoconglomerado.Respuesa1 = this.respuestasdesordenadas[i][1];
               this.formatoconglomerado.Respuesa2 = this.respuestasdesordenadas[i][2];
               this.formatoconglomerado.Respuesa3 = this.respuestasdesordenadas[i][3];
-              this.formatoconglomerado.Respuesa4 = this.respuestasdesordenadas[i][4];
-              this.formatoconglomerado.Respuesa5 = this.respuestasdesordenadas[i][5];
               this.cuestionariofiltrado.push(this.formatoconglomerado);
             }
             console.log(this.cuestionariofiltrado);

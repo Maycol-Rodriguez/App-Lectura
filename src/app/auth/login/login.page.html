@@ -54,6 +54,13 @@ class="login-section ion-padding">
         [disabled]="(parametro !== undefined)? true:false">
         Registrarse
       </ion-button>
+      <ion-button
+        (click)="registrarsedoc()"
+        color="dark" size="large"
+        class="signup-button"
+        [disabled]="(parametro !== undefined)? true:false">
+        Registrarse Como Docente
+      </ion-button>
     </div>
   </div>
 </ion-content>
