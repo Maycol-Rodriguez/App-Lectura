@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { Libro } from 'src/app/models/libro';
@@ -68,7 +69,7 @@ export class StuBookUpdatePage implements OnInit {
     );
   }
   selectParrafo(dato) {
-    this.parrafoService.getParrafo(dato).suscribe(
+    this.parrafoService.getParrafo(dato).subscribe(
       resparrafito => {
         this.parrafo = resparrafito;
       }, err => {
@@ -77,7 +78,7 @@ export class StuBookUpdatePage implements OnInit {
     );
   }
   updateLibro() {
-    this.libroService.updateLibro(this.codigolibro, this.libro).suscribe(
+    this.libroService.updateLibro(this.codigolibro, this.libro).subscribe(
       reslibro => {
         this.mensajelibro = reslibro;
       }, err => {
@@ -86,7 +87,7 @@ export class StuBookUpdatePage implements OnInit {
     );
   }
   updateParrafo(dato) {
-    this.parrafoService.updateParrafo(dato, this.parrafo).suscribe(
+    this.parrafoService.updateParrafo(dato, this.parrafo).subscribe(
       resparrafo => {
         this.mensajeparrafo = resparrafo;
       }, err => {
@@ -103,7 +104,7 @@ export class StuBookUpdatePage implements OnInit {
   ngOnInit() {
     const parametro = '1';
     this.codigolibro = parametro;
-    this.libroService.getLibro(parametro).suscribe(
+    this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         if (reslibro !== null) {
           this.libro = reslibro;
