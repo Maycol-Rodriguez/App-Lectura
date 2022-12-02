@@ -5,7 +5,7 @@
   <div class="register-form ion-padding">
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese su nombre
         </ion-label>
         <ion-input [(ngModel)]="profesor.Nombre" name="Nombre" type="text" required autofocus tabindex="1">
@@ -14,7 +14,7 @@
     </div>
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese sus apellidos
         </ion-label>
         <ion-input name="Apellido" [(ngModel)]="profesor.Apellido" type="text" required tabindex="2"></ion-input>
@@ -22,7 +22,7 @@
     </div>
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese su DNI
         </ion-label>
         <ion-input name="Documento" [(ngModel)]="profesor.Documento" type="text" required tabindex="3"></ion-input>
@@ -42,7 +42,7 @@
     <ion-list class="grades">
       <ion-item>
         <ion-select (change)="onOptionsSelectGrado($event)" [(ngModel)]="profesor.GradoId" name="GradoId" required
-          tabindex="5" color="dark" position="floating" interface="popover" placeholder="Seleccione su grado">
+          tabindex="5" color="light" position="floating" interface="popover" placeholder="Seleccione su grado">
           <ion-select-option class="list" [value]="item.id" *ngFor="let item of grados">
             {{item.Nombre}}
           </ion-select-option>
@@ -51,15 +51,15 @@
     </ion-list>
     <br>
     <div class="action-buttons ion-padding">
-      <!-- <ion-button (click)="saveprofesor()" size="large" color="dark" class="the-button"
+      <!-- <ion-button (click)="saveprofesor()" size="large" color="light" class="the-button"
       [disabled]="(profesor.Nombre === '' || profesor.Apellido === '' || profesor.Documento === '' || profesor.Genero === '' || profesor.GradoId === 0)? true:false">
         Registrar
       </ion-button> -->
-      <ion-button (click)="saveProfesor()" size="large" color="dark" class="the-button"
+      <ion-button (click)="saveProfesor()" size="large" color="light" class="the-button"
         [disabled]="(profesor.Nombre === '' || profesor.Apellido === '' || profesor.Documento === '' || profesor.Genero === '' || profesor.GradoId === 0)? true:false">
         Registrar Docente
       </ion-button>
-      <ion-button (click)="logearse()" size="large" color="dark" class="the-button"
+      <ion-button (click)="logearse()" size="large" color="light" class="the-button"
         [disabled]="(profesor.Nombre !== '' || profesor.Apellido !== '' || profesor.Documento !== '' || profesor.Genero !== '' || profesor.GradoId !== 0)? true:false">
         Regresar
       </ion-button>

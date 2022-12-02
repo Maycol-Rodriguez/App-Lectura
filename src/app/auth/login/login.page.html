@@ -34,6 +34,7 @@ class="login-section ion-padding">
           [(ngModel)]="parametro"
           required autofocus
           tabindex="1" type="text"
+          class="color-input"
           minlength="8"
           maxlength="11"
           onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></ion-input>
@@ -56,8 +57,9 @@ class="login-section ion-padding">
       </ion-button>
       <ion-button
         (click)="registrarsedoc()"
-        color="dark" size="large"
-        class="signup-button"
+        color="light" size="large"
+        slot="start"
+        class="signup-button ion-text-wrap"
         [disabled]="(parametro !== undefined)? true:false">
         Registrarse Como Docente
       </ion-button>
