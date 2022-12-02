@@ -80,7 +80,7 @@ export class StuContentEvaluationPage implements OnInit {
   ngOnInit() {
     const parametro = JSON.parse(localStorage.getItem('ellibro'));
     const parestudiante = JSON.parse(localStorage.getItem('usuario'));
-    this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+    this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
       resprogreso => {
         this.progreso = resprogreso;
         this.codigoprogreso = this.progreso.id;

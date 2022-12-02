@@ -62,6 +62,8 @@ export class StuContentReadingPage implements OnInit {
   };
   parrafos: any = [];
   elurl;
+  elurlvideo;
+  elurlaudio;
   slideOpts = {
     slidesPerView: 1,
     centeredSlides: true,
@@ -97,6 +99,10 @@ export class StuContentReadingPage implements OnInit {
     this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         this.libro = reslibro;
+        console.log(this.libro);
+        const par = this.libro.Video;
+        this.elurlvideo = this.sanitizer.bypassSecurityTrustResourceUrl(par);
+        // this.elurlaudio = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Audio);
         this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
           rescuestionarios => {
             if (Object.entries(rescuestionarios).length > 0) {
@@ -109,22 +115,25 @@ export class StuContentReadingPage implements OnInit {
             console.log('Error get cuestionarios by libro');
           }
         );
-        this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+        this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
+              console.log(this.progreso);
             } else {
               this.progresocreate.LibroId = parametro;
-              this.progresocreate.EstudianteId = parestudiante;
-              this.progresocreate.Progreso = '10';
-              // this.progresoService.saveProgreso(this.progresocreate).subscribe(
-              //   resnewprogreso => {
-              //     this.progreso = resnewprogreso;
-              //     this.estado = 'iniciado';
-              //   }, err => {
-              //     console.log('Error create progreso');
-              //   }
-              // );
+              this.progresocreate.EstudianteId = parestudiante.id;
+              this.progresocreate.Progreso = '0';
+              console.log(this.progreso);
+              this.progresoService.saveProgreso(this.progresocreate).subscribe(
+                resnewprogreso => {
+                  this.progreso = resnewprogreso;
+                  this.estado = 'iniciado';
+                  window.location.reload();
+                }, err => {
+                  console.log('Error create progreso');
+                }
+              );
             }
           }, err => {
             console.log('Error get proceso by libro y alumno');
@@ -134,6 +143,7 @@ export class StuContentReadingPage implements OnInit {
         this.parrafoService.getsearchParrafobylibro(parametro).subscribe(
           resparrafos => {
             this.parrafos = resparrafos;
+            console.log(this.parrafos);
           }, err => {
             console.log('Error get parrafos by libro id');
           }
@@ -142,7 +152,6 @@ export class StuContentReadingPage implements OnInit {
         console.log('Error get libro by id');
       }
     );
-    this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
