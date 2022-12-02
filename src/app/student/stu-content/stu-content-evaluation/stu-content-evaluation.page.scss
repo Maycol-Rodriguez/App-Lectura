@@ -5,9 +5,9 @@ ion-title.title-large {
   
   ion-title {
     height: auto;
-    --color: rgb(39, 42, 43);
+    --color: white;
     font-weight:bold;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
 
   }
@@ -22,6 +22,7 @@ ion-title.title-large {
     min-height: 600px;
     max-height: 2000px;
     border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
     margin-top: 10px;
     padding-top: 10px;
 
@@ -29,7 +30,7 @@ ion-title.title-large {
         h1 {
             font-weight:lighter;
             font-size: 20px;
-            color: #3a9292;
+            color: #23A0AD;
             font-style: italic;
           }
     }
@@ -70,7 +71,7 @@ ion-radio {
     --inner-border-radius: 4px;
   
     --color: #ddd;
-    --color-checked: #6815ec;
+    --color-checked: #23A0AD;
 
 
   }
@@ -85,7 +86,7 @@ ion-radio {
   }
   
   .radio-checked.ios {
-    border-color: #6815ec;
+    border-color: #23A0AD;
   }
 
   

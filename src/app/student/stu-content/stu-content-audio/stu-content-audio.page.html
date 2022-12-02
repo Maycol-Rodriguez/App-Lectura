@@ -7,92 +7,166 @@
       <ion-row>
         <ion-col size="12">
           <div class="col_div col_div_titulo">
-            <h2>
-              Titulo
-            </h2>
+            <h1>
+              {{libro.Titulo || 'Tierra de gatos'}}
+            </h1>
           </div>
         </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_lectura">
-            <img src="../../../../assets/images/EJ.jpeg" alt="Imagen de portada" class="w-75">
+            <img class="size-portada" src="../../../../assets/images/EJ.jpeg" alt="Imagen de portada">
           </div>
         </ion-col>
         <ion-col size="12">
-          <div class="col_div col_div_audio">
-            <audio controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
+          <div class="content-center">
+            <audio style="margin:auto" controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
             <!-- <h2>
               Audio 
             </h2> -->
           </div>
-        </ion-col>
+      </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_reaccion">
-            <h2>
-              Reaccion
-            </h2>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="2">
+                  <div class="elegible">
+                    <img *ngIf="progreso.Reaccion !== 'like'"
+                    src="../../../../assets/reacciones/like.png"
+                    alt="me gusta" srcset="" (click)="elegir('like')">
+                  </div>
+                  <div class="elegido">
+                    <img *ngIf="progreso.Reaccion === 'like'"
+                    src="../../../../assets/reacciones/like-active.png"
+                    alt="me gusta activado" srcset="" (click)="deselegir()">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('smile')">
+                    <img *ngIf="progreso.Reaccion !== 'smile'"
+                    src="../../../../assets/reacciones/smile.png"
+                    alt="me alegra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'smile'"
+                    src="../../../../assets/reacciones/smile-active.png"
+                    alt="me alegra activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('sad')">
+                    <img *ngIf="progreso.Reaccion !== 'sad'"
+                    src="../../../../assets/reacciones/sad.png"
+                    alt="me entristece" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'sad'"
+                    src="../../../../assets/reacciones/sad-active.png"
+                    alt="me entristece activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('angry')">
+                    <img *ngIf="progreso.Reaccion !== 'angry'"
+                    src="../../../../assets/reacciones/angry.png"
+                    alt="me enoja" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'angry'"
+                    src="../../../../assets/reacciones/angry-active.png"
+                    alt="me enoja activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('confused')">
+                    <img *ngIf="progreso.Reaccion !== 'confused'"
+                    src="../../../../assets/reacciones/confused.png"
+                    alt="me confunde" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'confused'"
+                    src="../../../../assets/reacciones/confused-active.png"
+                    alt="me confunde activado" srcset="">
+                  </div>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="elegible" (click)="elegir('amazed')">
+                    <img *ngIf="progreso.Reaccion !== 'amazed'"
+                    src="../../../../assets/reacciones/amazed.png"
+                    alt="me asombra" srcset="">
+                  </div>
+                  <div class="elegido" (click)="deselegir()">
+                    <img *ngIf="progreso.Reaccion === 'amazed'"
+                    src="../../../../assets/reacciones/amazed-active.png"
+                    alt="me asombra activado" srcset="">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </div>
         </ion-col>
         <ion-col size="12">
-          <div class="col_div col_div_comentario">
-            <h2>
-              Comentario
-            </h2>
+          <div class="col_div col_div_formulario">
+            <ion-list>
+              <ion-item-group>
+                <ion-item-divider>
+                  <ion-label>
+                    Comentario:
+                  </ion-label>
+                </ion-item-divider>
+                <ion-item class="no-border">
+                  <ion-textarea
+                    type="text"
+                    name="Comentario"
+                    required
+                    auto-focus
+                    tabindex="1"
+                    minlength="10"
+                    [(ngModel)]="progreso.Comentario">
+                  </ion-textarea>
+                </ion-item>
+              </ion-item-group>
+              <ion-item-group>
+                <ion-item-divider>
+                  <ion-label>
+                    Final Alternativo:
+                  </ion-label>
+                </ion-item-divider>
+                <ion-item class="border-bottom">
+                  <ion-textarea
+                    type="text"
+                    name="FinalAlternativo"
+                    required
+                    auto-focus
+                    tabindex="1"
+                    minlength="20"
+                    [(ngModel)]="progreso.FinalAlternativo">
+                  </ion-textarea>
+                </ion-item>
+              </ion-item-group>
+            </ion-list>
           </div>
         </ion-col>
-        <ion-col size="12">
-          <div class="col_div col_div_final_alternativo">
-            <h2>
-              Final Alternativo
-            </h2>
+        <ion-col size="12" *ngIf="haycuestionario">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="pruebacuestionario()"
+            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+                Cuestionario
+            </ion-button>
           </div>
         </ion-col>
-        <ion-col size="12">
-          <div class="col_div col_div_final_siguiente">
-            <h2>
-              Siguiente
-            </h2>
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="col_div">
-            <!-- <ion-row>
-              <ion-col size="5">
-                <img src="../../../../assets/iconos/book.png" alt="libro">
-              </ion-col>
-              <ion-col size="7">
-                <ion-label>
-                  Lectura Textual
-                </ion-label>
-              </ion-col>
-            </ion-row> -->
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="col_div">
-            <!-- <ion-row>
-              <ion-col size="5">
-                <img src="../../../../assets/iconos/video-book.png" alt="libro">
-              </ion-col>
-              <ion-col size="7">
-                <ion-label>
-                  Mediante Video
-                </ion-label>
-              </ion-col>
-            </ion-row> -->
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="col_div">
-            <!-- <ion-row>
-              <ion-col size="5">
-                <img src="../../../../assets/iconos/audio-book.png" alt="libro">
-              </ion-col>
-              <ion-col size="7">
-                <ion-label>
-                  Mediante Audio
-                </ion-label>
-              </ion-col>
-            </ion-row> -->
+        <ion-col size="12" *ngIf="!haycuestionario">
+          <div
+          (click)="pruebafinalizar()"
+          class="col_div col_div_final_finalizar">
+          <ion-button
+            shape="round"
+            (click)="pruebacuestionario()"
+            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '')? true:false">
+                Finalizar
+            </ion-button>
           </div>
         </ion-col>
       </ion-row>

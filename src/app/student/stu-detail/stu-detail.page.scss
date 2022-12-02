@@ -1,8 +1,15 @@
+.title-name{
+  text-align: center;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #23A0AD;
+}
+
 .title {
   text-align: center;
   font-size: 30px;
   padding: 10px 0;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .ion-main{
@@ -17,17 +24,18 @@
 
 .card {
   padding: 10px;
-  background-color: #8179dd;
-  color: #FFFFFF;
+  background-color: #ffffff;
+  color: #23A0AD;
 }
 
 .button-io {
   border-radius: 8px;
-  background-color: #594fc7;
+  background-color: #ffffff;
   height: 50px;
   margin: 30px 10px 0 10px;
   font-size: 20px;
   overflow: hidden;
+  color: #23A0AD;
 }
 
 .card-img {

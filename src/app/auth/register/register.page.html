@@ -5,7 +5,7 @@
   <div class="register-form ion-padding">
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese su nombre
         </ion-label>
         <ion-input [(ngModel)]="estudiante.Nombre" name="Nombre" type="text" required autofocus tabindex="1">
@@ -14,7 +14,7 @@
     </div>
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese sus apellidos
         </ion-label>
         <ion-input name="Apellido" [(ngModel)]="estudiante.Apellido" type="text" required tabindex="2"></ion-input>
@@ -22,7 +22,7 @@
     </div>
     <div class="form-input">
       <ion-item>
-        <ion-label color="dark" position="floating">
+        <ion-label color="light" position="floating">
           Ingrese su DNI
         </ion-label>
         <ion-input name="Documento" [(ngModel)]="estudiante.Documento" type="text" required tabindex="3"></ion-input>
@@ -42,7 +42,7 @@
     <ion-list class="grades">
       <ion-item>
         <ion-select (change)="onOptionsSelectGrado($event)" [(ngModel)]="estudiante.GradoId" name="GradoId" required
-          tabindex="5" color="dark" position="floating" interface="popover" placeholder="Seleccione su grado">
+          tabindex="5" color="light" position="floating" interface="popover" placeholder="Seleccione su grado">
           <ion-select-option class="list" [value]="item.id" *ngFor="let item of grados">
             {{item.Nombre}}
           </ion-select-option>
@@ -55,18 +55,18 @@
       [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
         Registrar
       </ion-button> -->
-      <ion-button size="large" color="dark" class="the-button"
+      <ion-button size="large" color="light" class="the-button"
         [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' || estudiante.GradoId === 0)? true:false">
         Registrar
       </ion-button>
-      <ion-button id="open-modal" expand="block" size="large" color="dark" class="the-button">
+      <ion-button id="open-modal" expand="block" size="large" color="light" class="the-button">
         Agregar Responsable
       </ion-button>
       <!-- <ion-button  id="open-modal" expand="block" size="large" color="dark" class="the-button"
       [disabled]="(estudiante.Nombre === '' || estudiante.Apellido === '' || estudiante.Documento === '' || estudiante.Genero === '' )? true:false">
         Agregar Responsable
       </ion-button> -->
-      <ion-button (click)="logearse()" size="large" color="dark" class="the-button"
+      <ion-button (click)="logearse()" size="large" color="light" class="the-button"
         [disabled]="(estudiante.Nombre !== '' || estudiante.Apellido !== '' || estudiante.Documento !== '' || estudiante.Genero !== '' || estudiante.GradoId !== 0)? true:false">
         Regresar
       </ion-button>
@@ -116,7 +116,7 @@
         </div>
         <ion-list class="selected">
           <ion-item>
-            <ion-select (change)="onOptionsSelectGeneroResponsable($event)" [(ngModel)]="responsable.Genero" name="Genero" required
+            <ion-select (change)="onOptionsSelectGeneroResponsable($event)" class="c-white" [(ngModel)]="responsable.Genero" name="Genero" required
               tabindex="4" interface="popover" placeholder="Seleccione su genero">
               <ion-select-option class="list" [value]="item.name" *ngFor="let item of generos">
                 {{item.name}}
@@ -127,7 +127,7 @@
         <br>
         <ion-list class="grades">
           <ion-item>
-            <ion-select (change)="onOptionsSelectParentesco($event)" [(ngModel)]="relacion.Parentesco" name="Parentesco" required
+            <ion-select (change)="onOptionsSelectParentesco($event)" class="c-white" [(ngModel)]="relacion.Parentesco" name="Parentesco" required
               tabindex="5" color="dark" position="floating" interface="popover" placeholder="Seleccione su grado">
               <ion-select-option class="list" [value]="item.id" *ngFor="let item of grados">
                 {{item.Nombre}}
