@@ -48,14 +48,14 @@ class="login-section ion-padding">
         [disabled]="(parametro === undefined)? true:false">
         Ingresar
       </ion-button>
-      <ion-button
+      <ion-button *ngIf="this.eleccion !== 'profesor'"
         (click)="registrarse()"
         color="light" size="large"
         class="signup-button"
         [disabled]="(parametro !== undefined)? true:false">
         Registrarse
       </ion-button>
-      <ion-button
+      <ion-button *ngIf="this.eleccion === 'profesor'"
         (click)="registrarsedoc()"
         color="light" size="large"
         slot="start"
