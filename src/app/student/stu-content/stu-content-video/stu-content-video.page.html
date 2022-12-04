@@ -3,38 +3,28 @@
     <ion-icon name="notifications-outline"></ion-icon>
   </div>
   <div class="main_content_div animated bounceInUp">
-    <ion-grid fixed class="grid">
+    <ion-grid fixed>
       <ion-row>
         <ion-col size="12">
           <div class="col_div col_div_titulo">
             <h1>
-              {{'Los niños soñadores'}}
+              {{libro.Titulo}}
             </h1>
           </div>
         </ion-col>
         <ion-col size="12" >
           <div class="col_div col_div_video">
-            <iframe [src]="elurl" frameborder="0"
-              allowfullscreen></iframe>
+            <iframe [src]="elurl" frameborder="0" height="100%" width="100%"
+              ></iframe>
           </div>
         </ion-col>
-        <!-- <ion-col size="12">
-          <div class="col_div col_div_video">
-            
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="col_div col_div_audio">
-            <audio controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
-          </div>
-        </ion-col> -->
         <ion-col size="12">
           <div class="col_div col_div_reaccion">
             <ion-grid fixed>
               <ion-row>
                 <ion-col size="2">
                   <div class="elegible">
-                    <img *ngIf="progreso.Reaccion === '' || progreso.Reaccion !== 'like'"
+                    <img *ngIf="progreso.Reaccion !== 'like'"
                     src="../../../../assets/reacciones/like.png"
                     alt="me gusta" srcset="" (click)="elegir('like')">
                   </div>
