@@ -1,24 +1,58 @@
-.title {
-  color: #ffffff;
-  text-align: center;
-  margin: 60px auto 20px auto;
-}
-.card-container {
-  --background: #ffffff;
-  padding: 15px;
-  margin: 20px;
-  color: #08A6AC;
-}
 section {
   margin: 10px;
 }
-
+.title {
+  color: #ffffff;
+  margin: 60px auto 20px auto;
+  text-align: center;
+}
+.card-container {
+  --background: #ffffff;
+  border-radius: 5px;
+  color: #08A6AC;
+  margin: 20px;
+  padding: 15px;
+}
+.card {
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
 .button-io {
-  border-radius: 8px;
   background-color: #b7ede7;
+  border-radius: 8px;
+  color: #08A6AC;
+  font-size: 12px;
   height: 60px;
   margin: 30px 20px 0 20px;
-  font-size: 12px;
-  overflow: hidden;
-  color: #08A6AC;
+}
+ion-list {
+  background-color: transparent;
+  color: black;
+  margin: 20px;
+}
+ion-item {
+  --background: #ffffff;
+  color: black;
+}
+.date{
+  margin: 0 30px;
+  display: flex;
+  justify-content: space-around;
+}
+.date input {
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 13px;
+  width: 120px;
+  height: 40px;
+  text-transform: uppercase;
+}
+.date label {
+  color: #000000;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }

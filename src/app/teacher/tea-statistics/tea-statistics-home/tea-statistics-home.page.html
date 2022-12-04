@@ -1,11 +1,35 @@
 <div class="body">
+
   <section>
-    <h2 class="title">Grado 1</h2>
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="Seleccione grado">
+          <ion-select-option value="1">1er año</ion-select-option>
+          <ion-select-option value="2">2do año</ion-select-option>
+          <ion-select-option value="3">3er año</ion-select-option>
+          <ion-select-option value="4">4to año</ion-select-option>
+          <ion-select-option value="5">5to año</ion-select-option>
+          <ion-select-option value="6">6to año</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <section class="date">
+    <div>
+      <label>desde</label>
+      <input type="date" >
+    </div>
+    <div>
+      <label>hasta</label>
+      <input type="date" >
+    </div>
+  </section>
+
+  <section>
     <div>
       <ion-card class="card-container">
-        <ion-card-title class="card"
-          >15 libros leidos la ultima semana</ion-card-title
-        >
+        <ion-card-title class="card">15 libros leidos la ultima semana</ion-card-title>
       </ion-card>
       <ion-card class="card-container">
         <ion-card-title class="card">2 audiolibros escuchados</ion-card-title>
@@ -48,7 +72,6 @@
         (click)="goToHome()"
         >Nombre de Alumno 4 - DNI</ion-button
       >
-
     </div>
   </section>
 </div>
