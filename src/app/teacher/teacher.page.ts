@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { ProfesorDetail } from '../models/profesor';
 
 @Component({
   selector: 'app-teacher',
@@ -8,10 +9,22 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./teacher.page.scss'],
 })
 export class TeacherPage implements OnInit {
+  profesor: ProfesorDetail = {
+    id: 0,
+    Nombre:'' ,
+    Apellido: '',
+    Genero:'' ,
+    Documento: '',
+    GradoId: 0,
+    grado: {
+      id: 0,
+      Nombre: ''
+    }
+  };
   genero = false;
   clientetipo;
   cliente;
-  public studentPages = [
+  public teacherPages = [
     { title: 'Inicio', url: '/teacher/tea-home', icon: 'home' },
     { title: 'Agregar Libro o Cuento', url: '/teacher/tea-book', icon: 'library' },
     { title: 'Estadisticas', url: '/teacher/tea-statistics', icon: 'person' }
@@ -26,8 +39,14 @@ export class TeacherPage implements OnInit {
     console.log(JSON.parse(localStorage.getItem('usuario')));
     this.cliente = JSON.parse(localStorage.getItem('usuario'));
     this.clientetipo = JSON.parse(localStorage.getItem('tipoclient'));
+    this.profesor = this.cliente;
     console.log(this.cliente);
     console.log(this.clientetipo);
+    if (this.profesor.Genero === 'Femenino') {
+      this.genero = true;
+    } else {
+      this.genero = false;
+    }
     if (this.clientetipo === 'estudiante') {
       console.log('el usuario no es profesor, es estudiante; redirigiendolo');
       this.router.navigate(

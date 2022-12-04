@@ -3,28 +3,28 @@
     <h2 class="title">Cuentos revisados</h2>
     <div>
       <ion-card class="card-container">
-        <ion-card-title class="card"
-          >2 libros leidos el ultimo mes</ion-card-title
-        >
+        <ion-card-title class="card">2 cuentos leidos</ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card">1 en progreso actualmente</ion-card-title>
+        <ion-card-title class="card">3 videocuentos vistos</ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card"
-          >80% calificacion total de encuestas</ion-card-title
-        >
+        <ion-card-title class="card">3 audiocuentos escuchados</ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card">3 videolibros vistos</ion-card-title>
+        <ion-card-title class="card">1 cuento en progreso actualmente</ion-card-title>
       </ion-card>
+      <ion-card class="card-container">
+        <ion-card-title class="card">80% de promedio en encuestas</ion-card-title>
+      </ion-card>
+      
     </div>
   </section>
 
   <section>
     <h2 class="title">Historial</h2>
     <div>
-      <ion-card class="card-history">
+      <ion-card class="card-history" (click)="goToCuento()">
         <ion-img
           src="../../../../assets/images/cuento-active.png"
         ></ion-img>
