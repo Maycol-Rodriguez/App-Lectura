@@ -46,9 +46,9 @@ export class StuContentEvaluationPage implements OnInit {
   formatoconglomerado = {
     id: 0,
     Pregunta: '',
-    Respuesa1: '',
-    Respuesa2: '',
-    Respuesa3: ''
+    Respuesta1: '',
+    Respuesta2: '',
+    Respuesta3: ''
   };
   formatopregunta = {
     id: 0,
@@ -113,9 +113,9 @@ export class StuContentEvaluationPage implements OnInit {
               console.log(this.respuestasdesordenadas[i]);
               this.formatoconglomerado.id = this.preguntas[i].id;
               this.formatoconglomerado.Pregunta = this.preguntas[i].Pregunta;
-              this.formatoconglomerado.Respuesa1 = this.respuestasdesordenadas[i][1];
-              this.formatoconglomerado.Respuesa2 = this.respuestasdesordenadas[i][2];
-              this.formatoconglomerado.Respuesa3 = this.respuestasdesordenadas[i][3];
+              this.formatoconglomerado.Respuesta1 = this.respuestasdesordenadas[i][0];
+              this.formatoconglomerado.Respuesta2 = this.respuestasdesordenadas[i][1];
+              this.formatoconglomerado.Respuesta3 = this.respuestasdesordenadas[i][2];
               this.cuestionariofiltrado.push(this.formatoconglomerado);
             }
             console.log(this.cuestionariofiltrado);
