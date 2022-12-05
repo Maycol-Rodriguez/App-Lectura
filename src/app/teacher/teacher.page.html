@@ -25,7 +25,7 @@
       </ion-menu-toggle>
       <br>
       <br>
-      <ion-item routerDirection="root" lines="none" detail="false">
+      <ion-item (click)="logout()" routerDirection="root" lines="none" detail="false">
         <ion-icon slot="start" [ios]="'log-out' + '-outline'" [md]="'log-out' + '-sharp'"></ion-icon>
         <ion-label>
           Salir

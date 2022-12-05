@@ -1,7 +1,7 @@
  /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Libro } from 'src/app/models/libro';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
@@ -17,6 +17,8 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
   styleUrls: ['./stu-content-reading.page.scss'],
 })
 export class StuContentReadingPage implements OnInit {
+  @ViewChild('elvideo') video: ElementRef;
+  @ViewChild('elaudio') audio: ElementRef;
   libro: Libro = {
     id: 0,
     Titulo: '',
@@ -91,7 +93,24 @@ export class StuContentReadingPage implements OnInit {
     private progresoService: ProgresoService,
     private cuestionarioService: CuestionarioService,
   ) { }
-
+  validar() {
+    const elvideo = this.video.nativeElement;
+    const eltodo = elvideo.contentWindow.parent.document.body;
+    const laclase = eltodo.querySelector('#video');
+    console.log(laclase.ended);
+    // class="video-stream html5-main-video"
+    // const classe = elvideo.querySelector();
+    // console.log(elvideo.contentWindow);
+    // console.log(elvideo.contentWindow.document.body);
+    // console.log(elvideo.contentWindow.parent.document);
+    // console.log(elvideo.contentWindow.parent.document.body);
+    // console.log(elvideo.contentWindow.parent.document.body.iframe);
+    // if (elvideo.ended) {
+    //   console.log('se termino el video');
+    // } else {
+    //   console.log('no se termino el video');
+    // }
+  }
   ngOnInit() {
     const parametro = JSON.parse(localStorage.getItem('ellibro'));
     const parestudiante = JSON.parse(localStorage.getItem('usuario'));
@@ -100,8 +119,9 @@ export class StuContentReadingPage implements OnInit {
       reslibro => {
         this.libro = reslibro;
         console.log(this.libro);
-        const par = this.libro.Video;
+        const par = this.libro.Video + '?autoplay=1&controls=0&rel=0';
         this.elurlvideo = this.sanitizer.bypassSecurityTrustResourceUrl(par);
+
         // this.elurlaudio = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Audio);
         this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
           rescuestionarios => {
