@@ -46,12 +46,12 @@
             </ion-slides>
           </div>
         </ion-col>
-        <ion-col size="12">
+        <!-- <ion-col size="12">
           <div class="col_div col_div_video">
-            <iframe [src]="elurlvideo" frameborder="0" allowfullscreen></iframe>
+            <iframe #elvideo id="video" [src]="elurlvideo" frameborder="0" allowfullscreen></iframe>
           </div>
         </ion-col>
-        <br>
+        <br> -->
         <!-- <ion-col size="12">
           <div class="col_div col_div_audio">
             <iframe [src]="elurlaudio" frameborder="0" allowfullscreen></iframe>
@@ -179,7 +179,16 @@
             </ion-list>
           </div>
         </ion-col>
-        <ion-col size="12">
+        <!-- <ion-col size="12">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="validar()">
+                Termino video
+            </ion-button>
+          </div>
+        </ion-col> -->
+        <!-- <ion-col size="12">
           <div class="col_div col_div_final_cuestionario">
             <ion-button
             shape="round"
@@ -196,13 +205,12 @@
                 Quedarse aqui
             </ion-button>
           </div>
-        </ion-col>
-        <!-- <ion-col size="12" *ngIf="haycuestionario">
+        </ion-col> -->
+        <ion-col size="12" *ngIf="haycuestionario">
           <div class="col_div col_div_final_cuestionario">
             <ion-button
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+            (click)="pruebacuestionario()">
                 Cuestionario
             </ion-button>
           </div>
@@ -213,12 +221,11 @@
           class="col_div col_div_final_finalizar">
           <ion-button
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '')? true:false">
+            (click)="pruebacuestionario()">
                 Finalizar
             </ion-button>
           </div>
-        </ion-col> -->
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>

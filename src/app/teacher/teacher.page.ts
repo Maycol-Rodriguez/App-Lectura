@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
 import { ProfesorDetail } from '../models/profesor';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-teacher',
@@ -69,7 +70,8 @@ export class TeacherPage implements OnInit {
     this.authenticationService.loggout();
     this.router.navigate(
       [
-        'auth'
+        'auth',
+        'login'
       ]
     );
   }
