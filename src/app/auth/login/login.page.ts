@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   responsable: Responsable = {
@@ -38,6 +39,7 @@ export class LoginPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   tipos = [

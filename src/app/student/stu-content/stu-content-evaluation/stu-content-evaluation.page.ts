@@ -43,13 +43,6 @@ export class StuContentEvaluationPage implements OnInit {
     Correcto: '',
     ProgresoId: 0
   };
-  formatoconglomerado = {
-    id: 0,
-    Pregunta: '',
-    Respuesta1: '',
-    Respuesta2: '',
-    Respuesta3: ''
-  };
   formatopregunta = {
     id: 0,
     Pregunta: ''
@@ -90,33 +83,49 @@ export class StuContentEvaluationPage implements OnInit {
             this.cuestionarios = rescuestionarios;
             this.numeropreguntas = this.cuestionarios.length;
             this.notaporpregunta = 20 / this.numeropreguntas;
-            for (const item of this.cuestionarios) {
+            const elarray: any = this.cuestionarios;
+            const array1: any = [];
+            for (const item of elarray) {
+              // eslint-disable-next-line prefer-const
+              let formatodepregunta = {
+                id: 0,
+                pregunta: ''
+              };
               // separamos la pregunta de sus respuestas
-              this.formatopregunta.id = item.id;
-              this.formatopregunta.Pregunta = item.Pregunta;
-              this.preguntas.push(this.formatopregunta);
+              formatodepregunta.id = item.id;
+              formatodepregunta.pregunta = item.Pregunta;
+              array1.push(formatodepregunta);
+              this.preguntas = array1;
+              // eslint-disable-next-line prefer-const
+              let arrayrespuestas: any = [];
+              // eslint-disable-next-line prefer-const
+              let cajasimple: any = [];
               // desordenamos las respuestas
-              const cajasimple = [];
-              const arrayrespuestas = [];
               arrayrespuestas.push(item.RespuestaCorrecta);
               arrayrespuestas.push(item.RespuestaIncorrecta1);
               arrayrespuestas.push(item.RespuestaIncorrecta2);
               arrayrespuestas.sort();
               cajasimple.push(arrayrespuestas);
-              this.respuestasdesordenadas = cajasimple;
+              this.respuestasdesordenadas.push(cajasimple);
             }
-            console.log(this.preguntas);
-            console.log(this.respuestasdesordenadas);
+            // console.log(this.preguntas);
+            // console.log(this.respuestasdesordenadas);
             // guardamos todo orientado a objetos para no complicarnos
             for (let i = 0; i < this.numeropreguntas; i++) {
-              console.log(this.preguntas[i]);
-              console.log(this.respuestasdesordenadas[i]);
-              this.formatoconglomerado.id = this.preguntas[i].id;
-              this.formatoconglomerado.Pregunta = this.preguntas[i].Pregunta;
-              this.formatoconglomerado.Respuesta1 = this.respuestasdesordenadas[i][0];
-              this.formatoconglomerado.Respuesta2 = this.respuestasdesordenadas[i][1];
-              this.formatoconglomerado.Respuesta3 = this.respuestasdesordenadas[i][2];
-              this.cuestionariofiltrado.push(this.formatoconglomerado);
+              // eslint-disable-next-line prefer-const
+              let formatoconglomerado = {
+                id: 0,
+                Pregunta: '',
+                Respuesta1: '',
+                Respuesta2: '',
+                Respuesta3: ''
+              };
+              formatoconglomerado.id = this.preguntas[i].id;
+              formatoconglomerado.Pregunta = this.preguntas[i].pregunta;
+              formatoconglomerado.Respuesta1 = this.respuestasdesordenadas[i][0][0];
+              formatoconglomerado.Respuesta2 = this.respuestasdesordenadas[i][0][1];
+              formatoconglomerado.Respuesta3 = this.respuestasdesordenadas[i][0][2];
+              this.cuestionariofiltrado.push(formatoconglomerado);
             }
             console.log(this.cuestionariofiltrado);
           }, err => {

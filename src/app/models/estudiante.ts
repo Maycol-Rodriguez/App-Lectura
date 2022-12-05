@@ -5,6 +5,7 @@ export interface Estudiante {
   Apellido?: string;
   Genero?: string;
   Documento?: string;
+  Seccion?: string;
   GradoId?: number;
 }
 
@@ -14,6 +15,7 @@ export interface EstudianteDetail {
   Apellido?: string;
   Genero?: string;
   Documento?: string;
+  Seccion?: string;
   GradoId?: number;
   grado?: {
     id?: number;

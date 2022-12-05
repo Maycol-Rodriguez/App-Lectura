@@ -16,6 +16,7 @@ export class TeacherPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
+    Seccion: '',
     GradoId: 0,
     grado: {
       id: 0,

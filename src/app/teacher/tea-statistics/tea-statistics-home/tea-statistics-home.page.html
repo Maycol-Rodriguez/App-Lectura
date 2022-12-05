@@ -44,33 +44,14 @@
     <h2 class="title">Alumnos</h2>
 
     <div>
-      <ion-button
+      <ion-button *ngFor="let item of estudiantes"
         class="button button-io"
         expand="block"
         color="ion-color-tertiary-shade"
         (click)="goToStudent()"
-        >Nombre de Alumno 1 - DNI</ion-button
-      >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToStudent()"
-        >Nombre de Alumno 2 - DNI</ion-button
-      >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToStudent()"
-        >Nombre de Alumno 3 - DNI</ion-button
-      >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToStudent()"
-        >Nombre de Alumno 4 - DNI</ion-button
+        > {{item.Nombre + ' ' + item.Apellido}} -
+        {{item.Documento}}
+        </ion-button
       >
     </div>
   </section>
