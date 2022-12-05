@@ -62,6 +62,7 @@ export class StudentPage implements OnInit {
         ]
       );
     }
+    
   }
   logout() {
     this.authenticationService.loggout();
