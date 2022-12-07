@@ -8,7 +8,7 @@
 <div class="main_content_div">
   <ion-grid fixed>
     <ion-row>
-      <!-- <ion-col size="12" *ngFor="let item of cuestionariofiltrado">
+       <ion-col size="12" *ngFor="let item of cuestionariofiltrado">
         <div class="col_div col_div_pregunta">
           <h2>
             {{item.Pregunta}}
@@ -19,52 +19,20 @@
           <ion-radio-group>
             <ion-item>
               <ion-label>
-                {{item.Respuesa1}}
+                {{item.Respuesta1}}
               </ion-label>
               <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
             </ion-item>
             <ion-item>
               <ion-label>
-                {{item.Respuesa2}}
+                {{item.Respuesta2}}
               </ion-label>
               <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
             </ion-item>
             <ion-item>
               <ion-label>
-                {{item.Respuesa3}}
+                {{item.Respuesta3}}
               </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-            </ion-radio-group>
-        </ion-list>
-      </ion-col> -->
-      <ion-col size="12">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            ¿Cuál es el mensaje de la lectura?
-          </h2>
-        </div>
-        <br>
-        <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
               <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
             </ion-item>
             </ion-radio-group>
@@ -72,4 +40,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
 </div>

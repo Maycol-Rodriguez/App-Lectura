@@ -18,6 +18,7 @@ export class RegisterTeacherPage implements OnInit {
     Apellido: '',
     Genero:'',
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   profesor1: Profesor = {
@@ -26,6 +27,7 @@ export class RegisterTeacherPage implements OnInit {
     Apellido: '',
     Genero:'',
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   generos= [

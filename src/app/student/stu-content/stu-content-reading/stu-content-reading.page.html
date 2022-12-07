@@ -8,150 +8,53 @@
         <ion-col size="12">
           <div class="col_div col_div_titulo">
             <h1>
-              {{libro.Titulo || 'La liebre y la tortuga'}}
+              {{libro.Titulo}}
             </h1>
           </div>
         </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_lectura">
             <ion-slides pager="true" [options]="slideOpts">
-              <!-- <ion-slide *ngFor="let item of parrafos">
+              <ion-slide *ngFor="let item of parrafos">
+                <!-- <img *ngIf="item.Imagen !== ''" [src]="item.Imagen" alt="" srcset=""> -->
+                <!-- <h1 *ngIf="item.Parrafo !== ''">
+                  {{item.Parrafo}}
+                </h1> -->
                 <img *ngIf="item.Imagen !== ''" [src]="item.Imagen" alt="" srcset="">
-                <h1 *ngIf="item.Parrafo !== '' && 35 < item.Parrafo.lenght>
+                <h1 *ngIf="item.Parrafo !== '' && 35 < item.Parrafo.length">
                   {{item.Parrafo}}
                 </h1>
-                <h2 *ngIf="item.Parrafo !== '' && 35 <= item.Parrafo.lenght < 50">
+                <h2 *ngIf="item.Parrafo !== '' && 35 >= item.Parrafo.length && item.Parrafo.length < 50">
                   {{item.Parrafo}}
                 </h2>
-                <h3 *ngIf="item.Parrafo !== '' && 50 <= item.Parrafo.lenght < 70">
+                <h3 *ngIf="item.Parrafo !== '' && 50 >= item.Parrafo.length">
                   {{item.Parrafo}}
                 </h3>
-                <h4 *ngIf="item.Parrafo !== '' && 70 <= item.Parrafo.lenght < 90">
+                <!-- <h4 *ngIf="item.Parrafo !== '' && 70 >= item.Parrafo.length && item.Parrafo.length < 90">
                   {{item.Parrafo}}
                 </h4>
-                <h5 *ngIf="item.Parrafo !== '' && 90 <= item.Parrafo.lenght < 110">
+                <h5 *ngIf="item.Parrafo !== '' && 90 >= item.Parrafo.length && item.Parrafo.length < 110">
                   {{item.Parrafo}}
                 </h5>
-                <h6 *ngIf="item.Parrafo !== '' && 110 <= item.Parrafo.lenght < 120">
+                <h6 *ngIf="item.Parrafo !== '' && 110 >= item.Parrafo.length && item.Parrafo.length < 120">
                   {{item.Parrafo}}
                 </h6>
-                <p *ngIf="item.Parrafo !== '' && 120 <= item.Parrafo.lenght">
+                <p *ngIf="item.Parrafo !== '' && 120 >= item.Parrafo.length">
                   {{item.Parrafo}}
-                </p>
-              </ion-slide> -->
-              <ion-slide>
-                <img src="https://static.guiainfantil.com/pictures/articulos/1407-fabulas-para-ninos-la-liebre-y-la-tortuga.jpg" alt="" srcset="">
+                </p> -->
               </ion-slide>
-              <ion-slide>
-                <h1>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h1>
-              </ion-slide>
-              <ion-slide>
-                <h2>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h2>
-              </ion-slide>
-              <ion-slide>
-                <h3>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h3>
-              </ion-slide>
-              <ion-slide>
-                <h4>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h4>
-              </ion-slide>
-              <ion-slide>
-                <h5>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h5>
-              </ion-slide>
-              <ion-slide>
-                <h6>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </h6>
-              </ion-slide>
-              <ion-slide>
-                <p>
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud. Érase una vez una liebre
-                  muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                  Érase una vez una liebre muy veloz que presumía de ello ante todos los
-                  animales del bosque. Un día, se encontró con una tortuga que caminaba
-                  muy despacio. La liebre se burló de su lentitud.
-                </p>
-              </ion-slide>
-              <!-- <ion-slide>
-                <h2>
-                  —Hagamos una carrera y veamos quién gana —propuso la tortuga.
-                  Al empezar la carrera, la liebre salió disparada, mientras que
-                  la tortuga avanzó lentamente. Al ver que sacaba una gran ventaja
-                  a la tortuga, la liebre se paró en un árbol a descansar.
-                  La tortuga siguió avanzando, poco a poco y sin detenerse.
-                </h2>
-              </ion-slide>
-              <ion-slide>
-                <h2>
-                  Cuando la liebre despertó,
-                  vio angustiada que la tortuga estaba a punto de llegar a
-                  la meta. La liebre corrió y corrió, pero fue demasiado tarde.
-                  La tortuga cruzó la meta, agotada pero feliz.
-                </h2>
-              </ion-slide> -->
             </ion-slides>
           </div>
         </ion-col>
         <!-- <ion-col size="12">
           <div class="col_div col_div_video">
-            <iframe [src]="elurl" frameborder="0" allowfullscreen></iframe>
+            <iframe #elvideo id="video" [src]="elurlvideo" frameborder="0" allowfullscreen></iframe>
           </div>
         </ion-col>
-        <ion-col size="12">
+        <br> -->
+        <!-- <ion-col size="12">
           <div class="col_div col_div_audio">
-            <audio controls src="../../../../assets/audio/Nightcore-LightItUp-(Lyrics).mp3"></audio>
+            <iframe [src]="elurlaudio" frameborder="0" allowfullscreen></iframe>
           </div>
         </ion-col> -->
         <ion-col size="12">
@@ -276,12 +179,38 @@
             </ion-list>
           </div>
         </ion-col>
+        <!-- <ion-col size="12">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="validar()">
+                Termino video
+            </ion-button>
+          </div>
+        </ion-col> -->
+        <!-- <ion-col size="12">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="pruebacuestionario()">
+                Cuestionario
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <div class="col_div col_div_final_cuestionario">
+            <ion-button
+            shape="round"
+            (click)="pruebafinalizar()">
+                Quedarse aqui
+            </ion-button>
+          </div>
+        </ion-col> -->
         <ion-col size="12" *ngIf="haycuestionario">
           <div class="col_div col_div_final_cuestionario">
             <ion-button
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+            (click)="pruebacuestionario()">
                 Cuestionario
             </ion-button>
           </div>
@@ -292,8 +221,7 @@
           class="col_div col_div_final_finalizar">
           <ion-button
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '')? true:false">
+            (click)="pruebacuestionario()">
                 Finalizar
             </ion-button>
           </div>

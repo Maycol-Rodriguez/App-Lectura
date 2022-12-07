@@ -16,6 +16,7 @@ export class StudentPage implements OnInit {
     Apellido: '',
     Genero:'' ,
     Documento: '',
+    Seccion: '',
     GradoId: 0,
     grado: {
       id: 0,
@@ -62,6 +63,7 @@ export class StudentPage implements OnInit {
         ]
       );
     }
+
   }
   logout() {
     this.authenticationService.loggout();

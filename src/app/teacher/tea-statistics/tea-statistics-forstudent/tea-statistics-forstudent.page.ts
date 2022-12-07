@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tea-statistics-forstudent',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeaStatisticsForstudentPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
-
+  goToCuento() {
+    this.router.navigate(
+      [
+        'teacher',
+        'tea-statistics',
+        'tea-statistics-forstudent-libro'
+      ]
+    );
+  }
 }

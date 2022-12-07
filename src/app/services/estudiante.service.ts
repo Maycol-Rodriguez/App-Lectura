@@ -25,8 +25,8 @@ export class EstudianteService {
     return this.http.get(`${this.apiUrl}/searchdoc/${documento}`);
   }
 
-  getsearchEstudiantebygrado(grado: string | number) {
-    return this.http.get(`${this.apiUrl}/filter/grado/${grado}`);
+  getsearchEstudiantebygrado(grado: string | number, seccion: string) {
+    return this.http.get(`${this.apiUrl}/filter/gradoandseccion/${grado}/${seccion}`);
   }
 
   deleteEstudiante(id: string) {

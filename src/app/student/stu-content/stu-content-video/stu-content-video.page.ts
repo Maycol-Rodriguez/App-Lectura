@@ -23,7 +23,7 @@ libro: Libro = {
   id: 0,
   Titulo: '',
   Audio: '',
-  Video: 'https://www.youtube.com/embed/LzMKOMwakVA?enablejsapi=1',
+  Video: '',
   Imagen: '',
   Autor: ''
 };
@@ -89,6 +89,9 @@ ngOnInit() {
   this.libroService.getLibro(parametro).subscribe(
     reslibro => {
       this.libro = reslibro;
+      console.log(this.libro);
+      const par = this.libro.Video;
+      this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(par);
       this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
         rescuestionarios => {
           if (Object.entries(rescuestionarios).length > 0) {
@@ -101,22 +104,26 @@ ngOnInit() {
           console.log('Error get cuestionarios by libro');
         }
       );
-      this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+      this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
         resprogreso => {
           if (resprogreso !== null) {
             this.progreso = resprogreso;
+            console.log(this.progreso);
           } else {
             this.progresocreate.LibroId = parametro;
             this.progresocreate.EstudianteId = parestudiante;
             this.progresocreate.Progreso = '10';
             // this.progresoService.saveProgreso(this.progresocreate).subscribe(
-            //   resnewprogreso => {
-            //     this.progreso = resnewprogreso;
-            //     this.estado = 'iniciado';
-            //   }, err => {
-            //     console.log('Error create progreso');
-            //   }
-            // );
+            console.log(this.progreso);
+            this.progresoService.saveProgreso(this.progresocreate).subscribe(
+              resnewprogreso => {
+                this.progreso = resnewprogreso;
+                this.estado = 'iniciado';
+                window.location.reload();
+              }, err => {
+                console.log('Error create progreso');
+              }
+            );
           }
         }, err => {
           console.log('Error get proceso by libro y alumno');
@@ -128,7 +135,7 @@ ngOnInit() {
       console.log('Error get libro by id');
     }
   );
-  this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
+  //this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
 }
 elegir(dato) {
   this.progreso.Reaccion = dato;
@@ -137,37 +144,48 @@ deselegir() {
   this.progreso.Reaccion = '';
 }
 validarprogreso() {
-  const parametro = +this.progreso.Progreso;
-  if (parametro === 100) {
-    this.estado = 'terminado';
-  } else {
-    if (this.haycuestionario === true) {
-      this.estado = 'en progreso';
-      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-        this.progreso.Progreso = '90';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-        this.progreso.Progreso = '80';
-      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-        this.progreso.Progreso = '60';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
+  if (+this.progreso.Progreso < 100) {
+    if (+this.progreso.Progreso <= 70) {
+      // validar la vista del ultimo slider
+      if (+this.progreso.Progreso === 70) {
+        if (this.progreso.Comentario === '') {
+          this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+        }
+        if (this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+        }
+      } else if (+this.progreso.Progreso === 60) {
+        if (this.progreso.Comentario !== '') {
+          this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+        }
+        if (this.progreso.FinalAlternativo === '') {
+          this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+        }
+      } else if (+this.progreso.Progreso === 50) {
+        if (this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+        }
+        if (this.progreso.Comentario === '') {
+          this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+        }
+      } else if (+this.progreso.Progreso === 40) {
+        if (this.progreso.Comentario !== '') {
+          this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+        }
+        if (this.progreso.FinalAlternativo !== '') {
+          this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+        }
+      } else if (+this.progreso.Progreso === 0) {
         this.progreso.Progreso = '40';
+        // comprobar esar en el ultimo slide
+        // comprobar finalizacion del video o audio
       }
     } else {
-      this.estado = 'en progreso';
-      if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-        this.progreso.Progreso = '100';
-        this.estado = 'terminado';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-        this.progreso.Progreso = '90';
-      } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-        this.progreso.Progreso = '70';
-      } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
-        this.progreso.Progreso = '50';
-      }
+      this.progreso.Progreso = '70';
     }
+  } else {
+    this.progreso.Progreso = '100';
   }
-  console.log(this.progreso);
-  console.log(this.estado);
 }
 actualizar(dato) {
   this.validarprogreso();

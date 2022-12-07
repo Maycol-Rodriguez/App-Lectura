@@ -35,6 +35,7 @@ export class RegisterPage implements OnInit {
     Apellido: '',
     Genero:'',
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   estudiante1: Estudiante = {
@@ -43,6 +44,7 @@ export class RegisterPage implements OnInit {
     Apellido: '',
     Genero:'',
     Documento: '',
+    Seccion: '',
     GradoId: 0
   };
   responsable: Responsable = {

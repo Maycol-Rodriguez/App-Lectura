@@ -1,11 +1,35 @@
 <div class="body">
+
   <section>
-    <h2 class="title">Grado 1</h2>
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="GRADOS">
+          <ion-select-option value="1">1er año</ion-select-option>
+          <ion-select-option value="2">2do año</ion-select-option>
+          <ion-select-option value="3">3er año</ion-select-option>
+          <ion-select-option value="4">4to año</ion-select-option>
+          <ion-select-option value="5">5to año</ion-select-option>
+          <ion-select-option value="6">6to año</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <section class="date">
+    <div>
+      <label>DESDE:</label>
+      <input type="date" >
+    </div>
+    <div>
+      <label>HASTA:</label>
+      <input type="date" >
+    </div>
+  </section>
+
+  <section>
     <div>
       <ion-card class="card-container">
-        <ion-card-title class="card"
-          >15 libros leidos la ultima semana</ion-card-title
-        >
+        <ion-card-title class="card">15 libros leidos</ion-card-title>
       </ion-card>
       <ion-card class="card-container">
         <ion-card-title class="card">2 audiolibros escuchados</ion-card-title>
@@ -20,35 +44,15 @@
     <h2 class="title">Alumnos</h2>
 
     <div>
-      <ion-button
+      <ion-button *ngFor="let item of estudiantes"
         class="button button-io"
         expand="block"
         color="ion-color-tertiary-shade"
-        (click)="goToHome()"
-        >Nombre de Alumno 1 - DNI</ion-button
+        (click)="goToStudent()"
+        > {{item.Nombre + ' ' + item.Apellido}} -
+        {{item.Documento}}
+        </ion-button
       >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToHome()"
-        >Nombre de Alumno 2 - DNI</ion-button
-      >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToHome()"
-        >Nombre de Alumno 3 - DNI</ion-button
-      >
-      <ion-button
-        class="button button-io"
-        expand="block"
-        color="ion-color-tertiary-shade"
-        (click)="goToHome()"
-        >Nombre de Alumno 4 - DNI</ion-button
-      >
-
     </div>
   </section>
 </div>

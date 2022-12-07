@@ -4,18 +4,18 @@
       <div class="user_div bg_image image_male">
       </div>
       <div class="username">
-        Daigo
+        {{profesor.Nombre + ' ' + profesor.Apellido}}
       </div>
     </div>
     <div *ngIf="genero" class="user_main_div">
       <div class="user_div bg_image image_female">
       </div>
       <div class="username">
-        Flor, Beatriz
+        {{profesor.Nombre + ' ' + profesor.Apellido}}
       </div>
     </div>
     <ion-list id="inbox-list">
-      <ion-menu-toggle auto-hide="false" *ngFor="let item of studentPages; let i = index">
+      <ion-menu-toggle auto-hide="false" *ngFor="let item of teacherPages; let i = index">
         <ion-item routerDirection="root" [routerLink]="[item.url]" lines="none" detail="false" routerLinkActive="selected">
           <ion-icon slot="start" [ios]="item.icon + '-outline'" [md]="item.icon + '-sharp'"></ion-icon>
           <ion-label>
@@ -25,7 +25,7 @@
       </ion-menu-toggle>
       <br>
       <br>
-      <ion-item routerDirection="root" lines="none" detail="false">
+      <ion-item (click)="logout()" routerDirection="root" lines="none" detail="false">
         <ion-icon slot="start" [ios]="'log-out' + '-outline'" [md]="'log-out' + '-sharp'"></ion-icon>
         <ion-label>
           Salir

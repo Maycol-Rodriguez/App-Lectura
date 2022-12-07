@@ -18,13 +18,17 @@
       <ion-card class="card-container">
         <ion-card-title class="card color-text">3 videolibros vistos</ion-card-title>
       </ion-card>
+      <ion-card class="card-container">
+        <ion-card-title class="card">80% de promedio en encuestas</ion-card-title>
+      </ion-card>
+      
     </div>
   </section>
 
   <section>
     <h2 class="title">Historial</h2>
     <div>
-      <ion-card class="card-history">
+      <ion-card class="card-history" (click)="goToCuento()">
         <ion-img
           src="../../../../assets/images/cuento-active.png"
         ></ion-img>
