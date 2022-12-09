@@ -9,6 +9,13 @@ import { ProgresoService } from 'src/app/services/progreso.service';
 import { Progreso } from 'src/app/models/progreso';
 import { EstudianteDetail } from 'src/app/models/estudiante';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
+import * as YTPlayer from "yt-player";
+import { interval, merge, fromEvent } from "rxjs";
+import { mapTo } from "rxjs/operators";
+
+// declare var require: any;
+// const YTPlayer = require('yt-player')
+
 
 @Component({
   selector: 'app-stu-content-video',
@@ -83,6 +90,21 @@ constructor(
 ) { }
 
 ngOnInit() {
+  const player = new YTPlayer('#player', {
+    height: '250',
+    width: '310', controls: false} )
+  player.setVolume(100)
+  // player.on('playing', () => {
+  //   console.log(player.getDuration()) // => 351.521
+  //   console.log(player.getProgress())
+  // }) 
+  
+  player.on('timeupdate', (seconds) => {
+  const procc = seconds/player.getDuration()
+    if (procc >= 0.95)
+    console.log("Video completado")
+  }) 
+
   const parametro = JSON.parse(localStorage.getItem('ellibro'));
   const parestudiante = JSON.parse(localStorage.getItem('usuario'));
   console.log(parametro);
@@ -91,7 +113,8 @@ ngOnInit() {
       this.libro = reslibro;
       console.log(this.libro);
       const par = this.libro.Video;
-      this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(par);
+      player.load(par) //URL
+      // this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(par);
       this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
         rescuestionarios => {
           if (Object.entries(rescuestionarios).length > 0) {
