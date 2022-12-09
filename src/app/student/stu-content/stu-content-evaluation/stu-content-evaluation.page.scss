@@ -2,16 +2,13 @@ ion-title.title-large {
     color: #c897d8;
     font-size: 30px;
   }
-  
   ion-title {
     height: auto;
     --color: white;
     font-weight:bold;
     font-size: 20px;
     text-align: center;
-
   }
-  
   ion-toolbar {
     --background: translucent;
   }
@@ -25,14 +22,13 @@ ion-title.title-large {
     border-bottom-right-radius: 75px;
     margin-top: 10px;
     padding-top: 10px;
-
     .col_div_header {
-        h1 {
-            font-weight:lighter;
-            font-size: 20px;
-            color: #23A0AD;
-            font-style: italic;
-          }
+      h1 {
+        font-weight:lighter;
+        font-size: 20px;
+        color: #23A0AD;
+        font-style: italic;
+      }
     }
     .col_div_pregunta {
       height: auto;
@@ -43,7 +39,22 @@ ion-title.title-large {
         font-style: italic;
       }
     }
-                
+    ion-list {
+      background: transparent;
+      ion-radio-group {
+        background: transparent;
+        ion-item {
+          --background: transparent;
+          ion-label {
+            background: transparent;
+            --color: #23A0AD;
+          }
+          ion-radio {
+            background: transparent;
+          }
+        }
+      }
+    }
     .col_div {
       width: 100%;
       display: flex;
@@ -65,50 +76,37 @@ ion-title.title-large {
     }
   }
 
-
 ion-radio {
     --border-radius: 4px;
     --inner-border-radius: 4px;
-  
     --color: #ddd;
     --color-checked: #23A0AD;
-
-
   }
-  
-  
+
   ion-radio.ios {
     width: 20px;
     height: 20px;
-  
     border: 2px solid #ddd;
     border-radius: 4px;
   }
-  
   .radio-checked.ios {
     border-color: #23A0AD;
   }
 
-  
+
 
 ion-button {
     --background: #93e9be;
     --background-hover: #9ce0be;
     --background-activated: #88f4be;
     --background-focused: #88f4be;
-    
-  
     --color: blue;
-  
     --border-radius: 10px;
     --border-color: #000;
     --border-style: solid;
     --border-width: 1px;
-  
     --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-  
     --ripple-color: deeppink;
-  
     --padding-top: center;
     --padding-bottom: center;
   }

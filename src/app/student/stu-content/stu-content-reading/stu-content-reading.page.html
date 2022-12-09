@@ -14,12 +14,8 @@
         </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_lectura">
-            <ion-slides pager="true" [options]="slideOpts">
+            <ion-slides pager="true" (ionSlideWillChange)="slideChanged($event)" [options]="slideOpts">
               <ion-slide *ngFor="let item of parrafos">
-                <!-- <img *ngIf="item.Imagen !== ''" [src]="item.Imagen" alt="" srcset=""> -->
-                <!-- <h1 *ngIf="item.Parrafo !== ''">
-                  {{item.Parrafo}}
-                </h1> -->
                 <img *ngIf="item.Imagen !== ''" [src]="item.Imagen" alt="" srcset="">
                 <h1 *ngIf="item.Parrafo !== '' && 35 < item.Parrafo.length">
                   {{item.Parrafo}}
@@ -30,33 +26,10 @@
                 <h3 *ngIf="item.Parrafo !== '' && 50 >= item.Parrafo.length">
                   {{item.Parrafo}}
                 </h3>
-                <!-- <h4 *ngIf="item.Parrafo !== '' && 70 >= item.Parrafo.length && item.Parrafo.length < 90">
-                  {{item.Parrafo}}
-                </h4>
-                <h5 *ngIf="item.Parrafo !== '' && 90 >= item.Parrafo.length && item.Parrafo.length < 110">
-                  {{item.Parrafo}}
-                </h5>
-                <h6 *ngIf="item.Parrafo !== '' && 110 >= item.Parrafo.length && item.Parrafo.length < 120">
-                  {{item.Parrafo}}
-                </h6>
-                <p *ngIf="item.Parrafo !== '' && 120 >= item.Parrafo.length">
-                  {{item.Parrafo}}
-                </p> -->
               </ion-slide>
             </ion-slides>
           </div>
         </ion-col>
-        <!-- <ion-col size="12">
-          <div class="col_div col_div_video">
-            <iframe #elvideo id="video" [src]="elurlvideo" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </ion-col>
-        <br> -->
-        <!-- <ion-col size="12">
-          <div class="col_div col_div_audio">
-            <iframe [src]="elurlaudio" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </ion-col> -->
         <ion-col size="12">
           <div class="col_div col_div_reaccion">
             <ion-grid fixed>
@@ -154,8 +127,14 @@
                     auto-focus
                     tabindex="1"
                     minlength="10"
+                    #Comentario="ngModel"
                     [(ngModel)]="progreso.Comentario">
                   </ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-text color="danger" *ngIf="Comentario.errors?.minlength">
+                    Escribir un comentario de mas de 10 letras
+                  </ion-text>
                 </ion-item>
               </ion-item-group>
               <ion-item-group>
@@ -169,60 +148,39 @@
                     type="text"
                     name="FinalAlternativo"
                     required
-                    auto-focus
-                    tabindex="1"
+                    tabindex="2"
                     minlength="20"
+                    #FinalAlternativo="ngModel"
                     [(ngModel)]="progreso.FinalAlternativo">
                   </ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-text color="danger" *ngIf="FinalAlternativo.errors?.minlength">
+                    Escribir un final alternativo de mas de 20 letras
+                  </ion-text>
                 </ion-item>
               </ion-item-group>
             </ion-list>
           </div>
         </ion-col>
-        <!-- <ion-col size="12">
-          <div class="col_div col_div_final_cuestionario">
-            <ion-button
-            shape="round"
-            (click)="validar()">
-                Termino video
-            </ion-button>
-          </div>
-        </ion-col> -->
-        <!-- <ion-col size="12">
-          <div class="col_div col_div_final_cuestionario">
-            <ion-button
-            shape="round"
-            (click)="pruebacuestionario()">
-                Cuestionario
-            </ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="col_div col_div_final_cuestionario">
-            <ion-button
-            shape="round"
-            (click)="pruebafinalizar()">
-                Quedarse aqui
-            </ion-button>
-          </div>
-        </ion-col> -->
         <ion-col size="12" *ngIf="haycuestionario">
           <div class="col_div col_div_final_cuestionario">
             <ion-button
+            [disabled]="(progreso.Reaccion === '' || progreso.Comentario.length < 10 || progreso.FinalAlternativo.length < 20)? true:false"
             shape="round"
-            (click)="pruebacuestionario()">
+            (click)="iracuestionario(progreso.id)">
                 Cuestionario
             </ion-button>
           </div>
         </ion-col>
-        <ion-col size="12" *ngIf="!haycuestionario">
+        <ion-col size="12" *ngIf="haycuestionario">
           <div
-          (click)="pruebafinalizar()"
           class="col_div col_div_final_finalizar">
           <ion-button
             shape="round"
-            (click)="pruebacuestionario()">
-                Finalizar
+            [disabled]="(progreso.Progreso === 0 || progreso.Reaccion === '')? true:false"
+            (click)="terminar(progreso.id)">
+                Finalizar sin Cuestionario
             </ion-button>
           </div>
         </ion-col>

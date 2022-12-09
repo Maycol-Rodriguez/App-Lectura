@@ -47,10 +47,6 @@ export class StuContentEvaluationPage implements OnInit {
     id: 0,
     Pregunta: ''
   };
-  respuesta = {
-    id: 0,
-    respuesta: ''
-  };
   resoluciones: any = [];
   preguntas: any = [];
   lasrespuesas: any = [];
@@ -108,8 +104,6 @@ export class StuContentEvaluationPage implements OnInit {
               cajasimple.push(arrayrespuestas);
               this.respuestasdesordenadas.push(cajasimple);
             }
-            // console.log(this.preguntas);
-            // console.log(this.respuestasdesordenadas);
             // guardamos todo orientado a objetos para no complicarnos
             for (let i = 0; i < this.numeropreguntas; i++) {
               // eslint-disable-next-line prefer-const
@@ -127,7 +121,6 @@ export class StuContentEvaluationPage implements OnInit {
               formatoconglomerado.Respuesta3 = this.respuestasdesordenadas[i][0][2];
               this.cuestionariofiltrado.push(formatoconglomerado);
             }
-            console.log(this.cuestionariofiltrado);
           }, err => {
             console.log('Error get cuestionarios by libro');
           }
@@ -139,11 +132,16 @@ export class StuContentEvaluationPage implements OnInit {
   }
 
   agregarrespuesta(dato, codigo) {
+    const respuesta = {
+      id: 0,
+      respuesta: ''
+    };
     let banderita = false;
-    this.respuesta.id = codigo;
-    this.respuesta.respuesta = dato;
-    const parametro = this.respuesta.id;
-    if (Object.entries(this.respuestas).length > 0) {
+    respuesta.id = codigo;
+    respuesta.respuesta = dato;
+    const parametro = respuesta.id;
+    const cantidad = Object.entries(this.respuestas).length;
+    if (cantidad > 0) {
       for (const obj of this.respuestas) {
         const filtro = obj.id;
         if (parametro === filtro) {
@@ -152,14 +150,15 @@ export class StuContentEvaluationPage implements OnInit {
         }
       }
       if (banderita === false) {
-        this.respuestas.push(this.respuesta);
+        this.respuestas.push(respuesta);
       }
-    } else {
-      this.respuestas.push(this.respuesta);
+    } else if (cantidad === 0) {
+      this.respuestas.push(respuesta);
     }
   }
 
   comprobarrespuesta() {
+    const lasresoluciones: any = [];
     for (const item of this.cuestionarios) {
       const respuestacorrecta = item.RespuestaCorrecta;
       const idcuestionario = item.id;
@@ -167,29 +166,49 @@ export class StuContentEvaluationPage implements OnInit {
         const idrespuestas = obj.id;
         const respuestaelegida = obj.respuesta;
         if (idcuestionario === idrespuestas) {
-          this.resolucion.Pregunta = item.Pregunta;
-          this.resolucion.ProgresoId = this.codigoprogreso;
-          this.resolucion.Correcto = 'incorrecto';
-          this.resolucion.NumeroIntento = (+this.progreso.NumeroIntento + 1).toString();
-          this.resolucion.RespuestaEscogida = respuestaelegida;
+          // eslint-disable-next-line prefer-const
+          let laresolucion: Resolucion = {
+            Pregunta: '',
+            RespuestaEscogida: '',
+            NumeroIntento: '',
+            Correcto: '',
+            ProgresoId: 0
+          };
+          laresolucion.Pregunta = item.Pregunta;
+          laresolucion.ProgresoId = this.codigoprogreso;
+          laresolucion.Correcto = 'incorrecto';
+          laresolucion.NumeroIntento = (+this.progreso.NumeroIntento + 1).toString();
+          laresolucion.RespuestaEscogida = respuestaelegida;
           if (respuestacorrecta === respuestaelegida) {
             this.numeroaciertos++;
-            this.resolucion.Correcto = 'correcto';
-            this.resoluciones.push(this.resolucion);
-          } else {
-            this.resoluciones.push(this.resolucion);
+            laresolucion.Correcto = 'correcto';
+            lasresoluciones.push(laresolucion);
+            this.resoluciones = lasresoluciones;
+          } else if (respuestacorrecta !== respuestaelegida) {
+            lasresoluciones.push(laresolucion);
+            this.resoluciones = lasresoluciones;
           }
         }
       }
     }
-    console.log(this.numeroaciertos);
-    this.progreso.Progreso = 100;
     this.progreso.NotaCuestionario = this.numeroaciertos * this.notaporpregunta;
     this.progreso.NumeroIntento = this.progreso.NumeroIntento + 1;
+    console.log(this.resoluciones);
+    console.log(this.progreso);
+    for (const resp of this.resoluciones) {
+      console.log(resp);
+      this.resolucionService.saveResolucion(resp).subscribe(
+        ressaveresolucion => {
+          this.resolucion1 = ressaveresolucion;
+          console.log(this.resolucion1);
+        }, err => {
+          console.log('Error save resolucion');
+        }
+      );
+    }
     this.progresoService.updateProgreso(this.codigoprogreso, this.progreso).subscribe(
       resupdate => {
         this.mensaje = resupdate;
-        this.saveresoluciones();
         this.router.navigate(
           [
             'student',
@@ -201,17 +220,4 @@ export class StuContentEvaluationPage implements OnInit {
       }
     );
   }
-  saveresoluciones() {
-    for (const resp of this.resoluciones) {
-      this.resolucionService.saveResolucion(resp).subscribe(
-        ressaveresolucion => {
-          this.resolucion1 = ressaveresolucion;
-          console.log(this.resolucion1);
-        }, err => {
-          console.log('Error saving resolucion');
-        }
-      );
-    }
-  }
-
 }
