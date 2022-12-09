@@ -17,26 +17,48 @@
         <br>
         <ion-list>
           <ion-radio-group>
-            <ion-item>
+            <ion-item (click)="agregarrespuesta(item.Respuesta1, item.id)">
               <ion-label>
                 {{item.Respuesta1}}
               </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
+              <ion-radio color="secondary" slot="end" value="item.Respuesta1"></ion-radio>
             </ion-item>
-            <ion-item>
+            <ion-item (click)="agregarrespuesta(item.Respuesta1, item.id)">
               <ion-label>
                 {{item.Respuesta2}}
               </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
+              <ion-radio color="secondary" slot="end" value="item.Respuesta2"></ion-radio>
             </ion-item>
-            <ion-item>
+            <ion-item (click)="agregarrespuesta(item.Respuesta1, item.id)">
               <ion-label>
                 {{item.Respuesta3}}
               </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
+              <ion-radio color="secondary" slot="end" value="item.Respuesta3"></ion-radio>
             </ion-item>
             </ion-radio-group>
         </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <div
+        class="col_div col_div_final_finalizar">
+        <ion-button
+          shape="round"
+          [disabled]="(progreso.Progreso < 100)? true:false"
+          (click)="comprobarrespuesta()">
+              Calificar y Terminar
+          </ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="12" *ngIf="respuestas.length > 4">
+        <div
+        class="col_div col_div_final_finalizar">
+        <ion-button
+          shape="round"
+          [disabled]="(respuestas.length < 4)? true:false"
+          (click)="comprobarrespuesta()">
+              Calificar y Terminar
+          </ion-button>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
