@@ -13,6 +13,10 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 export class StuContentListPage implements OnInit {
   libros: any = [];
   grados: any = [];
+  librosfiltrados: any = [];
+  vistaeleccion = true;
+  vistalibros = false;
+  nohaydisponibles = false;
   constructor(
     private router: Router,
     private toast: ToastController,
@@ -56,6 +60,8 @@ export class StuContentListPage implements OnInit {
       res => {
         this.libros = res;
         console.log(this.libros);
+        this.vistaeleccion = true;
+        this.vistalibros = false;
       }, err => {
         console.log('Error get publicaciones internas');
       }
@@ -66,10 +72,41 @@ export class StuContentListPage implements OnInit {
       res => {
         this.libros = res;
         console.log(this.libros);
+        this.vistaeleccion = true;
+        this.vistalibros = false;
       }, err => {
         console.log('Error get publicaciones internas y grado');
       }
     );
+  }
+  porlectura() {
+    this.librosfiltrados = this.libros;
+    this.vistalibros = true;
+    this.vistaeleccion = false;
+  }
+  porvideo() {
+    const array: any = [];
+    for (const item of this.libros) {
+      if (item.Video !== '') {
+        array.push(item);
+        this.librosfiltrados = array;
+      }
+    }
+    console.log(this.librosfiltrados);
+    this.vistalibros = true;
+    this.vistaeleccion = false;
+  }
+  poraudio() {
+    const array: any = [];
+    for (const item of this.libros) {
+      if (item.Audio !== '') {
+        array.push(item);
+        this.librosfiltrados = array;
+      }
+    }
+    console.log(this.librosfiltrados);
+    this.vistalibros = true;
+    this.vistaeleccion = false;
   }
   ngOnInit() {
     this.getgrados();
@@ -81,7 +118,7 @@ export class StuContentListPage implements OnInit {
       [
         'student',
         'stu-content',
-        'stu-content-select'
+        'stu-content-reading'
       ]
     );
   }

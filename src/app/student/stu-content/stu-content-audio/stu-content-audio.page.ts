@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Libro } from 'src/app/models/libro';
@@ -31,25 +32,25 @@ export class StuContentAudioPage implements OnInit {
   };
   progreso: Progreso = {
     id: 0,
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
   progresocreate: Progreso = {
     id: 0,
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -83,7 +84,7 @@ export class StuContentAudioPage implements OnInit {
     private progresoService: ProgresoService,
     private cuestionarioService: CuestionarioService,
   ) { }
-  
+
   ngOnInit() {
     const parametro = JSON.parse(localStorage.getItem('ellibro'));
     const parestudiante = JSON.parse(localStorage.getItem('usuario'));
@@ -110,7 +111,7 @@ export class StuContentAudioPage implements OnInit {
             } else {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante;
-              this.progresocreate.Progreso = '10';
+              this.progresocreate.Progreso = 0;
               // this.progresoService.saveProgreso(this.progresocreate).subscribe(
               //   resnewprogreso => {
               //     this.progreso = resnewprogreso;
@@ -125,7 +126,6 @@ export class StuContentAudioPage implements OnInit {
           }
         );
         // sacar el progreso mediante libro y estudiante
-        
       }, err => {
         console.log('Error get libro by id');
       }
@@ -139,37 +139,48 @@ export class StuContentAudioPage implements OnInit {
     this.progreso.Reaccion = '';
   }
   validarprogreso() {
-    const parametro = +this.progreso.Progreso;
-    if (parametro === 100) {
-      this.estado = 'terminado';
-    } else {
-      if (this.haycuestionario === true) {
-        this.estado = 'en progreso';
-        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '90';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '80';
-        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '60';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '40';
+    if (this.progreso.Progreso < 100) {
+      if (this.progreso.Progreso <= 70) {
+        // validar la vista del ultimo slider
+        if (this.progreso.Progreso === 70) {
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = this.progreso.Progreso - 10;
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = this.progreso.Progreso - 20;
+          }
+        } else if (this.progreso.Progreso === 60) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = this.progreso.Progreso + 10;
+          }
+          if (this.progreso.FinalAlternativo === '') {
+            this.progreso.Progreso = this.progreso.Progreso - 20;
+          }
+        } else if (this.progreso.Progreso === 50) {
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = this.progreso.Progreso + 20;
+          }
+          if (this.progreso.Comentario === '') {
+            this.progreso.Progreso = this.progreso.Progreso - 10;
+          }
+        } else if (this.progreso.Progreso === 40) {
+          if (this.progreso.Comentario !== '') {
+            this.progreso.Progreso = this.progreso.Progreso + 10;
+          }
+          if (this.progreso.FinalAlternativo !== '') {
+            this.progreso.Progreso = this.progreso.Progreso + 20;
+          }
+        } else if (this.progreso.Progreso === 0) {
+          this.progreso.Progreso = 40;
+          // comprobar esar en el ultimo slide
+          // comprobar finalizacion del video o audio
         }
       } else {
-        this.estado = 'en progreso';
-        if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '100';
-          this.estado = 'terminado';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo !== '') {
-          this.progreso.Progreso = '90';
-        } else if (this.progreso.Comentario !== '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '70';
-        } else if (this.progreso.Comentario === '' && this.progreso.FinalAlternativo === '') {
-          this.progreso.Progreso = '50';
-        }
+        this.progreso.Progreso = 70;
       }
+    } else {
+      this.progreso.Progreso = 100;
     }
-    console.log(this.progreso);
-    console.log(this.estado);
   }
   actualizar(dato) {
     this.validarprogreso();
@@ -193,7 +204,7 @@ export class StuContentAudioPage implements OnInit {
     // actualizamos el progreso
     // lo mandamos al cuestionario
   }
-  
+
   terminar(dato) {
     this.actualizar(dato);
     this.router.navigate(

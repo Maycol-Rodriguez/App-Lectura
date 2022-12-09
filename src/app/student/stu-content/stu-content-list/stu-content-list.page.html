@@ -41,19 +41,60 @@
     </ion-grid>
   </div>
   <div class="main_content_div animated bounceInUp">
-    <ion-label class="hello_lbl">
+    <ion-label *ngIf="vistaeleccion" class="hello_lbl">
+      Como Prefiere su Libro o Cuento
+    </ion-label>
+    <ion-grid *ngIf="vistaeleccion" fixed>
+      <ion-row>
+        <ion-col size="12">
+          <div class="col_div" (click)="porlectura()">
+            <ion-row>
+              <ion-col size="5">
+                <img src="../../../../assets/iconos/book.png" alt="libro">
+              </ion-col>
+              <ion-col size="7">
+                <ion-label>
+                  Lectura Textual
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="true" size="12">
+          <div class="col_div" (click)="porvideo()">
+            <ion-row>
+              <ion-col size="5">
+                <img src="../../../../assets/iconos/video-book.png" alt="libro">
+              </ion-col>
+              <ion-col size="7">
+                <ion-label>
+                  Mediante Video
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="true" size="12">
+          <div class="col_div" (click)="poraudio()">
+            <ion-row>
+              <ion-col size="5">
+                <img src="../../../../assets/iconos/audio-book.png" alt="libro">
+              </ion-col>
+              <ion-col size="7">
+                <ion-label>
+                  Mediante Audio
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-label *ngIf="vistalibros" class="hello_lbl">
       Libros Disponibles
     </ion-label>
-    <ion-grid fixed>
+    <ion-grid *ngIf="vistalibros" fixed>
       <ion-row>
-        <!-- <ion-col size="12">
-          <div class="col_div">
-            <img src="../../../../assets/iconos/book.png" alt="libro">
-            <ion-label (click)="seleccion(1)">
-              Titulo del Libro
-            </ion-label>
-          </div>
-        </ion-col> -->
         <ion-col size="12" *ngFor="let item of libros">
           <div (click)="seleccion(item.LibroId)" class="col_div">
             <img [src]="item.libro.Imagen" alt="libro">

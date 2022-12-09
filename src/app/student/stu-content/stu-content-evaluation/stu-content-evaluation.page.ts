@@ -18,13 +18,13 @@ export class StuContentEvaluationPage implements OnInit {
   respuestas: any = [];
   progreso: Progreso = {
     id: 0,
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -183,9 +183,9 @@ export class StuContentEvaluationPage implements OnInit {
       }
     }
     console.log(this.numeroaciertos);
-    this.progreso.Progreso = '100';
-    this.progreso.NotaCuestionario = (this.numeroaciertos * this.notaporpregunta).toString();
-    this.progreso.NumeroIntento = (+this.progreso.NumeroIntento + 1).toString();
+    this.progreso.Progreso = 100;
+    this.progreso.NotaCuestionario = this.numeroaciertos * this.notaporpregunta;
+    this.progreso.NumeroIntento = this.progreso.NumeroIntento + 1;
     this.progresoService.updateProgreso(this.codigoprogreso, this.progreso).subscribe(
       resupdate => {
         this.mensaje = resupdate;
