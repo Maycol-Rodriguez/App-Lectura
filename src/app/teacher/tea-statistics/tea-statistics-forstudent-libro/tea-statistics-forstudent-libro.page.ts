@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Libro } from 'src/app/models/libro';
 import { Component, OnInit } from '@angular/core';
@@ -26,24 +27,24 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
   };
   progreso: Progreso = {
     id: 0,
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
   progresocreate: Progreso = {
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -122,7 +123,7 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
             } else {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante.id;
-              this.progresocreate.Progreso = '0';
+              this.progresocreate.Progreso = 0;
               console.log(this.progreso);
               this.progresoService.saveProgreso(this.progresocreate).subscribe(
                 resnewprogreso => {
@@ -158,62 +159,8 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
   deselegir() {
     this.progreso.Reaccion = '';
   }
-  validarprogreso() {
-    if (+this.progreso.Progreso < 100) {
-      if (+this.progreso.Progreso <= 70) {
-        // validar la vista del ultimo slider
-        if (+this.progreso.Progreso === 70) {
-          if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
-          }
-          if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
-          }
-        } else if (+this.progreso.Progreso === 60) {
-          if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
-          }
-          if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
-          }
-        } else if (+this.progreso.Progreso === 50) {
-          if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
-          }
-          if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
-          }
-        } else if (+this.progreso.Progreso === 40) {
-          if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
-          }
-          if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
-          }
-        } else if (+this.progreso.Progreso === 0) {
-          this.progreso.Progreso = '40';
-          // comprobar esar en el ultimo slide
-          // comprobar finalizacion del video o audio
-        }
-      } else {
-        this.progreso.Progreso = '70';
-      }
-    } else {
-      this.progreso.Progreso = '100';
-    }
-  }
-  actualizar(dato) {
-    this.validarprogreso();
-    this.progresoService.updateProgreso(dato, this.progreso).subscribe(
-      resupdate => {
-        this.mensaje = resupdate;
-      }, err => {
-        console.log('Error Update Progreso');
-      }
-    );
-  }
+
   iracuestionario(dato) {
-    this.actualizar(dato);
     this.router.navigate(
       [
         'teacher',
@@ -226,7 +173,6 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
   }
 
   terminar(dato) {
-    this.actualizar(dato);
     this.router.navigate(
       [
         'teacher',

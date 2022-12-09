@@ -29,24 +29,24 @@ export class StuContentReadingPage implements OnInit {
   };
   progreso: Progreso = {
     id: 0,
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
   progresocreate: Progreso = {
-    Progreso: '',
+    Progreso: 0,
     Reaccion: '',
     Comentario: '',
     FinalAlternativo: '',
     FechaLectura: new Date(),
-    NotaCuestionario: '',
-    NumeroIntento: '',
+    NotaCuestionario: 0,
+    NumeroIntento: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -143,7 +143,7 @@ export class StuContentReadingPage implements OnInit {
             } else {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante.id;
-              this.progresocreate.Progreso = '0';
+              this.progresocreate.Progreso = 0;
               console.log(this.progreso);
               this.progresoService.saveProgreso(this.progresocreate).subscribe(
                 resnewprogreso => {
@@ -180,47 +180,47 @@ export class StuContentReadingPage implements OnInit {
     this.progreso.Reaccion = '';
   }
   validarprogreso() {
-    if (+this.progreso.Progreso < 100) {
-      if (+this.progreso.Progreso <= 70) {
+    if (this.progreso.Progreso < 100) {
+      if (this.progreso.Progreso <= 70) {
         // validar la vista del ultimo slider
-        if (+this.progreso.Progreso === 70) {
+        if (this.progreso.Progreso === 70) {
           if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+            this.progreso.Progreso = this.progreso.Progreso - 10;
           }
           if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+            this.progreso.Progreso = this.progreso.Progreso - 20;
           }
-        } else if (+this.progreso.Progreso === 60) {
+        } else if (this.progreso.Progreso === 60) {
           if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+            this.progreso.Progreso = this.progreso.Progreso + 10;
           }
           if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 20).toString();
+            this.progreso.Progreso = this.progreso.Progreso - 20;
           }
-        } else if (+this.progreso.Progreso === 50) {
+        } else if (this.progreso.Progreso === 50) {
           if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+            this.progreso.Progreso = this.progreso.Progreso + 20;
           }
           if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = (+this.progreso.Progreso - 10).toString();
+            this.progreso.Progreso = this.progreso.Progreso - 10;
           }
-        } else if (+this.progreso.Progreso === 40) {
+        } else if (this.progreso.Progreso === 40) {
           if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 10).toString();
+            this.progreso.Progreso = this.progreso.Progreso + 10;
           }
           if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = (+this.progreso.Progreso + 20).toString();
+            this.progreso.Progreso = this.progreso.Progreso + 20;
           }
-        } else if (+this.progreso.Progreso === 0) {
-          this.progreso.Progreso = '40';
+        } else if (this.progreso.Progreso === 0) {
+          this.progreso.Progreso = 40;
           // comprobar esar en el ultimo slide
           // comprobar finalizacion del video o audio
         }
       } else {
-        this.progreso.Progreso = '70';
+        this.progreso.Progreso = 70;
       }
     } else {
-      this.progreso.Progreso = '100';
+      this.progreso.Progreso = 100;
     }
   }
   actualizar(dato) {

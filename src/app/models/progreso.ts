@@ -1,26 +1,26 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface Progreso {
   id?: number;
-  Progreso?: string;
+  Progreso?: number;
   Reaccion?: string;
   Comentario?: string;
   FinalAlternativo?: string;
   FechaLectura?: Date;
-  NotaCuestionario?: string;
-  NumeroIntento?: string;
+  NotaCuestionario?: number;
+  NumeroIntento?: number;
   LibroId?: number;
   EstudianteId?: number;
 }
 
 export interface ProgresoDetail {
   id?: number;
-  Progreso?: string;
+  Progreso?: number;
   Reaccion?: string;
   Comentario?: string;
   FinalAlternativo?: string;
   FechaLectura?: Date;
-  NotaCuestionario?: string;
-  NumeroIntento?: string;
+  NotaCuestionario?: number;
+  NumeroIntento?: number;
   LibroId?: number;
   EstudianteId?: number;
   libro?: {
