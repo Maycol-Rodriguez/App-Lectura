@@ -21,7 +21,14 @@ export class RegisterPage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
   grados: any =[];
   relaciones: any =[];
-  generos= [
+  secciones = [
+    { name: 'A'},
+    { name: 'B'},
+    { name: 'C'},
+    { name: 'D'},
+    { name: 'E'}
+  ];
+  generos = [
     {
       name: 'Femenino'
     },
@@ -158,6 +165,10 @@ export class RegisterPage implements OnInit {
     onOptionsSelectGrado(event: any){
       const value = event.target.value;
       this.estudiante.GradoId = value;
+    }
+    onOptionsSelectSeccion(event: any){
+      const value = event.target.value;
+      this.estudiante.Seccion = value;
     }
 
   ngOnInit() {

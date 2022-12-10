@@ -50,6 +50,17 @@
       </ion-item>
     </ion-list>
     <br>
+    <ion-list class="selected">
+      <ion-item>
+        <ion-select (change)="onOptionsSelectSeccion($event)" [(ngModel)]="profesor.Seccion" name="Seccion" required
+          tabindex="6" interface="popover" placeholder="Seleccione su seccion">
+          <ion-select-option class="list" [value]="item.name" *ngFor="let item of secciones">
+            {{item.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
     <div class="action-buttons ion-padding">
       <!-- <ion-button (click)="saveprofesor()" size="large" color="light" class="the-button"
       [disabled]="(profesor.Nombre === '' || profesor.Apellido === '' || profesor.Documento === '' || profesor.Genero === '' || profesor.GradoId === 0)? true:false">

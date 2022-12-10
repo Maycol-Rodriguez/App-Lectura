@@ -91,7 +91,6 @@ export class StuContentReadingPage implements OnInit {
   ngOnInit() {
     const parametro = JSON.parse(localStorage.getItem('ellibro'));
     const parestudiante = JSON.parse(localStorage.getItem('usuario'));
-    this.validarprogreso();
     this.libroService.getLibro(parametro).subscribe(
       reslibro => {
         this.libro = reslibro;

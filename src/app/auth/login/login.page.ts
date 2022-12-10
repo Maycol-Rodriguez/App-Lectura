@@ -49,9 +49,9 @@ export class LoginPage implements OnInit {
     {
       name: 'profesor'
     },
-    {
-      name: 'responsable'
-    }
+    // {
+    //   name: 'responsable'
+    // }
   ];
   eleccion = 'estudiante';
   constructor(

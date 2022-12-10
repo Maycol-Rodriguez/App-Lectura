@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Profesor } from 'src/app/models/profesor';
 import { GradoService } from 'src/app/services/grado.service';
 import { ProfesorService } from 'src/app/services/profesor.service';
@@ -30,6 +30,13 @@ export class RegisterTeacherPage implements OnInit {
     Seccion: '',
     GradoId: 0
   };
+  secciones = [
+    { name: 'A'},
+    { name: 'B'},
+    { name: 'C'},
+    { name: 'D'},
+    { name: 'E'}
+  ];
   generos= [
     {
       name: 'Femenino'
@@ -79,6 +86,10 @@ export class RegisterTeacherPage implements OnInit {
   onOptionsSelectGrado(event: any){
     const value = event.target.value;
     this.profesor.GradoId = value;
+  }
+  onOptionsSelectSeccion(event: any){
+    const value = event.target.value;
+    this.profesor.Seccion = value;
   }
   ngOnInit() {
     this.getgrados();
