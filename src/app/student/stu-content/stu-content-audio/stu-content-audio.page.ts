@@ -86,6 +86,7 @@ export class StuContentAudioPage implements OnInit {
   const procc = seconds/player.getDuration();
     if (procc >= 0.95) {
     console.log('Video completado');
+    this.progreso.Progreso = 50;
   }
   });
 

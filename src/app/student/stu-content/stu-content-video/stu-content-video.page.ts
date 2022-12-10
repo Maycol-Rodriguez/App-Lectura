@@ -84,9 +84,9 @@ export class StuContentVideoPage implements OnInit {
   const procc = seconds/player.getDuration();
     if (procc >= 0.95) {
     console.log('Video completado');
+    this.progreso.Progreso = 50;
   }
   });
-
   const parametro = JSON.parse(localStorage.getItem('ellibro'));
   const parestudiante = JSON.parse(localStorage.getItem('usuario'));
   console.log(parametro);
