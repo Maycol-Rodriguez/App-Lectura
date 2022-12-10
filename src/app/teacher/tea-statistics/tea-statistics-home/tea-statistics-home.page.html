@@ -1,6 +1,6 @@
 <div class="body">
 
-  <section>
+  <!-- <section>
     <ion-list>
       <ion-item>
         <ion-select placeholder="GRADOS">
@@ -13,29 +13,47 @@
         </ion-select>
       </ion-item>
     </ion-list>
-  </section>
-
+  </section> -->
   <section class="date">
     <div>
       <label>DESDE:</label>
-      <input type="date" >
+      <input type="date" name="fechainicio"
+      [(ngModel)]="fechainicio"
+      required autofocus tabindex="1">
     </div>
     <div>
       <label>HASTA:</label>
-      <input type="date" >
+      <input type="date" name="fechafin"
+      [(ngModel)]="fechafin"
+      required tabindex="2">
     </div>
+    <br>
   </section>
+  <ion-button  expand="block" shape="round" (click)="generarestadisticas()">
+    Ver Estadisticas Generales
+  </ion-button>
 
   <section>
     <div>
       <ion-card class="card-container">
-        <ion-card-title class="card">15 libros leidos</ion-card-title>
+        <ion-card-title class="card">
+          {{reporte.intentos}} Intentos de Cuestionarios
+          </ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card">2 audiolibros escuchados</ion-card-title>
+        <ion-card-title class="card">
+          {{reporte.lecturas}} libros leidos
+        </ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card">3 videolibros vistos</ion-card-title>
+        <ion-card-title class="card">
+          {{reporte.nota}} Nota Promedio
+        </ion-card-title>
+      </ion-card>
+      <ion-card class="card-container">
+        <ion-card-title class="card">
+          {{reporte.progreso}} Progreso Promedio
+        </ion-card-title>
       </ion-card>
     </div>
   </section>

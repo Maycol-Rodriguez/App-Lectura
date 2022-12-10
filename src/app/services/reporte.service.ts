@@ -20,23 +20,21 @@ export class ReporteService {
   getlisttoreaccionbyLibro(libro: string | number, reaccion: string | number) {
     return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
   }
-
-  // estadisticas generales por grado de los estudiantes
-  getstatisticsindividual(libro: string | number, reaccion: string | number) {
-    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
+  // estadisticas generales de cada estudiante en fechas
+  getstatisticsindividual(estudiante: string | number, inicio: string, fin: string) {
+    return this.http.get(`${this.apiUrl}/progresos/estadisticas_individuales/${estudiante}/${inicio}/${fin}`);
   }
-  // estadisticas de los estudiante de manera individual
-  getstatisticsindividualdetail(libro: string | number, reaccion: string | number) {
-    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
-  }
-
   // estadisticas de los estudiante de manera individual y detallada
-  getstatisticsbygrade(libro: string | number, reaccion: string | number) {
-    return this.http.get(`${this.apiUrl}/reaccion/list/${libro}/${reaccion}`);
+  getstatisticsindividualdetail(estudiante: string | number, inicio: string, fin: string) {
+    return this.http.get(`${this.apiUrl}/progresos/estadisticas_individuales_detalladas/${estudiante}/${inicio}/${fin}`);
+  }
+  // estadisticas globales de los estudinates
+  getstatisticsbygradeandsecccion(grado: string | number, seccion: string, inicio: string, fin: string) {
+    return this.http.get(`${this.apiUrl}/progresos/globales/globalstadistics/${grado}/${seccion}/${inicio}/${fin}`);
   }
 
    // esto es para los reportes
-  getcliente(fecha1: string, fecha2: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/live/${fecha1}/${fecha2}`);
-  }
+  // getcliente(fecha1: string, fecha2: string): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}/live/${fecha1}/${fecha2}`);
+  // }
 }

@@ -10,6 +10,7 @@ import { ProgresoService } from 'src/app/services/progreso.service';
 import { Progreso } from 'src/app/models/progreso';
 import { EstudianteDetail } from 'src/app/models/estudiante';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
+import * as YTPlayer from 'yt-player';
 
 @Component({
   selector: 'app-stu-content-audio',
@@ -17,16 +18,12 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
   styleUrls: ['./stu-content-audio.page.scss'],
 })
 export class StuContentAudioPage implements OnInit {
-  // <iframe width="560" height="315"
-  // src="https://www.youtube.com/embed/uNjrPgnI9rI"
-  // title="YouTube video player" frameborder="0"
-  //  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //  allowfullscreen></iframe>
+  /* eslint-disable @typescript-eslint/naming-convention */
   libro: Libro = {
     id: 0,
     Titulo: '',
     Audio: '',
-    Video: 'https://www.youtube.com/embed/LzMKOMwakVA?enablejsapi=1',
+    Video: '',
     Imagen: '',
     Autor: ''
   };
@@ -73,38 +70,44 @@ export class StuContentAudioPage implements OnInit {
   haycuestionario = true;
   resolviocuestionario = false;
   cuestionarios: any = [];
-  // en progreso
-  // finalizado
   constructor(
     private router: Router,
-    private sanitizer: DomSanitizer,
-    private datoService: DataService,
     private libroService: LibroService,
-    private parrafoService: ParrafoService,
     private progresoService: ProgresoService,
     private cuestionarioService: CuestionarioService,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    const parametro = JSON.parse(localStorage.getItem('ellibro'));
-    const parestudiante = JSON.parse(localStorage.getItem('usuario'));
-    console.log(parametro);
-    this.libroService.getLibro(parametro).subscribe(
-      reslibro => {
-        this.libro = reslibro;
-        this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
-          rescuestionarios => {
-            if (Object.entries(rescuestionarios).length > 0) {
-              this.cuestionarios = rescuestionarios;
-              this.haycuestionario = true;
-            } else {
-              console.log('No hay Cuestionarios');
-            }
-          }, err => {
-            console.log('Error get cuestionarios by libro');
+  const player = new YTPlayer('#player', {
+    height: '250',
+    width: '310', controls: false} );
+  player.setVolume(100);
+  player.on('timeupdate', (seconds) => {
+  const procc = seconds/player.getDuration();
+    if (procc >= 0.95) {
+    console.log('Video completado');
+  }
+  });
+
+  const parametro = JSON.parse(localStorage.getItem('ellibro'));
+  const parestudiante = JSON.parse(localStorage.getItem('usuario'));
+  console.log(parametro);
+  this.libroService.getLibro(parametro).subscribe(
+    reslibro => {
+      this.libro = reslibro;
+      console.log(this.libro);
+      const par = this.libro.Video;
+      player.load(par); //URL
+      this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
+        rescuestionarios => {
+          if (Object.entries(rescuestionarios).length > 0) {
+            this.cuestionarios = rescuestionarios;
+            this.haycuestionario = true;
+          } else {
+            console.log('No hay Cuestionarios');
           }
-        );
-        this.progresoService.getProgresoidividual(parametro, parestudiante).subscribe(
+        });
+        this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
@@ -112,25 +115,24 @@ export class StuContentAudioPage implements OnInit {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante;
               this.progresocreate.Progreso = 0;
-              // this.progresoService.saveProgreso(this.progresocreate).subscribe(
-              //   resnewprogreso => {
-              //     this.progreso = resnewprogreso;
-              //     this.estado = 'iniciado';
-              //   }, err => {
-              //     console.log('Error create progreso');
-              //   }
-              // );
+              this.progresoService.saveProgreso(this.progresocreate).subscribe(
+                resnewprogreso => {
+                  this.progreso = resnewprogreso;
+                  this.estado = 'iniciado';
+                  window.location.reload();
+                }, err => {
+                  console.log('Error create progreso');
+                }
+              );
             }
           }, err => {
             console.log('Error get proceso by libro y alumno');
           }
         );
-        // sacar el progreso mediante libro y estudiante
       }, err => {
         console.log('Error get libro by id');
       }
     );
-    this.elurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Video);
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
@@ -140,43 +142,13 @@ export class StuContentAudioPage implements OnInit {
   }
   validarprogreso() {
     if (this.progreso.Progreso < 100) {
-      if (this.progreso.Progreso <= 70) {
-        // validar la vista del ultimo slider
-        if (this.progreso.Progreso === 70) {
-          if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = this.progreso.Progreso - 10;
-          }
-          if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = this.progreso.Progreso - 20;
-          }
-        } else if (this.progreso.Progreso === 60) {
-          if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = this.progreso.Progreso + 10;
-          }
-          if (this.progreso.FinalAlternativo === '') {
-            this.progreso.Progreso = this.progreso.Progreso - 20;
-          }
-        } else if (this.progreso.Progreso === 50) {
-          if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = this.progreso.Progreso + 20;
-          }
-          if (this.progreso.Comentario === '') {
-            this.progreso.Progreso = this.progreso.Progreso - 10;
-          }
-        } else if (this.progreso.Progreso === 40) {
-          if (this.progreso.Comentario !== '') {
-            this.progreso.Progreso = this.progreso.Progreso + 10;
-          }
-          if (this.progreso.FinalAlternativo !== '') {
-            this.progreso.Progreso = this.progreso.Progreso + 20;
-          }
-        } else if (this.progreso.Progreso === 0) {
-          this.progreso.Progreso = 40;
-          // comprobar esar en el ultimo slide
-          // comprobar finalizacion del video o audio
+      if (this.progreso.Progreso === 50) {
+        if (this.progreso.Comentario.length > 10) {
+          this.progreso.Progreso = this.progreso.Progreso + 20;
         }
-      } else {
-        this.progreso.Progreso = 70;
+        if (this.progreso.FinalAlternativo.length > 20) {
+          this.progreso.Progreso = this.progreso.Progreso + 30;
+        }
       }
     } else {
       this.progreso.Progreso = 100;
@@ -201,29 +173,10 @@ export class StuContentAudioPage implements OnInit {
         'stu-content-evaluation'
       ]
     );
-    // actualizamos el progreso
-    // lo mandamos al cuestionario
   }
 
   terminar(dato) {
     this.actualizar(dato);
-    this.router.navigate(
-      [
-        'student',
-        'stu-home'
-      ]
-    );
-  }
-  pruebacuestionario() {
-    this.router.navigate(
-      [
-        'student',
-        'stu-content',
-        'stu-content-evaluation'
-      ]
-    );
-  }
-  pruebafinalizar() {
     this.router.navigate(
       [
         'student',

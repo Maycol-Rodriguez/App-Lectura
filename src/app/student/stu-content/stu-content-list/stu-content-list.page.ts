@@ -17,6 +17,7 @@ export class StuContentListPage implements OnInit {
   vistaeleccion = true;
   vistalibros = false;
   nohaydisponibles = false;
+  ruta = 'lectura';
   constructor(
     private router: Router,
     private toast: ToastController,
@@ -83,6 +84,7 @@ export class StuContentListPage implements OnInit {
     this.librosfiltrados = this.libros;
     this.vistalibros = true;
     this.vistaeleccion = false;
+    this.ruta = 'lectura';
   }
   porvideo() {
     const array: any = [];
@@ -95,6 +97,7 @@ export class StuContentListPage implements OnInit {
     console.log(this.librosfiltrados);
     this.vistalibros = true;
     this.vistaeleccion = false;
+    this.ruta = 'video';
   }
   poraudio() {
     const array: any = [];
@@ -107,6 +110,7 @@ export class StuContentListPage implements OnInit {
     console.log(this.librosfiltrados);
     this.vistalibros = true;
     this.vistaeleccion = false;
+    this.ruta = 'audio';
   }
   ngOnInit() {
     this.getgrados();
@@ -114,13 +118,31 @@ export class StuContentListPage implements OnInit {
   }
   seleccion(dato: any) {
     this.datoService.rentedbook(dato);
-    this.router.navigate(
-      [
-        'student',
-        'stu-content',
-        'stu-content-reading'
-      ]
-    );
+    if (this.ruta === 'lectura') {
+      this.router.navigate(
+        [
+          'student',
+          'stu-content',
+          'stu-content-reading'
+        ]
+      );
+    } else if (this.ruta === 'video') {
+      this.router.navigate(
+        [
+          'student',
+          'stu-content',
+          'stu-content-video'
+        ]
+      );
+    } else if (this.ruta === 'audio') {
+      this.router.navigate(
+        [
+          'student',
+          'stu-content',
+          'stu-content-audio'
+        ]
+      );
+    }
   }
 
 }

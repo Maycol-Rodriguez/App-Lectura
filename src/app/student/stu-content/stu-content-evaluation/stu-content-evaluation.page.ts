@@ -191,7 +191,10 @@ export class StuContentEvaluationPage implements OnInit {
         }
       }
     }
-    this.progreso.NotaCuestionario = this.numeroaciertos * this.notaporpregunta;
+    const lanota = this.numeroaciertos * this.notaporpregunta;
+    if (lanota > this.progreso.NotaCuestionario) {
+      this.progreso.NotaCuestionario = lanota;
+    }
     this.progreso.NumeroIntento = this.progreso.NumeroIntento + 1;
     console.log(this.resoluciones);
     console.log(this.progreso);

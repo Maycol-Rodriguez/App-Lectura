@@ -14,9 +14,7 @@
         </ion-col>
         <ion-col size="12" >
           <div class="col_div col_div_video">
-            <!-- <iframe [src]="elurl" frameborder="0" height="100%" width="100%"
-              ></iframe> -->
-              <div id = "player"></div>
+              <div id="player"></div>
           </div>
         </ion-col>
         <ion-col size="12">
@@ -108,7 +106,7 @@
                     Comentario:
                   </ion-label>
                 </ion-item-divider>
-                <ion-item>
+                <ion-item class="no-border">
                   <ion-textarea
                     type="text"
                     name="Comentario"
@@ -116,8 +114,14 @@
                     auto-focus
                     tabindex="1"
                     minlength="10"
+                    #Comentario="ngModel"
                     [(ngModel)]="progreso.Comentario">
                   </ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-text color="danger" *ngIf="Comentario.errors?.minlength">
+                    Escribir un comentario de mas de 10 letras
+                  </ion-text>
                 </ion-item>
               </ion-item-group>
               <ion-item-group>
@@ -131,11 +135,16 @@
                     type="text"
                     name="FinalAlternativo"
                     required
-                    auto-focus
-                    tabindex="1"
+                    tabindex="2"
                     minlength="20"
+                    #FinalAlternativo="ngModel"
                     [(ngModel)]="progreso.FinalAlternativo">
                   </ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-text color="danger" *ngIf="FinalAlternativo.errors?.minlength">
+                    Escribir un final alternativo de mas de 20 letras
+                  </ion-text>
                 </ion-item>
               </ion-item-group>
             </ion-list>
@@ -144,22 +153,21 @@
         <ion-col size="12" *ngIf="haycuestionario">
           <div class="col_div col_div_final_cuestionario">
             <ion-button
+            [disabled]="(progreso.Reaccion === '' || progreso.Comentario.length < 10 || progreso.FinalAlternativo.length < 20)? true:false"
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
+            (click)="iracuestionario(progreso.id)">
                 Cuestionario
             </ion-button>
           </div>
         </ion-col>
-        <ion-col size="12" *ngIf="!haycuestionario">
+        <ion-col size="12" *ngIf="haycuestionario">
           <div
-          (click)="pruebafinalizar()"
           class="col_div col_div_final_finalizar">
           <ion-button
             shape="round"
-            (click)="pruebacuestionario()"
-            [disabled]="(progreso.Comentario === '' || progreso.FinalAlternativo === '' )? true:false">
-                Finalizar
+            [disabled]="(progreso.Progreso === 0 || progreso.Reaccion === '')? true:false"
+            (click)="terminar(progreso.id)">
+                Finalizar sin Cuestionario
             </ion-button>
           </div>
         </ion-col>

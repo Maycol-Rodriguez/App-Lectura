@@ -1,6 +1,8 @@
 <div class="ion-main">
   <ion-card class="card">
-    <ion-card-title class="title-name">Hola, Juan</ion-card-title>
+    <ion-card-title class="title-name">
+      Hola, {{estudiante.Nombre + ' ' + estudiante.Apellido}}
+    </ion-card-title>
   </ion-card>
 
   <div class="avance">
@@ -9,13 +11,19 @@
       <img src="../../../assets/images/insignia.png" alt="avance" />
       <div>
         <ion-card class="card-container">
-          <ion-card-title class="card">5 libros leidos</ion-card-title>
+          <ion-card-title class="card">
+            {{librosleidos || '0'}} libros leidos
+          </ion-card-title>
         </ion-card>
         <ion-card class="card-container">
-          <ion-card-title class="card">2 audiolibros escuchados</ion-card-title>
+          <ion-card-title class="card">
+            {{audiosescuchados || '0'}} audiolibros escuchados
+          </ion-card-title>
         </ion-card>
         <ion-card class="card-container">
-          <ion-card-title class="card">3 videolibros vistos</ion-card-title>
+          <ion-card-title class="card">
+            {{videosvistos || '0'}} videolibros vistos
+          </ion-card-title>
         </ion-card>
       </div>
     </div>
