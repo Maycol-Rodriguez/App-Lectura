@@ -66,7 +66,8 @@
         class="button button-io"
         expand="block"
         color="ion-color-tertiary-shade"
-        (click)="goToStudent()"
+        (click)="goToStudent(item.id)"
+        [disabled]="(reporte.progreso === 0)? true:false"
         > {{item.Nombre + ' ' + item.Apellido}} -
         {{item.Documento}}
         </ion-button

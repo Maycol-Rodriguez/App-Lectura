@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Router } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 import { Libro } from 'src/app/models/libro';
-import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
-import { DomSanitizer } from '@angular/platform-browser';
-import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EstudianteDetail } from 'src/app/models/estudiante';
 import { LibroService } from 'src/app/services/libro.service';
 import { ParrafoService } from 'src/app/services/parrafo.service';
@@ -16,7 +15,7 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
   styleUrls: ['./tea-statistics-forstudent-libro.page.scss'],
 })
 export class TeaStatisticsForstudentLibroPage implements OnInit {
-
+  @ViewChild(IonSlides, { static: true }) slides: IonSlides;
   libro: Libro = {
     id: 0,
     Titulo: '',
@@ -65,13 +64,12 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
   elurlvideo;
   elurlaudio;
   slideOpts = {
-    slidesPerView: 1,
     centeredSlides: true,
     loop: true,
     spaceBetween: 10,
     grabCursor: true,
-    initialSlide: 1,
-    speed: 400
+    initialSlide: 0,
+    speed: 500
   };
   existencia = 'no existe';
   mensaje;
@@ -79,31 +77,22 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
   haycuestionario = false;
   resolviocuestionario = false;
   cuestionarios: any = [];
-  videofin=false;
-  // en progreso
-  // finalizado
+  validacionultimoslide;
   constructor(
     private router: Router,
-    private sanitizer: DomSanitizer,
-    private datoService: DataService,
     private libroService: LibroService,
+    private activatedRoute: ActivatedRoute,
     private parrafoService: ParrafoService,
     private progresoService: ProgresoService,
     private cuestionarioService: CuestionarioService,
   ) { }
-
   ngOnInit() {
-    const parametro = JSON.parse(localStorage.getItem('ellibro'));
-    const parestudiante = JSON.parse(localStorage.getItem('usuario'));
-    console.log(parametro);
-    this.libroService.getLibro(parametro).subscribe(
+    const codigoestudiante = this.activatedRoute.snapshot.paramMap.get('estudiante');
+    const codigolibro = this.activatedRoute.snapshot.paramMap.get('libro');
+    this.libroService.getLibro(codigolibro).subscribe(
       reslibro => {
         this.libro = reslibro;
-        console.log(this.libro);
-        const par = this.libro.Video;
-        this.elurlvideo = this.sanitizer.bypassSecurityTrustResourceUrl(par);
-        // this.elurlaudio = this.sanitizer.bypassSecurityTrustResourceUrl(this.libro.Audio);
-        this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
+        this.cuestionarioService.getsearchCuestionariobylibro(codigolibro).subscribe(
           rescuestionarios => {
             if (Object.entries(rescuestionarios).length > 0) {
               this.cuestionarios = rescuestionarios;
@@ -115,35 +104,19 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
             console.log('Error get cuestionarios by libro');
           }
         );
-        this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
+        this.progresoService.getProgresoidividual(codigolibro, codigoestudiante).subscribe(
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
-              console.log(this.progreso);
-            } else {
-              this.progresocreate.LibroId = parametro;
-              this.progresocreate.EstudianteId = parestudiante.id;
-              this.progresocreate.Progreso = 0;
-              console.log(this.progreso);
-              this.progresoService.saveProgreso(this.progresocreate).subscribe(
-                resnewprogreso => {
-                  this.progreso = resnewprogreso;
-                  this.estado = 'iniciado';
-                  window.location.reload();
-                }, err => {
-                  console.log('Error create progreso');
-                }
-              );
             }
           }, err => {
             console.log('Error get proceso by libro y alumno');
           }
         );
         // sacar el progreso mediante libro y estudiante
-        this.parrafoService.getsearchParrafobylibro(parametro).subscribe(
+        this.parrafoService.getsearchParrafobylibro(codigolibro).subscribe(
           resparrafos => {
             this.parrafos = resparrafos;
-            console.log(this.parrafos);
           }, err => {
             console.log('Error get parrafos by libro id');
           }
@@ -153,49 +126,14 @@ export class TeaStatisticsForstudentLibroPage implements OnInit {
       }
     );
   }
-  elegir(dato) {
-    this.progreso.Reaccion = dato;
-  }
-  deselegir() {
-    this.progreso.Reaccion = '';
-  }
-
-  iracuestionario(dato) {
+  chekarcuestionario(dato) {
     this.router.navigate(
       [
         'teacher',
         'tea-statistics',
-        'tea-statistics-forstudent-cuestionario'
-      ]
-    );
-    // actualizamos el progreso
-    // lo mandamos al cuestionario
-  }
-
-  terminar(dato) {
-    this.router.navigate(
-      [
-        'teacher',
-        'tea-statistics'
+        'tea-statistics-forstudent-cuestionario',
+        dato
       ]
     );
   }
-  pruebacuestionario() {
-    this.router.navigate(
-      [
-        'teacher',
-        'tea-statistics',
-        'tea-statistics-forstudent-cuestionario'
-      ]
-    );
-  }
-  pruebafinalizar() {
-    this.router.navigate(
-      [
-        'teacher',
-        'tea-statistics'
-      ]
-    );
-  }
-
 }

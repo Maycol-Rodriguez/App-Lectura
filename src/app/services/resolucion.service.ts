@@ -20,6 +20,12 @@ export class ResolucionService {
   getResolucion(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
+  getResolucioncuestionario(codigo: string | number) {
+    return this.http.get(`${this.apiUrl}/filterprogress/${codigo}`);
+  }
+  getResolucioncuestionarioeintento(codigo: string | number, intento: string | number) {
+    return this.http.get(`${this.apiUrl}/filterprogress/andintento/${codigo}/${intento}`);
+  }
 
   deleteResolucion(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);

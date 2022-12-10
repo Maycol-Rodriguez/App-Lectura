@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProfesorDetail } from 'src/app/models/profesor';
@@ -53,6 +54,5 @@ export class TeaHomePage implements OnInit {
       ]
     );
   }
-  
 
 }

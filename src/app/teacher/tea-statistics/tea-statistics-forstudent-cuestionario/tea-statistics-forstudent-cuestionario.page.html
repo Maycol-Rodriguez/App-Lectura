@@ -1,140 +1,71 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      REFORZANDO TU APRENDIZAJE
+      Verificando Respuestas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <div class="main_content_div">
   <ion-grid fixed>
     <ion-row>
-      <!-- <ion-col size="12" *ngFor="let item of cuestionariofiltrado">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            {{item.Pregunta}}
-          </h2>
-        </div>
-        <br>
+      <ion-col size="12">
+        <ion-select interface="popover"
+        placeholder="Seleccione numero intento"
+        (ionChange)="onOptionsSelectIntento($event)">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="12">
         <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>
-                {{item.Respuesa1}}
-              </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>
-                {{item.Respuesa2}}
-              </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>
-                {{item.Respuesa3}}
-              </ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-            </ion-radio-group>
+          <ion-item>
+            <ion-label class="pregunta">
+              Pregunta
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="respuesta">
+              RespuestaEscogida
+            </ion-label>
+            <ion-icon class="correcto" name="checkmark-done-outline" color="primary" slot="end"></ion-icon>
+            <ion-icon class="incorrecto" name="close-circle-outline" color="danger" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+       <!-- <ion-col size="12" *ngFor="let item of resoluciones">
+        <ion-list>
+          <ion-item>
+            <ion-label class="pregunta">
+              {{item.Pregunta}}
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="respuesta">
+              {{item.RespuestaEscogida}}
+            </ion-label>
+            <ion-icon *ngIf="item.Correcto ==='correcto'" class="correcto" name="information-circle" size="large" slot="end"></ion-icon>
+            <ion-icon *ngIf="item.Correcto ==='incorrecto'" class="incorrecto" name="information-circle" size="large" slot="end"></ion-icon>
+          </ion-item>
         </ion-list>
       </ion-col> -->
       <ion-col size="12">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            ¿Quién es el personaje principal?
-          </h2>
+        <div
+        class="col_div">
+        <ion-button
+          shape="round"
+          (click)="finalizar()">
+              Terminar
+          </ion-button>
         </div>
-        <br>
-        <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </ion-col>
-      <ion-col size="12">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            ¿Cuál es el escenario?
-          </h2>
-        </div>
-        <br>
-        <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </ion-col>
-      <ion-col size="12">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            ¿Cuál es la idea principal del cuento?
-          </h2>
-        </div>
-        <br>
-        <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </ion-col>
-      <ion-col size="12">
-        <div class="col_div col_div_pregunta">
-          <h2>
-            ¿Cuál fue el problema del cuento?
-          </h2>
-        </div>
-        <br>
-        <ion-list>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta1"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta2"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>.....</ion-label>
-              <ion-radio slot="end" value="radio_cuestionario_respuesta3"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
 </div>
-

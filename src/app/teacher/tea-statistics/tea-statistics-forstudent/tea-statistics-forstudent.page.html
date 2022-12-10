@@ -1,59 +1,60 @@
 <div>
   <section>
-    <h2 class="title">Cuentos revisados</h2>
+    <h2 class="title">
+      Estadisticas del estudiantes
+      <br>
+      {{estudiante.Nombre + ' ' + estudiante.Apellido}}
+    </h2>
     <div>
-      <ion-card class="card-container">
+      <ion-card class="card-container" (click)="elegir('lectura')">
         <ion-card-title class="card color-text">
-          2 libros leidos el ultimo mes
+          {{librosleidos || '0'}} libros leidos
+        </ion-card-title>
+      </ion-card>
+      <ion-card class="card-container" (click)="elegir('audio')">
+        <ion-card-title class="card color-text">
+          {{audiosescuchados || '0'}} audiolibros escuchados
+        </ion-card-title>
+      </ion-card>
+      <ion-card class="card-container" (click)="elegir('video')">
+        <ion-card-title class="card color-text">
+          {{videosvistos || '0'}} videolibros vistos
         </ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card color-text">1 en progreso actualmente</ion-card-title>
+        <ion-card-title class="card color-text">
+          {{notapromedio || '0'}} Nota Promedio
+        </ion-card-title>
       </ion-card>
       <ion-card class="card-container">
-        <ion-card-title class="card color-text">80% calificacion total de encuestas</ion-card-title>
+        <ion-card-title class="card color-text">
+          {{progresopromedio || '0'}} Progreso Promedio
+        </ion-card-title>
       </ion-card>
-      <ion-card class="card-container">
-        <ion-card-title class="card color-text">3 videolibros vistos</ion-card-title>
-      </ion-card>
-      <ion-card class="card-container">
-        <ion-card-title class="card">80% de promedio en encuestas</ion-card-title>
-      </ion-card>
-
     </div>
   </section>
-
   <section>
-    <h2 class="title">Historial</h2>
-    <div>
-      <ion-card class="card-history" (click)="goToCuento()">
-        <ion-img src="../../../../assets/images/cuento-active.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-      <ion-card class="card-history">
-        <ion-img src="../../../../assets/images/cuento-inactive.png"></ion-img>
-        <ion-card-title class="card-title">1 libro leido el 12/12/2020</ion-card-title>
-      </ion-card>
-    </div>
+    <h2 class="title">
+      Historial
+    </h2>
+    <ion-card class="card-container">
+      <ion-card-content>
+        <ion-grid fixed>
+          <!-- <h2 *ngIf="libros.length === 0">
+            No se encontro avances todavia
+          </h2> -->
+          <ion-row>
+            <ion-col size="12" *ngFor="let item of libros">
+              <ion-card class="card-history" (click)="goToCuento(item.codigo)">
+                <ion-img [src]="item.imagen"></ion-img>
+                <ion-card-title class="card-title">
+                  {{item.titulo}}
+                </ion-card-title>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
   </section>
 </div>

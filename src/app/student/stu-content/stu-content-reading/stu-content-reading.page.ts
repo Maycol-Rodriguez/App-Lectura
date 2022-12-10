@@ -18,7 +18,6 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
 })
 export class StuContentReadingPage implements OnInit {
   @ViewChild(IonSlides, { static: true }) slides: IonSlides;
-  // @ViewChild(IonicSlides, {static: true}) slide: IonicSlides;
   libro: Libro = {
     id: 0,
     Titulo: '',
@@ -154,7 +153,9 @@ export class StuContentReadingPage implements OnInit {
       (istrue) => {
         if (istrue) {
           this.validacionultimoslide = 'termino';
-          this.progreso.Progreso = 50;
+          if (this.progreso.Progreso === 0) {
+            this.progreso.Progreso = 50;
+          }
         } else {
           this.validacionultimoslide = 'aun no termino';
         }
@@ -169,6 +170,16 @@ export class StuContentReadingPage implements OnInit {
         }
         if (this.progreso.FinalAlternativo.length > 20) {
           this.progreso.Progreso = this.progreso.Progreso + 30;
+        }
+      }
+      if (this.progreso.Progreso === 70) {
+        if (this.progreso.FinalAlternativo.length > 20) {
+          this.progreso.Progreso = this.progreso.Progreso + 30;
+        }
+      }
+      if (this.progreso.Progreso === 80) {
+        if (this.progreso.Comentario.length > 10) {
+          this.progreso.Progreso = this.progreso.Progreso + 20;
         }
       }
     } else {

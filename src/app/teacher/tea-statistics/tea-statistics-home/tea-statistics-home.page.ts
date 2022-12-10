@@ -109,12 +109,15 @@ export class TeaStatisticsHomePage implements OnInit {
       );
   }
 
-  goToStudent() {
+  goToStudent(parametro) {
     this.router.navigate(
       [
         'teacher',
         'tea-statistics',
-        'tea-statistics-forstudent'
+        'tea-statistics-forstudent',
+        this.parametro.inicio,
+        this.parametro.fin,
+        parametro
       ]
     );
   }

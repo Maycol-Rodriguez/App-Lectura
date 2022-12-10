@@ -86,7 +86,9 @@ export class StuContentAudioPage implements OnInit {
   const procc = seconds/player.getDuration();
     if (procc >= 0.95) {
     console.log('Video completado');
-    this.progreso.Progreso = 50;
+    if (this.progreso.Progreso === 0) {
+      this.progreso.Progreso = 50;
+    }
   }
   });
 
@@ -149,6 +151,16 @@ export class StuContentAudioPage implements OnInit {
         }
         if (this.progreso.FinalAlternativo.length > 20) {
           this.progreso.Progreso = this.progreso.Progreso + 30;
+        }
+      }
+      if (this.progreso.Progreso === 70) {
+        if (this.progreso.FinalAlternativo.length > 20) {
+          this.progreso.Progreso = this.progreso.Progreso + 30;
+        }
+      }
+      if (this.progreso.Progreso === 80) {
+        if (this.progreso.Comentario.length > 10) {
+          this.progreso.Progreso = this.progreso.Progreso + 20;
         }
       }
     } else {

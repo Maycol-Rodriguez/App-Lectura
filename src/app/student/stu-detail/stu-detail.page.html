@@ -10,17 +10,17 @@
     <div class="two-columns">
       <img src="../../../assets/images/insignia.png" alt="avance" />
       <div>
-        <ion-card class="card-container">
+        <ion-card class="card-container" (click)="elegir('lectura')">
           <ion-card-title class="card">
             {{librosleidos || '0'}} libros leidos
           </ion-card-title>
         </ion-card>
-        <ion-card class="card-container">
+        <ion-card class="card-container" (click)="elegir('audio')">
           <ion-card-title class="card">
             {{audiosescuchados || '0'}} audiolibros escuchados
           </ion-card-title>
         </ion-card>
-        <ion-card class="card-container">
+        <ion-card class="card-container" (click)="elegir('video')">
           <ion-card-title class="card">
             {{videosvistos || '0'}} videolibros vistos
           </ion-card-title>
@@ -58,12 +58,66 @@
       </div>
     </div>
   </div>
-
   <ion-button
     class="button button-io"
     expand="block"
     color="ion-color-tertiary-shade"
-    (click)="goToHome()"
-    >Empezar</ion-button
-  >
+    (click)="goToHome()">Empezar</ion-button>
 </div>
+
+<ion-modal trigger="open-modal" [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="setOpen(false)">
+            Cancelar
+          </ion-button>
+        </ion-buttons>
+        <ion-title *ngIf="eleccion === 'lectura'">
+          Lecturas Hechas
+        </ion-title>
+        <ion-title *ngIf="eleccion === 'video'">
+          Videos Vistos
+        </ion-title>
+        <ion-title *ngIf="eleccion === 'audio'">
+          Audios Escuchados
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)" [strong]="true">
+            Confirmar
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-label *ngIf="eleccion === 'lectura'" class="hello_lbl">
+        Libros Disponibles
+      </ion-label>
+      <ion-label *ngIf="eleccion === 'video'" class="hello_lbl">
+        Videos Disponibles
+      </ion-label>
+      <ion-label *ngIf="eleccion === 'audio'" class="hello_lbl">
+        Audios Disponibles
+      </ion-label>
+      <ion-grid fixed>
+        <h2 *ngIf="libros.length === 0">
+          No se encontro avances todavia
+        </h2>
+        <ion-row *ngIf="libros.length > 0">
+          <ion-col size="12" *ngFor="let item of libros">
+            <div (click)="seleccion(item.codigo)" class="col_div">
+              <img [src]="item.imagen" alt="libro">
+              <ion-label>
+                {{item.titulo}}
+              </ion-label>
+              <p>
+                {{item.autor}}
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>
