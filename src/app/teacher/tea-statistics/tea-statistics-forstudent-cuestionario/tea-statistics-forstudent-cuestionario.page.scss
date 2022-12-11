@@ -47,15 +47,17 @@ ion-toolbar {
               font-size: 20px;
             }
             ion-icon {
-              background: transparent;
+              // background: transparent;
             }
             .correcto {
               border-radius: 50%;
               border: 2px solid  #36abe0;
+              color: #36abe0;
             }
             .incorrecto {
               border-radius: 50%;
               border: 2px solid #eb445a;
+              color: #eb445a;
             }
           }
         }

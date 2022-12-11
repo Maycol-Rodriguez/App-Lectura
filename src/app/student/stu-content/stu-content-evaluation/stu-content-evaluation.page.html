@@ -43,23 +43,23 @@
         class="col_div col_div_final_finalizar">
         <ion-button
           shape="round"
-          [disabled]="(progreso.Progreso < 100)? true:false"
+          [disabled]="(progreso.Progreso < 100 || progreso.NumeroIntento > 2)? true:false"
           (click)="comprobarrespuesta()">
               Calificar y Terminar
           </ion-button>
         </div>
       </ion-col>
-      <ion-col size="12" *ngIf="respuestas.length > 4">
+      <!-- <ion-col size="12" *ngIf="respuestas.length > 4">
         <div
         class="col_div col_div_final_finalizar">
         <ion-button
           shape="round"
-          [disabled]="(respuestas.length < 4)? true:false"
+          [disabled]="(respuestas.length < 4 || progreso.NumeroIntento > 2)? true:false"
           (click)="comprobarrespuesta()">
               Calificar y Terminar
           </ion-button>
         </div>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </ion-grid>
 

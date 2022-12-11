@@ -52,6 +52,7 @@ export class TeaStatisticsForstudentCuestionarioPage implements OnInit {
         this.resolucionService.getResolucioncuestionarioeintento(this.progreso.id, this.progreso.NumeroIntento).subscribe(
           resresolucion => {
             this.resolucionfiltradas = resresolucion;
+            console.log(this.resolucionfiltradas);
           }, err => {
             console.log('Error get resoluciones by progreso');
           }

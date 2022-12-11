@@ -72,6 +72,7 @@ export class StuContentEvaluationPage implements OnInit {
     this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
       resprogreso => {
         this.progreso = resprogreso;
+        console.log(this.progreso);
         this.codigoprogreso = this.progreso.id;
         const parametrito = this.progreso.LibroId;
         this.cuestionarioService.getsearchCuestionariobylibro(parametrito).subscribe(
