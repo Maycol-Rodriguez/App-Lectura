@@ -48,6 +48,7 @@ export class StuBookCreatePage implements OnInit {
   publicacion: Publicacion = {
     Procedencia: '',
     FechaRegistro: new Date(),
+    GradoDestino: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -55,6 +56,7 @@ export class StuBookCreatePage implements OnInit {
     id: 0,
     Procedencia: '',
     FechaRegistro: new Date(),
+    GradoDestino: 0,
     LibroId: 0,
     EstudianteId: 0
   };
@@ -99,8 +101,9 @@ export class StuBookCreatePage implements OnInit {
     );
   }
   savepublicacion() {
-    this.publicacion.Procedencia = 'internal';
+    this.publicacion.Procedencia = 'interna';
     this.publicacion.FechaRegistro = new Date();
+    this.publicacion.GradoDestino = this.cliente.GradoId;
     this.publicacionService.savePublicacion(this.publicacion).subscribe(
       respublicacion => {
         this.publicacion1 = respublicacion;

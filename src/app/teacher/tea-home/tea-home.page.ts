@@ -16,6 +16,7 @@ export class TeaHomePage implements OnInit {
     Genero:'' ,
     Documento: '',
     GradoId: 0,
+    Seccion: '',
     grado: {
       id: 0,
       Nombre: ''

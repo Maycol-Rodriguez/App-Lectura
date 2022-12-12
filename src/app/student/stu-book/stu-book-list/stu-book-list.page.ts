@@ -28,6 +28,15 @@ export class StuBookListPage implements OnInit {
       }
     );
   }
+  crear() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-book',
+        'stu-book-create'
+      ]
+    );
+  }
   edit(dato) {
     this.router.navigate(
       [

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { StuBookUpdatePage } from './stu-book-update/stu-book-update.page';
 
 import { StuBookPage } from './stu-book.page';
 
@@ -17,8 +18,9 @@ const routes: Routes = [
         loadChildren: () => import('./stu-book-create/stu-book-create.module').then( m => m.StuBookCreatePageModule)
       },
       {
-        path: 'stu-book-update',
-        loadChildren: () => import('./stu-book-update/stu-book-update.module').then( m => m.StuBookUpdatePageModule)
+        path: 'stu-book-update/:libro',
+        component: StuBookUpdatePage
+        // loadChildren: () => import('./stu-book-update/stu-book-update.module').then( m => m.StuBookUpdatePageModule)
       },
       {
         path: '',

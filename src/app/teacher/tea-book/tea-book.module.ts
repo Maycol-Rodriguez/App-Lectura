@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { TeaBookPageRoutingModule } from './tea-book-routing.module';
 
 import { TeaBookPage } from './tea-book.page';
+import { TeaBookUpdatePage } from './tea-book-update/tea-book-update.page';
+import { TeaBookCuestionarioPage } from './tea-book-cuestionario/tea-book-cuestionario.page';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { TeaBookPage } from './tea-book.page';
     IonicModule,
     TeaBookPageRoutingModule
   ],
-  declarations: [TeaBookPage]
+  declarations: [
+    TeaBookPage,
+    TeaBookUpdatePage,
+    TeaBookCuestionarioPage,
+  ]
 })
 export class TeaBookPageModule {}

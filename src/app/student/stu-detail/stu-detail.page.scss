@@ -39,12 +39,39 @@
 }
 
 .card-img {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .card-container{
   margin-bottom: 25px;
+}
+ion-list {
+  --background: transparent;
+  ion-item {
+    --background: transparent;
+    ion-label {
+      text-align: center;
+    }
+    ion-img {
+      margin: auto;
+    }
+    .chico {
+      width: 100px;
+      height: 100px;
+    }
+    .mediano {
+      width: 150px;
+      height: 150px;
+    }
+    .grande {
+      width: 250px;
+      height: 250px;
+    }
+    .defecto {
+      width: 100px;
+      height: 100px;
+    }
+  }
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TeaBookCuestionarioPage } from './tea-book-cuestionario/tea-book-cuestionario.page';
+import { TeaBookUpdatePage } from './tea-book-update/tea-book-update.page';
 
 import { TeaBookPage } from './tea-book.page';
 
@@ -17,8 +19,14 @@ const routes: Routes = [
         loadChildren: () => import('./tea-book-create/tea-book-create.module').then( m => m.TeaBookCreatePageModule)
       },
       {
-        path: 'tea-book-update',
-        loadChildren: () => import('./tea-book-update/tea-book-update.module').then( m => m.TeaBookUpdatePageModule)
+        path: 'tea-book-update/:libro',
+        component: TeaBookUpdatePage
+        // loadChildren: () => import('./tea-book-update/tea-book-update.module').then( m => m.TeaBookUpdatePageModule)
+      },
+      {
+        path: 'tea-book-cuestionario/:libro',
+        component: TeaBookCuestionarioPage
+        // loadChildren: () => import('./tea-book-cuestionario/tea-book-cuestionario.module').then( m => m.TeaBookCuestionarioPageModule)
       },
       {
         path: '',

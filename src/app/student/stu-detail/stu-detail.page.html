@@ -28,8 +28,42 @@
       </div>
     </div>
   </div>
-
   <div class="logros">
+    <h2 class="title">
+      Logros
+    </h2>
+    <ion-list>
+      <ion-item class="card-img">
+        <ion-img src="../../../assets/images/trofeo3.jfif"
+        *ngIf="librosleidos > 2" class="chico"
+        alt="Primer Premio"></ion-img>
+        <ion-img src="../../../assets/images/trofeo2.jfif"
+        *ngIf="librosleidos > 4" class="mediano"
+        alt="Primer Premio"></ion-img>
+        <ion-img src="../../../assets/images/trofeo1.jfif"
+        *ngIf="librosleidos > 6" class="grande"
+        alt="Primer Premio"></ion-img>
+        <ion-img src="../../../assets/images/img1.png"
+        *ngIf="librosleidos < 3"  class="defecto"
+        alt="Primer Premio"></ion-img>
+      </ion-item>
+      <ion-item class="card">
+        <ion-label *ngIf="librosleidos > 2 && librosleidos < 5">
+          Lector Principiante
+        </ion-label>
+        <ion-label *ngIf="librosleidos > 4 && librosleidos < 7">
+          Lector Aventurero
+        </ion-label>
+        <ion-label *ngIf="librosleidos > 6">
+          Devorador de Textos
+        </ion-label>
+        <ion-label *ngIf="librosleidos < 3">
+          Sigue Leendo
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <!-- <div class="logros">
     <h2 class="title">Logros</h2>
     <div class="two-columns">
       <div class="card-img">
@@ -57,7 +91,7 @@
         </ion-card>
       </div>
     </div>
-  </div>
+  </div> -->
   <ion-button
     class="button button-io"
     expand="block"
