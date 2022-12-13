@@ -150,7 +150,7 @@ export class RegisterPage implements OnInit {
       );
     }
 
-    onOptionsSelectGenero(event: any){
+    onOptionsSelectGenero(event: any) {
       const value = event.target.value;
       this.estudiante.Genero = value;
     }

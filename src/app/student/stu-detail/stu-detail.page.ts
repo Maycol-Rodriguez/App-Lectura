@@ -77,7 +77,6 @@ export class StuDetailPage implements OnInit {
         this.librosleidos = this.reporte[2][0].libros_leidos;
         this.notapromedio = this.reporte[2][0].nota;
         this.progresopromedio = this.reporte[2].progreso;
-        this.librosleidos = 10;
       }, err => {
         console.log('Error get reporte individual');
       }
