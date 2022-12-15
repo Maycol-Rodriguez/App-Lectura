@@ -53,6 +53,13 @@
               --color: #08A6AC;
               --placeholder-color: rgb(87, 219, 242);
             }
+            ion-select {
+              --background: transparent;
+              --color: #08A6AC;
+              color: #08A6AC;
+              --placeholder-color: rgb(87, 219, 242);
+              --placeholder-opacity:rgb(87, 219, 242);
+            }
           }
         }
         .action-buttons {

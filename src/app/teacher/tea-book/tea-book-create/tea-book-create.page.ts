@@ -4,13 +4,13 @@ import { Libro } from 'src/app/models/libro';
 import { Parrafo } from 'src/app/models/parrafo';
 import { Component, OnInit } from '@angular/core';
 import { Publicacion } from 'src/app/models/publicacion';
+import { ProfesorDetail } from 'src/app/models/profesor';
 import { TipoService } from 'src/app/services/tipo.service';
+import { EstudianteDetail } from 'src/app/models/estudiante';
 import { LibroService } from 'src/app/services/libro.service';
 import { ParrafoService } from 'src/app/services/parrafo.service';
-import { PublicacionService } from 'src/app/services/publicacion.service';
-import { ProfesorDetail } from 'src/app/models/profesor';
 import { EstudianteService } from 'src/app/services/estudiante.service';
-import { EstudianteDetail } from 'src/app/models/estudiante';
+import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
   selector: 'app-tea-book-create',
@@ -78,7 +78,7 @@ export class TeaBookCreatePage implements OnInit {
   publicacion: Publicacion = {
     Procedencia: '',
     FechaRegistro: new Date(),
-    GradoDestino: 0,
+    GradoDestino: '',
     LibroId: 0,
     EstudianteId: 0
   };
@@ -86,7 +86,7 @@ export class TeaBookCreatePage implements OnInit {
     id: 0,
     Procedencia: '',
     FechaRegistro: new Date(),
-    GradoDestino: 0,
+    GradoDestino: '',
     LibroId: 0,
     EstudianteId: 0
   };
@@ -95,6 +95,7 @@ export class TeaBookCreatePage implements OnInit {
   porfinalizar = false;
   codigolibro;
   cliente;
+  eleccion;
   constructor(
     private router: Router,
     private tipoService: TipoService,
@@ -103,6 +104,9 @@ export class TeaBookCreatePage implements OnInit {
     private estudianteService: EstudianteService,
     private publicacionService: PublicacionService,
   ) { }
+  elegir(par) {
+    this.eleccion = par;
+  }
   onOptionsSelectEstudiante(event: any){
     const value = event.target.value;
     this.selecionarestudiantes(value);
@@ -130,6 +134,60 @@ export class TeaBookCreatePage implements OnInit {
         console.log(reslibro);
         this.creado = true;
         this.mostrarparrafos = true;
+      }, err => {
+        console.log('Error save Libro');
+      }
+    );
+  }
+  savelibrovideo() {
+    this.libroService.saveLibro(this.libro).subscribe(
+      reslibro => {
+        this.libro1 = reslibro;
+        this.codigolibro = this.libro1.id;
+        this.publicacion.Procedencia = 'interna';
+        this.publicacion.LibroId = this.codigolibro;
+        this.publicacion.FechaRegistro = new Date();
+        this.publicacionService.savePublicacion(this.publicacion).subscribe(
+          respublicacion => {
+            this.publicacion1 = respublicacion;
+            this.router.navigate(
+              [
+                'student',
+                'stu-book',
+                'stu-book-list'
+              ]
+            );
+          }, err => {
+            console.log('Error save publicacion');
+          }
+        );
+      }, err => {
+        console.log('Error save Libro');
+      }
+    );
+  }
+  savelibroaudio() {
+    this.libroService.saveLibro(this.libro).subscribe(
+      reslibro => {
+        this.libro1 = reslibro;
+        this.codigolibro = this.libro1.id;
+        this.publicacion.Procedencia = 'interna';
+        this.publicacion.LibroId = this.codigolibro;
+        this.publicacion.FechaRegistro = new Date();
+        this.publicacionService.savePublicacion(this.publicacion).subscribe(
+          respublicacion => {
+            this.publicacion1 = respublicacion;
+            this.router.navigate(
+              [
+                'student',
+                'stu-book',
+                'stu-book-list'
+              ]
+            );
+          }, err => {
+            console.log('Error save publicacion');
+          }
+        );
       }, err => {
         console.log('Error save Libro');
       }
@@ -178,7 +236,7 @@ export class TeaBookCreatePage implements OnInit {
       resestudiante => {
         this.estudiante = resestudiante;
         this.publicacion.EstudianteId = this.estudiante.id;
-        this.publicacion.GradoDestino = this.estudiante.GradoId;
+        this.publicacion.GradoDestino = this.estudiante.grado.Nombre;
         if (this.libro.Autor === '') {
           this.libro.Autor = this.estudiante.Nombre + ' ' + this.estudiante.Apellido;
         }

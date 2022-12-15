@@ -36,7 +36,7 @@ export class StuBookUpdatePage implements OnInit {
     id: 0,
     Procedencia: '',
     FechaRegistro: new Date(),
-    GradoDestino: 0,
+    GradoDestino: '',
     LibroId: 0,
     EstudianteId: 0
   };

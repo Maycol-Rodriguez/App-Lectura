@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
 import { Resolucion } from 'src/app/models/resolucion';
-import { DataService } from 'src/app/services/data.service';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { ResolucionService } from 'src/app/services/resolucion.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
@@ -58,9 +57,9 @@ export class StuContentEvaluationPage implements OnInit {
   numeroaciertos = 0;
   codigoprogreso;
   mensaje;
+  bandera = false;
   constructor(
     private router: Router,
-    private datoService: DataService,
     private progresoService: ProgresoService,
     private resolucionService: ResolucionService,
     private cuestionarioService: CuestionarioService,
@@ -72,8 +71,11 @@ export class StuContentEvaluationPage implements OnInit {
     this.progresoService.getProgresoidividual(parametro, parestudiante.id).subscribe(
       resprogreso => {
         this.progreso = resprogreso;
-        console.log(this.progreso);
         this.codigoprogreso = this.progreso.id;
+        const filtro = this.progreso.Progreso;
+        if (filtro < 100) {
+          window.location.reload();
+        }
         const parametrito = this.progreso.LibroId;
         this.cuestionarioService.getsearchCuestionariobylibro(parametrito).subscribe(
           rescuestionarios => {
@@ -213,15 +215,21 @@ export class StuContentEvaluationPage implements OnInit {
     this.progresoService.updateProgreso(this.codigoprogreso, this.progreso).subscribe(
       resupdate => {
         this.mensaje = resupdate;
-        this.router.navigate(
-          [
-            'student',
-            'stu-content'
-          ]
-        );
+        this.bandera = true;
       }, err => {
         console.log('Error update cuestionario');
       }
     );
+  }
+  finalizar() {
+    this.router.navigate(
+      [
+        'student',
+        'stu-content'
+      ]
+    );
+  }
+  otrointento() {
+    window.location.reload();
   }
 }

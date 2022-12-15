@@ -1,0 +1,125 @@
+.main_content_div_child {
+    min-height: 700px;
+    max-height: 5000px;
+    height: auto;
+    --background: transparent;
+  }
+
+  .main_content_div {
+    background: white;
+    width: 100%;
+    border-top-right-radius: 75px;
+    margin-top: 20px;
+    padding-top: 30px;
+    padding: 10px;
+    .profile-section {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+      min-height: 150px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      .heading {
+        margin-left: 1px;
+        margin-top: 20px;
+        h1 {
+          font-size: 2rem;
+          font-weight: bolder;
+          text-align: center;
+          color: #08A6AC;
+        }
+      }
+      .profile-form {
+        .form-input {
+          position: relative;
+          margin-bottom: 40px;
+          border-bottom: 1px solid white;
+          color: white;
+          margin-left: 15;
+          font-size: 4rem;
+          ion-item {
+            --background: transparent;
+            ion-label {
+              font-weight: bold;
+              font-size: 14px;
+              color: #08A6AC;
+            }
+            ion-input {
+              --color: #08A6AC;
+              --placeholder-color: rgb(87, 219, 242);
+            }
+            ion-select {
+              --background: transparent;
+              --color: #08A6AC;
+              color: #08A6AC;
+              --placeholder-color: rgb(87, 219, 242);
+              --placeholder-opacity:rgb(87, 219, 242);
+            }
+          }
+        }
+        .action-buttons {
+          margin-top: 20px;
+          text-align: center;
+          ion-button {
+            --background: #08A6AC;
+          }
+          .profile-button {
+            margin-bottom: 60px;
+            width: 100%;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .animated {
+    --webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    --webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  @-webkit-keyframes bounceInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(2000px);
+    }
+    60% {
+      opacity: 1;
+      -webkit-transform: translateY(-30);
+    }
+    80% {
+      -webkit-transform: translateY(10);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+    }
+  }
+
+  .bounceInUp {
+    --webkit-animation-name: bounceInUp;
+    animation-name: bounceInUp;
+  }
+
+  @keyframes bounceInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(2000px);
+    }
+    60% {
+      opacity: 1;
+      -webkit-transform: translateY(-30px);
+    }
+    80% {
+      -webkit-transform: translateY(10px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+    }
+  }

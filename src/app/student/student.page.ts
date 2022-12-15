@@ -29,8 +29,9 @@ export class StudentPage implements OnInit {
   public studentPages = [
     { title: 'Inicio', url: '/student/stu-home', icon: 'home' },
     { title: 'Lectura de libros', url: '/student/stu-content', icon: 'library' },
-    { title: 'Agregar Libro o Cuento', url: '/student/stu-book', icon: 'library' },
-    { title: 'Perfil', url: '/student/stu-detail', icon: 'person' }
+    // { title: 'Agregar Libro o Cuento', url: '/student/stu-book', icon: 'library' },
+    { title: 'Perfil', url: '/student/stu-detail', icon: 'person' },
+    { title: 'Configuracion', url: '/student/stu-profile/stu-profile-edit', icon: 'settings' }
   ];
   constructor(
     private router: Router,

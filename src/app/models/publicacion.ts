@@ -3,7 +3,7 @@ export interface Publicacion {
   id?: number;
   Procedencia?: string;
   FechaRegistro?: Date;
-  GradoDestino?: number;
+  GradoDestino?: string;
   LibroId?: number;
   EstudianteId?: number;
 }
@@ -12,7 +12,7 @@ export interface PublicacionDetail {
   id?: number;
   Procedencia?: string;
   FechaRegistro?: Date;
-  GradoDestino?: number;
+  GradoDestino?: string;
   LibroId?: number;
   EstudianteId?: number;
   libro?: {
