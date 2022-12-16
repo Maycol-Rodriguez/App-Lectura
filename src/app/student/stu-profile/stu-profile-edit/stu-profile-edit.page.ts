@@ -74,14 +74,23 @@ export class StuProfileEditPage implements OnInit {
     this.codigoestudiante = this.cliente.id;
   }
   updateEstudiante() {
-    this.authenticationService.loggout();
     this.authenticationService.loggin(this.estudiante, 'estudiante');
     this.estudianteService.updateEstudiante(this.codigoestudiante, this.estudiante).subscribe(
       resupdate => {
         this.mensaje = resupdate;
+        this.logout();
       }, err => {
         console.log('Error update estudiante');
       }
+    );
+  }
+  logout() {
+    this.authenticationService.loggout();
+    this.router.navigate(
+      [
+        'auth',
+        'login'
+      ]
     );
   }
 

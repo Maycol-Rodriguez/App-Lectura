@@ -1,7 +1,10 @@
 {
   "name": "applectura-ionic6-angular14",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

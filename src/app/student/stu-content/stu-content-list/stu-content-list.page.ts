@@ -89,7 +89,7 @@ export class StuContentListPage implements OnInit {
   porvideo() {
     const array: any = [];
     for (const item of this.libros) {
-      if (item.Video !== '') {
+      if (item.libro.Video !== '') {
         array.push(item);
         this.librosfiltrados = array;
       }
@@ -102,7 +102,7 @@ export class StuContentListPage implements OnInit {
   poraudio() {
     const array: any = [];
     for (const item of this.libros) {
-      if (item.Audio !== '') {
+      if (item.libro.Audio !== '') {
         array.push(item);
         this.librosfiltrados = array;
       }
