@@ -38,7 +38,7 @@
             </ion-radio-group>
         </ion-list>
       </ion-col>
-      <ion-col size="12" *ngIf="bandera || progreso.NotaCuestionario === 20">
+      <ion-col size="12" *ngIf="bandera || progreso.NotaCuestionario === 20 || progreso.NumeroIntento > 2">
         <div
         class="col_div col_div_final_finalizar">
           <ion-label color="primary">
@@ -49,11 +49,6 @@
       <ion-col size="12" *ngIf="!bandera">
         <div
         class="col_div col_div_final_finalizar">
-        <!-- <ion-button
-          shape="round"
-          (click)="comprobarrespuesta()">
-              Calificar
-          </ion-button> -->
           <ion-button
           shape="round"
           [disabled]="(progreso.Progreso < 100 || progreso.NotaCuestionario === 20 || progreso.NumeroIntento > 2)? true:false"
@@ -68,17 +63,17 @@
         <ion-button
           shape="round"
           [disabled]="(progreso.NumeroIntento > 2)? true:false"
-          (click)="comprobarrespuesta()">
+          (click)="otrointento()">
               Otro Intento
           </ion-button>
         </div>
       </ion-col>
-      <ion-col size="12" *ngIf="bandera">
+      <ion-col size="12" *ngIf="bandera || progreso.NumeroIntento > 2">
         <div
         class="col_div col_div_final_finalizar">
         <ion-button
           shape="round"
-          (click)="comprobarrespuesta()">
+          (click)="finalizar()">
               Terminar
           </ion-button>
         </div>

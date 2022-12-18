@@ -99,7 +99,7 @@ export class StuContentAudioPage implements OnInit {
     reslibro => {
       this.libro = reslibro;
       console.log(this.libro);
-      const par = this.libro.Video;
+      const par = this.libro.Audio;
       player.load(par); //URL
       this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
         rescuestionarios => {

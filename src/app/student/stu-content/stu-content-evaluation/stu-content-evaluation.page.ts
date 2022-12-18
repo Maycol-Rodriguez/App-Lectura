@@ -6,6 +6,7 @@ import { Resolucion } from 'src/app/models/resolucion';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { ResolucionService } from 'src/app/services/resolucion.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
+import { windowWhen } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stu-content-evaluation',
@@ -74,7 +75,7 @@ export class StuContentEvaluationPage implements OnInit {
         this.codigoprogreso = this.progreso.id;
         const filtro = this.progreso.Progreso;
         if (filtro < 100) {
-          window.location.reload();
+          this.redireccionar();
         }
         const parametrito = this.progreso.LibroId;
         this.cuestionarioService.getsearchCuestionariobylibro(parametrito).subscribe(
@@ -199,14 +200,10 @@ export class StuContentEvaluationPage implements OnInit {
       this.progreso.NotaCuestionario = lanota;
     }
     this.progreso.NumeroIntento = this.progreso.NumeroIntento + 1;
-    console.log(this.resoluciones);
-    console.log(this.progreso);
     for (const resp of this.resoluciones) {
-      console.log(resp);
       this.resolucionService.saveResolucion(resp).subscribe(
         ressaveresolucion => {
           this.resolucion1 = ressaveresolucion;
-          console.log(this.resolucion1);
         }, err => {
           console.log('Error save resolucion');
         }
@@ -228,6 +225,9 @@ export class StuContentEvaluationPage implements OnInit {
         'stu-content'
       ]
     );
+  }
+  redireccionar() {
+    window.history.back();
   }
   otrointento() {
     window.location.reload();
