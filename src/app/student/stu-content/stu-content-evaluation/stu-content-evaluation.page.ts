@@ -58,6 +58,7 @@ export class StuContentEvaluationPage implements OnInit {
   numeroaciertos = 0;
   codigoprogreso;
   mensaje;
+  intentospermitidos;
   bandera = false;
   constructor(
     private router: Router,
@@ -78,6 +79,7 @@ export class StuContentEvaluationPage implements OnInit {
           this.redireccionar();
         }
         const parametrito = this.progreso.LibroId;
+        this.intentospermitidos = 3 - this.progreso.NumeroIntento;
         this.cuestionarioService.getsearchCuestionariobylibro(parametrito).subscribe(
           rescuestionarios => {
             this.cuestionarios = rescuestionarios;

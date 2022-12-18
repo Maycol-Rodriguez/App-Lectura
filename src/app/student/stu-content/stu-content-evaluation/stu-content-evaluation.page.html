@@ -44,6 +44,9 @@
           <ion-label color="primary">
             Calificacion: {{progreso.NotaCuestionario}}/20
           </ion-label>
+          <ion-label color="primary">
+            Intentos Restantes: {{intentospermitidos}}
+          </ion-label>
         </div>
       </ion-col>
       <ion-col size="12" *ngIf="!bandera">
@@ -51,7 +54,7 @@
         class="col_div col_div_final_finalizar">
           <ion-button
           shape="round"
-          [disabled]="(progreso.Progreso < 100 || progreso.NotaCuestionario === 20 || progreso.NumeroIntento > 2)? true:false"
+          [disabled]="(progreso.Progreso < 100 || progreso.NotaCuestionario === 20 || intentospermitidos === 0)? true:false"
           (click)="comprobarrespuesta()">
               Calificar
           </ion-button>
@@ -62,7 +65,7 @@
         class="col_div col_div_final_finalizar">
         <ion-button
           shape="round"
-          [disabled]="(progreso.NumeroIntento > 2)? true:false"
+          [disabled]="(intentospermitidos === 0)? true:false"
           (click)="otrointento()">
               Otro Intento
           </ion-button>
