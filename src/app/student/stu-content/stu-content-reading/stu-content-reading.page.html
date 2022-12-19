@@ -14,7 +14,8 @@
         </ion-col>
         <ion-col size="12">
           <div class="col_div col_div_lectura">
-            <ion-slides pager="true" (ionSlideDidChange)="slideChanged($event)" [options]="slideOpts">
+            <!-- <ion-slides pager="true" (ionSlideDidChange)="slideChanged($event)" [options]="slideOpts"> -->
+            <ion-slides pager="true" [options]="slideOpts">
               <ion-slide *ngFor="let item of parrafos">
                 <img *ngIf="item.Imagen !== ''" [src]="item.Imagen" alt="" srcset="">
                 <h1 *ngIf="item.Parrafo !== '' && 35 < item.Parrafo.length">

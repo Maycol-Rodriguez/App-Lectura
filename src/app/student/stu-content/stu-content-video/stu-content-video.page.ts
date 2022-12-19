@@ -84,9 +84,9 @@ export class StuContentVideoPage implements OnInit {
   const procc = seconds/player.getDuration();
     if (procc >= 0.95) {
     console.log('Video completado');
-    if (this.progreso.Progreso === 0) {
-      this.progreso.Progreso = 50;
-    }
+    // if (this.progreso.Progreso === 0) {
+    //   this.progreso.Progreso = 50;
+    // }
   }
   });
   const parametro = JSON.parse(localStorage.getItem('ellibro'));
@@ -136,9 +136,15 @@ export class StuContentVideoPage implements OnInit {
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
+    if (this.progreso.Progreso === 0) {
+      this.progreso.Progreso = 50;
+    }
   }
   deselegir() {
     this.progreso.Reaccion = '';
+    if (this.progreso.Progreso === 50) {
+      this.progreso.Progreso = 0;
+    }
   }
   validarprogreso() {
     if (this.progreso.Progreso < 100) {

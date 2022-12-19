@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Libro } from 'src/app/models/libro';
-import { ParrafoService } from 'src/app/services/parrafo.service';
-import { LibroService } from 'src/app/services/libro.service';
+import * as YTPlayer from 'yt-player';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { ProgresoService } from 'src/app/services/progreso.service';
+import { Libro } from 'src/app/models/libro';
+import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
 import { EstudianteDetail } from 'src/app/models/estudiante';
+import { LibroService } from 'src/app/services/libro.service';
+import { ProgresoService } from 'src/app/services/progreso.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
-import * as YTPlayer from 'yt-player';
-
 @Component({
   selector: 'app-stu-content-audio',
   templateUrl: './stu-content-audio.page.html',
@@ -86,12 +82,11 @@ export class StuContentAudioPage implements OnInit {
   const procc = seconds/player.getDuration();
     if (procc >= 0.95) {
     console.log('Video completado');
-    if (this.progreso.Progreso === 0) {
-      this.progreso.Progreso = 50;
-    }
+    // if (this.progreso.Progreso === 0) {
+    //   this.progreso.Progreso = 50;
+    // }
   }
   });
-
   const parametro = JSON.parse(localStorage.getItem('ellibro'));
   const parestudiante = JSON.parse(localStorage.getItem('usuario'));
   console.log(parametro);
@@ -139,9 +134,15 @@ export class StuContentAudioPage implements OnInit {
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
+    if (this.progreso.Progreso === 0) {
+      this.progreso.Progreso = 50;
+    }
   }
   deselegir() {
     this.progreso.Reaccion = '';
+    if (this.progreso.Progreso === 50) {
+      this.progreso.Progreso = 0;
+    }
   }
   validarprogreso() {
     if (this.progreso.Progreso < 100) {

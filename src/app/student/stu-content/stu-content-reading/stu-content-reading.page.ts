@@ -143,27 +143,30 @@ export class StuContentReadingPage implements OnInit {
   }
   elegir(dato) {
     this.progreso.Reaccion = dato;
+    if (this.progreso.Progreso === 0) {
+      this.progreso.Progreso = 50;
+    }
   }
   deselegir() {
     this.progreso.Reaccion = '';
+    if (this.progreso.Progreso === 50) {
+      this.progreso.Progreso = 0;
+    }
   }
-  slideChanged(event) {
-    this.slides.isEnd().then(
-      (istrue) => {
-        if (istrue) {
-          // this.slides.lockSwipeToPrev(true);
-          // this.slides.lockSwipeToNext(true);
-          // this.slides.lockSwipes(true);
-          this.validacionultimoslide = 'termino';
-          if (this.progreso.Progreso === 0) {
-            this.progreso.Progreso = 50;
-          }
-        } else {
-          this.validacionultimoslide = 'aun no termino';
-        }
-      }
-    );
-  }
+  // slideChanged(event) {
+  //   this.slides.isEnd().then(
+  //     (istrue) => {
+  //       if (istrue) {
+  //         this.validacionultimoslide = 'termino';
+  //         if (this.progreso.Progreso === 0) {
+  //           this.progreso.Progreso = 50;
+  //         }
+  //       } else {
+  //         this.validacionultimoslide = 'aun no termino';
+  //       }
+  //     }
+  //   );
+  // }
   validarprogreso() {
     if (this.progreso.Progreso < 100) {
       if (this.progreso.Progreso === 50) {

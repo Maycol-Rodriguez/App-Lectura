@@ -13,10 +13,6 @@ const routes: Routes = [
         loadChildren: () => import('./stu-content-list/stu-content-list.module').then( m => m.StuContentListPageModule)
       },
       {
-        path: 'stu-content-select',
-        loadChildren: () => import('./stu-content-select/stu-content-select.module').then( m => m.StuContentSelectPageModule)
-      },
-      {
         path: 'stu-content-reading',
         loadChildren: () => import('./stu-content-reading/stu-content-reading.module').then( m => m.StuContentReadingPageModule)
       },
@@ -31,15 +27,6 @@ const routes: Routes = [
       {
         path: 'stu-content-evaluation',
         loadChildren: () => import('./stu-content-evaluation/stu-content-evaluation.module').then( m => m.StuContentEvaluationPageModule)
-      },
-      {
-        path: 'stu-content-accompanying',
-        // eslint-disable-next-line max-len
-        loadChildren: () => import('./stu-content-accompanying/stu-content-accompanying.module').then( m => m.StuContentAccompanyingPageModule)
-      },
-      {
-        path: 'stu-content-award',
-        loadChildren: () => import('./stu-content-award/stu-content-award.module').then( m => m.StuContentAwardPageModule)
       },
       {
         path: '',
