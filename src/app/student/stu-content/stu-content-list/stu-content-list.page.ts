@@ -81,7 +81,13 @@ export class StuContentListPage implements OnInit {
     );
   }
   porlectura() {
-    this.librosfiltrados = this.libros;
+    const array: any = [];
+    for (const item of this.libros) {
+      if (item.libro.Video === '' && item.libro.Audio === '') {
+        array.push(item);
+        this.librosfiltrados = array;
+      }
+    }
     this.vistalibros = true;
     this.vistaeleccion = false;
     this.ruta = 'lectura';

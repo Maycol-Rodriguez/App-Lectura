@@ -38,14 +38,19 @@
             </ion-radio-group>
         </ion-list>
       </ion-col>
+      <ion-col size="12">
+        <div
+        class="col_div col_div_final_finalizar">
+          <ion-label color="primary">
+            Intentos Restantes: {{intentospermitidos}}
+          </ion-label>
+        </div>
+      </ion-col>
       <ion-col size="12" *ngIf="bandera || progreso.NotaCuestionario === 20 || progreso.NumeroIntento > 2">
         <div
         class="col_div col_div_final_finalizar">
           <ion-label color="primary">
             Calificacion: {{progreso.NotaCuestionario}}/20
-          </ion-label>
-          <ion-label color="primary">
-            Intentos Restantes: {{intentospermitidos}}
           </ion-label>
         </div>
       </ion-col>
