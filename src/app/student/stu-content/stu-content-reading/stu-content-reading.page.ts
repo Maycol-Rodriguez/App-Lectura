@@ -153,7 +153,7 @@ export class StuContentReadingPage implements OnInit {
         if (istrue) {
           // this.slides.lockSwipeToPrev(true);
           // this.slides.lockSwipeToNext(true);
-          this.slides.lockSwipes(true);
+          // this.slides.lockSwipes(true);
           this.validacionultimoslide = 'termino';
           if (this.progreso.Progreso === 0) {
             this.progreso.Progreso = 50;
