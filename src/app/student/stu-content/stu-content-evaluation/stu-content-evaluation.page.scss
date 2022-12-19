@@ -47,7 +47,10 @@ ion-title.title-large {
           --background: transparent;
           ion-label {
             background: transparent;
-            --color: #23A0AD;
+            --color: #197580;
+            word-wrap: break-word;
+            white-space: -moz-pre-wrap;
+            white-space: pre-wrap;
           }
           ion-radio {
             background: transparent;

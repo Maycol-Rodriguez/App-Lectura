@@ -6,7 +6,6 @@ import { Resolucion } from 'src/app/models/resolucion';
 import { ProgresoService } from 'src/app/services/progreso.service';
 import { ResolucionService } from 'src/app/services/resolucion.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
-import { windowWhen } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stu-content-evaluation',

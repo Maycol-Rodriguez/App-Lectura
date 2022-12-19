@@ -72,7 +72,7 @@ export class StuContentReadingPage implements OnInit {
     spaceBetween: 10,
     grabCursor: true,
     initialSlide: 0,
-    speed: 500
+    speed: 750
   };
   existencia = 'no existe';
   mensaje;
@@ -151,6 +151,9 @@ export class StuContentReadingPage implements OnInit {
     this.slides.isEnd().then(
       (istrue) => {
         if (istrue) {
+          // this.slides.lockSwipeToPrev(true);
+          // this.slides.lockSwipeToNext(true);
+          this.slides.lockSwipes(true);
           this.validacionultimoslide = 'termino';
           if (this.progreso.Progreso === 0) {
             this.progreso.Progreso = 50;
