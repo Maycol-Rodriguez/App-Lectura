@@ -4,7 +4,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   // appId: 'com.jxdesign.lecapp',
   appId: 'io.ionic.starter',
-  appName: 'applectura-ionic6-angular14',
+  appName: 'lec-app',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

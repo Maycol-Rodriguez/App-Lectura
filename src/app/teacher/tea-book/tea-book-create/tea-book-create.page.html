@@ -15,8 +15,14 @@
     </ion-grid>
     <div class="book-section ion-padding">
       <div class="heading ion-padding">
-        <h1>
-          Registrar Libro
+        <h1 *ngIf="eleccion === 'audio'">
+          Registrar Audio Libro
+        </h1>
+        <h1 *ngIf="eleccion === 'video'">
+          Registrar Video Libro
+        </h1>
+        <h1 *ngIf="eleccion === 'libro'">
+          Registrar Libro Textual
         </h1>
       </div>
       <div *ngIf="!creado" class="book-form ion-padding">
