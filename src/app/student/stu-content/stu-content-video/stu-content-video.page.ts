@@ -36,7 +36,6 @@ export class StuContentVideoPage implements OnInit {
     EstudianteId: 0
   };
   progresocreate: Progreso = {
-    id: 0,
     Progreso: 0,
     Reaccion: '',
     Comentario: '',
