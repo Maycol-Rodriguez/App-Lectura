@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Libro } from 'src/app/models/libro';
-import { LibroService } from 'src/app/services/libro.service';
 import { Router } from '@angular/router';
-import { ProgresoService } from 'src/app/services/progreso.service';
+import * as YTPlayer from 'yt-player';
+import { Libro } from 'src/app/models/libro';
+import { Component, OnInit } from '@angular/core';
 import { Progreso } from 'src/app/models/progreso';
 import { EstudianteDetail } from 'src/app/models/estudiante';
+import { LibroService } from 'src/app/services/libro.service';
+import { ProgresoService } from 'src/app/services/progreso.service';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
-import * as YTPlayer from 'yt-player';
-import { interval, merge, fromEvent } from 'rxjs';
-import { mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stu-content-video',
@@ -65,7 +63,7 @@ export class StuContentVideoPage implements OnInit {
   existencia = 'no existe';
   mensaje;
   estado = '';
-  haycuestionario = true;
+  haycuestionario = false;
   resolviocuestionario = false;
   cuestionarios: any = [];
   constructor(
@@ -101,6 +99,7 @@ export class StuContentVideoPage implements OnInit {
       this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
         rescuestionarios => {
           if (Object.entries(rescuestionarios).length > 0) {
+            console.log(this.cuestionarios);
             this.cuestionarios = rescuestionarios;
             this.haycuestionario = true;
           } else {
@@ -111,9 +110,10 @@ export class StuContentVideoPage implements OnInit {
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
+              console.log(this.progreso);
             } else {
               this.progresocreate.LibroId = parametro;
-              this.progresocreate.EstudianteId = parestudiante;
+              this.progresocreate.EstudianteId = parestudiante.id;
               this.progresocreate.Progreso = 0;
               this.progresoService.saveProgreso(this.progresocreate).subscribe(
                 resnewprogreso => {
@@ -180,8 +180,9 @@ export class StuContentVideoPage implements OnInit {
       }
     );
   }
-  iracuestionario(dato) {
+  async iracuestionario(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',
@@ -190,9 +191,12 @@ export class StuContentVideoPage implements OnInit {
       ]
     );
   }
-
-  terminar(dato) {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  async terminar(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',

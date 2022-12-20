@@ -109,9 +109,10 @@ export class StuContentAudioPage implements OnInit {
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
+              console.log(this.progreso);
             } else {
               this.progresocreate.LibroId = parametro;
-              this.progresocreate.EstudianteId = parestudiante;
+              this.progresocreate.EstudianteId = parestudiante.id;
               this.progresocreate.Progreso = 0;
               this.progresoService.saveProgreso(this.progresocreate).subscribe(
                 resnewprogreso => {
@@ -178,8 +179,9 @@ export class StuContentAudioPage implements OnInit {
       }
     );
   }
-  iracuestionario(dato) {
+  async iracuestionario(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',
@@ -188,9 +190,12 @@ export class StuContentAudioPage implements OnInit {
       ]
     );
   }
-
-  terminar(dato) {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  async terminar(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',

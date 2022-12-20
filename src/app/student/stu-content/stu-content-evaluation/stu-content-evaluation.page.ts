@@ -77,11 +77,12 @@ export class StuContentEvaluationPage implements OnInit {
         if (filtro < 100) {
           this.redireccionar();
         }
-        const parametrito = this.progreso.LibroId;
+        // const parametrito = this.progreso.LibroId;
         this.intentospermitidos = 3 - this.progreso.NumeroIntento;
-        this.cuestionarioService.getsearchCuestionariobylibro(parametrito).subscribe(
+        this.cuestionarioService.getsearchCuestionariobylibro(parametro).subscribe(
           rescuestionarios => {
             this.cuestionarios = rescuestionarios;
+            console.log(this.cuestionarios);
             this.numeropreguntas = this.cuestionarios.length;
             this.notaporpregunta = 20 / this.numeropreguntas;
             const elarray: any = this.cuestionarios;

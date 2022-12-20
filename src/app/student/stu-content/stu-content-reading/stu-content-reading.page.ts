@@ -110,6 +110,7 @@ export class StuContentReadingPage implements OnInit {
           resprogreso => {
             if (resprogreso !== null) {
               this.progreso = resprogreso;
+              console.log(this.progreso);
             } else {
               this.progresocreate.LibroId = parametro;
               this.progresocreate.EstudianteId = parestudiante.id;
@@ -201,8 +202,9 @@ export class StuContentReadingPage implements OnInit {
       }
     );
   }
-  iracuestionario(dato) {
+  async iracuestionario(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',
@@ -211,9 +213,12 @@ export class StuContentReadingPage implements OnInit {
       ]
     );
   }
-
-  terminar(dato) {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+  async terminar(dato) {
     this.actualizar(dato);
+    await this.delay(1000);
     this.router.navigate(
       [
         'student',
