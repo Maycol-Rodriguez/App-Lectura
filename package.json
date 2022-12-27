@@ -1,8 +1,61 @@
 {
   "name": "lec-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "description": "Aplicacion para fomentar la lectura realizada en Ionic",
+  "author": {
+    "name": "Anibal Jhamil Huaman Verastein",
+    "url": "http://jxdesign.com",
+    "rol": "Arquitecto de Soluciones",
+    "github": "https://github.com/kayserjhamillex",
+    "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+  },
+  "contributors": [
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    },
+    {
+      "name": "Flor de María Gutarra Romo",
+      "rol": "desarrolladora y dba",
+      "github": "https://github.com/FlorGR",
+      "linkedin": "https://www.linkedin.com/in/jhamilhuaman/"
+    }
+  ],
   "homepage": "https://ionicframework.com/",
+  "copyright": "Copyright 2022 JxDesign",
+  "license": "https://jxdesign.com/license/JxDesign-2022-LEC-APP",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -77,7 +130,6 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.7.3"
   },
-  "description": "An Ionic project",
   "cordova": {
     "plugins": {
       "cordova-plugin-statusbar": {},
